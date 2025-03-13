@@ -1,4 +1,3 @@
 [build]
-  base = "packages/docs"
   command = "npm install && npm run build"
   publish = "packages/docs/.next"
