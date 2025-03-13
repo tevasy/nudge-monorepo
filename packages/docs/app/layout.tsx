@@ -1,4 +1,5 @@
 "use client";
+import "nudge-library/default-options";
 import "../styles/globals.css";
 import { useEffect, useState } from "react";
 import NavBar from "../components/navigation/NavBar";
