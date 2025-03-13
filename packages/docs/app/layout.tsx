@@ -22,7 +22,7 @@ export default function RootLayout({
       setIsLoaded(true);
       setTimeout(() => {
         setShowSpinner(false);
-      }, 25000);
+      }, 40000);
     };
 
     if (document.readyState === "complete") {
@@ -31,7 +31,7 @@ export default function RootLayout({
       window.addEventListener("load", handleLoad);
       return () => window.removeEventListener("load", handleLoad);
     }
-  }, []);
+  }, [300]);
 
   let menuItems: MenuItem[] = [];
 
