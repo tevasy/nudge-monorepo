@@ -84,11 +84,12 @@ export default function DonationSettings() {
       )}
       <p style={{ marginTop: "1rem", fontSize: "0.875rem" }}>
         When the text box is focused, a nudge text appears that updates based on
-        the entered amount. Once focus is lost, the nudge message disappears via
-        <code style={{ fontSize: "0.813rem" }}>nudgeVisible</code> and the input
-        is committed via <code style={{ fontSize: "0.813rem" }}>onCommit</code>,
-        displaying a final confirmation message for the donation. This component
-        will not commit an empty value, or inputs other than numbers.
+        the entered amount. Once focus is lost, the nudge message disappears
+        via&nbsp;<code style={{ fontSize: "0.813rem" }}>nudgeVisible</code> and
+        the input is committed via{" "}
+        <code style={{ fontSize: "0.813rem" }}>onCommit</code>, displaying a
+        final confirmation message for the donation. This component will not
+        commit an empty value, or inputs other than numbers.
       </p>
     </div>
   );
