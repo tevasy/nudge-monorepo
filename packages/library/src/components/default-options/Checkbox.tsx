@@ -1,5 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import { FiCheck } from "react-icons/fi";
+import "../../styles/tokens.css";
+import "../../styles/globals.css";
 import { ThemeContext } from "../../theme/ThemeContext";
 
 // Define props for the Checkbox component.
@@ -70,6 +72,38 @@ export function Checkbox({
       </div>
     ) : null;
 
+  // Define a touch handler to simulate focus events on mobile.
+  const handleTouchStart = (e: React.TouchEvent<HTMLInputElement>) => {
+    if (onFocus) {
+      onFocus(e as unknown as React.FocusEvent<HTMLInputElement>);
+    }
+  };
+
+  // Create a ref for the container to detect touches outside the component.
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Listen for touch events outside the component to simulate blur.
+  useEffect(() => {
+    const handleTouchOutside = (event: TouchEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        if (onBlur) {
+          // Create a dummy focus event to simulate onBlur.
+          const dummyEvent = {
+            target: containerRef.current,
+          } as unknown as React.FocusEvent<HTMLInputElement>;
+          onBlur(dummyEvent);
+        }
+      }
+    };
+    document.addEventListener("touchstart", handleTouchOutside);
+    return () => {
+      document.removeEventListener("touchstart", handleTouchOutside);
+    };
+  }, [onBlur]);
+
   // Build the checkbox input element along with its label.
   const checkboxInput = (
     <label
@@ -88,6 +122,7 @@ export function Checkbox({
         onChange={handleChange}
         onFocus={onFocus}
         onBlur={onBlur}
+        onTouchStart={handleTouchStart}
         aria-label={ariaLabel ?? label}
         style={theme.checkbox.input}
         disabled={disabled}
@@ -138,6 +173,7 @@ export function Checkbox({
         ...theme.checkbox.wrapper,
         ...(disabled ? theme.checkbox.disabled : {}),
       }}
+      ref={containerRef}
     >
       {checkboxLabel && (
         <div style={theme.checkbox.checkboxLabel}>{checkboxLabel}</div>

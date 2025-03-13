@@ -22,7 +22,7 @@ export default function TitleSection({
   };
 
   return (
-    <section className="px-8 md:px-11 py-14 bg-gradient-to-r from-[#E4F1FF] via-[#FFEAD2B8] to-[#FFFFFF00]">
+    <section className="px-6 md:px-11 py-14 bg-gradient-to-r from-[#E4F1FF] via-[#FFEAD2B8] to-[#FFFFFF00]">
       <h1 className="text-3xl md:text-4xl font-bold mb-6">{title}</h1>
       <p className="font-medium text-md mb-2.5">Install with:</p>
       <div className="flex flex-col md:flex-row md:items-center text-sm space-y-2 md:space-y-0 md:space-x-4">

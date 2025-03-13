@@ -1,51 +1,30 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { ThemeContext } from "../../theme/ThemeContext";
+import "../../styles/tokens.css";
+import "../../styles/globals.css";
 import styles from "./TextBox.module.css";
 
 // Common props shared by both controlled and uncontrolled versions.
 type CommonTextBoxProps = {
-  // Label for the textbox.
   textBoxLabel?: string;
-
-  // Callback fired when the value changes.
   onChange?: (value: string) => void;
-
-  // Whether the textbox is disabled.
   disabled?: boolean;
-
-  // Static nudge message to display as guidance.
   nudgeText?: string;
-
-  // Accessibility enhancements:
-  // Unique identifier for the textbox (links label and input).
   id?: string;
-  // Accessible label for screen readers.
   ariaLabel?: string;
-
-  // Interaction handlers for dynamic behavior:
-  // Called when the textbox gains focus.
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
-  // Called when the textbox loses focus.
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
-  // Called when the user commits the input (e.g. on blur).
   onCommit?: (value: string) => void;
-
-  // Adaptive nudge customization:
-  // Controls whether the nudge is visible.
   nudgeVisible?: boolean;
-  // Determines the placement of the nudge relative to the textbox.
   nudgePosition?: "top" | "bottom" | "left" | "right";
-  // A render prop for dynamically generating the nudge content based on the textbox's value.
   renderNudge?: (value: string) => React.ReactNode;
 };
 
-// Controlled usage: value is required, defaultValue is disallowed.
 type ControlledTextBoxProps = {
   value: string;
   defaultValue?: never;
 };
 
-// Uncontrolled usage: defaultValue is required, value is disallowed.
 type UncontrolledTextBoxProps = {
   defaultValue: string;
   value?: never;
@@ -73,6 +52,7 @@ export function TextBox({
   const theme = useContext(ThemeContext);
   const [text, setText] = useState(value !== undefined ? value : defaultValue);
   const inputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Sync internal state when a controlled value is provided.
   useEffect(() => {
@@ -85,6 +65,13 @@ export function TextBox({
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
     e.target.select();
     onFocus?.(e);
+  };
+
+  // Simulate focus on touch devices.
+  const handleTouchStart = (e: React.TouchEvent<HTMLInputElement>) => {
+    if (onFocus) {
+      onFocus(e as unknown as React.FocusEvent<HTMLInputElement>);
+    }
   };
 
   const handleClick = (e: React.MouseEvent<HTMLInputElement>) => {
@@ -100,7 +87,30 @@ export function TextBox({
     onChange?.(newValue);
   };
 
-  // Prepare a nudge ID for accessibility if an id is provided.
+  // Listen for touches outside the component to simulate blur.
+  useEffect(() => {
+    const handleTouchOutside = (event: TouchEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        if (onBlur) {
+          // Create a dummy event with the current text.
+          const dummyEvent = {
+            target: { value: text },
+          } as unknown as React.FocusEvent<HTMLInputElement>;
+          onBlur(dummyEvent);
+        }
+        onCommit?.(text);
+      }
+    };
+    document.addEventListener("touchstart", handleTouchOutside);
+    return () => {
+      document.removeEventListener("touchstart", handleTouchOutside);
+    };
+  }, [onBlur, onCommit, text]);
+
+  // Prepare a nudge ID for accessibility.
   const nudgeId = id ? `${id}-nudge` : undefined;
 
   // Determine the nudge element.
@@ -124,6 +134,7 @@ export function TextBox({
       value={text}
       onChange={handleChange}
       onFocus={handleFocus}
+      onTouchStart={handleTouchStart}
       onClick={handleClick}
       onBlur={(e) => {
         onBlur?.(e);
@@ -176,11 +187,11 @@ export function TextBox({
         ...theme.textBox.wrapper,
         ...(disabled ? theme.textBox.disabled : {}),
       }}
+      ref={containerRef}
     >
       <div style={theme.slider.sliderLabel}>
         <label htmlFor={id}>{textBoxLabel}</label>
       </div>
-
       {content}
     </div>
   );

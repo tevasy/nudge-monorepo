@@ -1,4 +1,8 @@
-import { Checkbox, ThemeProvider, defaultTheme } from "nudge-library";
+import {
+  Checkbox,
+  ThemeProvider,
+  defaultTheme,
+} from "nudge-library/default-options";
 
 import CodeContainer from "../CodeContainer";
 import {
@@ -39,7 +43,7 @@ export default function CheckboxDocs() {
             label: "Static nudge",
             content: (
               <div>
-                <div className="flex flex-col gap-4 bg-white py-10 px-10 md:px-24 lg:px-28 rounded-b-2xl">
+                <div className="flex flex-col gap-4 bg-white py-10 px-8 md:px-24 lg:px-28 rounded-b-2xl">
                   <Checkbox
                     checkboxLabel="Default version"
                     id="bedtimeReminderDefault"
@@ -76,7 +80,7 @@ export default function CheckboxDocs() {
             label: "Dynamic nudge",
             content: (
               <div>
-                <div className="bg-white py-10 px-10 md:px-24 lg:px-28 rounded-b-2xl">
+                <div className="bg-white py-10 px-8 md:px-24 lg:px-28 rounded-b-2xl">
                   <DynamicCheckbox />
                 </div>
                 <div className="border-t border-customLightBlue">
@@ -89,7 +93,7 @@ export default function CheckboxDocs() {
             label: "Adaptive nudge",
             content: (
               <div>
-                <div className="bg-white py-10 px-10 md:px-24 lg:px-28 rounded-b-2xl">
+                <div className="bg-white py-10 px-8 md:px-24 lg:px-28 rounded-b-2xl">
                   <AdaptiveCheckbox />
                 </div>
                 <div className="border-t border-customLightBlue">

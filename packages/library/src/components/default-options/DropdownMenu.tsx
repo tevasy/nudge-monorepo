@@ -1,40 +1,23 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { FiChevronDown, FiCheck } from "react-icons/fi";
 import { ThemeContext } from "../../theme/ThemeContext";
+import "../../styles/tokens.css";
+import "../../styles/globals.css";
 import styles from "./DropdownMenu.module.css";
 
 export type DropdownMenuProps = {
-  // Label for the dropdown
   dropdownLabel?: string;
-
-  // Array of options to display in the dropdown.
   options: { label: string; value: string; nudgeText?: string }[];
-
-  // Controlled selected value.
   selected?: string;
-
-  // Default selected value when uncontrolled.
   defaultSelected?: string;
-
-  // Callback fired when an option is selected.
   onChange?: (value: string) => void;
-
-  // Placeholder text to show when no option is selected.
   placeholder?: string;
-
-  // Whether the dropdown is disabled.
   disabled?: boolean;
-
-  // Accessibility enhancements:
   id?: string;
   ariaLabel?: string;
-
-  // Interaction handlers:
   onFocus?: React.FocusEventHandler<HTMLButtonElement>;
   onBlur?: React.FocusEventHandler<HTMLButtonElement>;
   onCommit?: (value: string) => void;
-
-  // Adaptive nudge customization:
   nudgeVisible?: boolean;
   nudgePosition?: "top" | "bottom" | "left" | "right";
   renderNudge?: (
@@ -66,18 +49,13 @@ export function DropdownMenu({
   );
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Determine the currently selected value (controlled vs. uncontrolled).
   const selectedValue = selected !== undefined ? selected : internalSelected;
-
-  // Find the selected option.
   const selectedOption = options.find((opt) => opt.value === selectedValue);
 
-  // Toggle dropdown open/close.
   const toggleOpen = () => {
     if (!disabled) setIsOpen(!isOpen);
   };
 
-  // Handle selection.
   const handleSelect = (value: string) => {
     if (!disabled) {
       setInternalSelected(value);
@@ -87,7 +65,7 @@ export function DropdownMenu({
     }
   };
 
-  // Close dropdown on outside click.
+  // Handle clicks outside for mouse events.
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -95,11 +73,47 @@ export function DropdownMenu({
         !dropdownRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
+        if (onBlur) {
+          // Create a dummy focus event to trigger onBlur.
+          const dummyEvent = {
+            target: dropdownRef.current,
+          } as unknown as React.FocusEvent<HTMLButtonElement>;
+          onBlur(dummyEvent);
+        }
+        onCommit?.(selectedValue);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [dropdownRef, onBlur, onCommit, selectedValue]);
+
+  // Handle touches outside for mobile devices.
+  useEffect(() => {
+    const handleTouchOutside = (event: TouchEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+        if (onBlur) {
+          const dummyEvent = {
+            target: dropdownRef.current,
+          } as unknown as React.FocusEvent<HTMLButtonElement>;
+          onBlur(dummyEvent);
+        }
+        onCommit?.(selectedValue);
+      }
+    };
+    document.addEventListener("touchstart", handleTouchOutside);
+    return () => document.removeEventListener("touchstart", handleTouchOutside);
+  }, [dropdownRef, onBlur, onCommit, selectedValue]);
+
+  // Only trigger focus on touch start.
+  const handleTouchStart = (e: React.TouchEvent<HTMLButtonElement>) => {
+    if (onFocus) {
+      onFocus(e as unknown as React.FocusEvent<HTMLButtonElement>);
+    }
+  };
 
   return (
     <div
@@ -129,6 +143,7 @@ export function DropdownMenu({
           onBlur?.(e);
           onCommit?.(selectedValue);
         }}
+        onTouchStart={handleTouchStart}
         className={styles.dropdownButton}
       >
         <span>{selectedOption ? selectedOption.label : placeholder}</span>
@@ -145,7 +160,6 @@ export function DropdownMenu({
           {options.map((option) => {
             const isOptionSelected = option.value === selectedValue;
 
-            // Compute nudge text.
             let optionNudgeElement: React.ReactNode = null;
             if (nudgeVisible) {
               if (renderNudge) {
@@ -169,7 +183,6 @@ export function DropdownMenu({
               }
             }
 
-            // Arrange option content with nudge.
             let optionContent: React.ReactNode;
             if (nudgePosition === "top") {
               optionContent = (
@@ -218,7 +231,6 @@ export function DropdownMenu({
                 </div>
               );
             } else {
-              // Default to bottom.
               optionContent = (
                 <>
                   <div style={theme.dropdown.content}>

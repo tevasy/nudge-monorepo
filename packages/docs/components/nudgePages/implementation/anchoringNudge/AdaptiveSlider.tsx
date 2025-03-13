@@ -4,8 +4,8 @@ import { Slider } from "nudge-library";
 export default function AdaptiveSlider() {
   // Retrieve the previous volume from localStorage.
   // If no previous value exists, default to 50.
-  const storedVolume = Number(localStorage.getItem("preferredVolume"));
-  const initialVolume = isNaN(storedVolume) ? 50 : storedVolume;
+  const storedVolumeStr = localStorage.getItem("preferredVolume");
+  const initialVolume = storedVolumeStr === null ? 10 : Number(storedVolumeStr);
 
   // Local state to track the current volume selection.
   const [volume, setVolume] = useState<number>(initialVolume);

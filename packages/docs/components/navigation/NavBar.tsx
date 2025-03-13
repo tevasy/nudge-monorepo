@@ -130,7 +130,7 @@ export default function NavBar() {
         style={{ margin: "0 auto" }}
       >
         {/* Hamburger icon positioned absolutely on the left */}
-        <button className="absolute left-6 lg:hidden" onClick={openMenu}>
+        <button className="absolute left-4 lg:hidden" onClick={openMenu}>
           <svg
             className="w-6 h-6 mt-0.5"
             fill="none"

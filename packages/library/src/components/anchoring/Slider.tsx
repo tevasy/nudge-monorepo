@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { ThemeContext } from "../../theme/ThemeContext";
+import "../../styles/tokens.css";
+import "../../styles/globals.css";
 import styles from "./Slider.module.css";
 
 export type SliderProps = {
@@ -45,6 +47,7 @@ export function Slider({
 }: SliderProps) {
   const theme = useContext(ThemeContext);
   const sliderRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null); // For detecting touches outside
   const [sliderValue, setSliderValue] = useState(defaultValue ?? min);
   const [thumbCenter, setThumbCenter] = useState(0);
 
@@ -54,14 +57,14 @@ export function Slider({
   const percentage = ((currentValue - min) / (max - min)) * 100;
   const filledPercentage = Math.min(percentage + 0, 100);
 
-  // Update sliderValue when controlled prop changes
+  // Update sliderValue when controlled prop changes.
   useEffect(() => {
     if (value !== undefined) {
       setSliderValue(value);
     }
   }, [value]);
 
-  // Clamp defaultValue if provided
+  // Clamp defaultValue if provided.
   useEffect(() => {
     if (defaultValue !== undefined) {
       const clampedValue = Math.min(Math.max(defaultValue, min), max);
@@ -69,7 +72,7 @@ export function Slider({
     }
   }, [defaultValue, min, max]);
 
-  // Calculate the thumb's center position in pixels
+  // Calculate the thumb's center position in pixels.
   useEffect(() => {
     if (sliderRef.current) {
       const sliderWidth = sliderRef.current.offsetWidth;
@@ -85,19 +88,47 @@ export function Slider({
   }, [currentValue, min, max, theme.slider.thumb.width]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = Number((event.target as HTMLInputElement).value);
+    const newValue = Number(event.target.value);
     if (value === undefined) setSliderValue(newValue);
     onChange?.(newValue);
   };
 
   const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     onBlur?.(event);
-    onCommit?.(Number((event.target as HTMLInputElement).value));
+    onCommit?.(Number(event.target.value));
   };
 
   const handleMouseUp = (event: React.MouseEvent<HTMLInputElement>) => {
-    onCommit?.(Number((event.target as HTMLInputElement).value));
+    onCommit?.(Number(event.currentTarget.value));
   };
+
+  // Touch handler to simulate focus.
+  const handleTouchStart = (e: React.TouchEvent<HTMLInputElement>) => {
+    if (onFocus) {
+      onFocus(e as unknown as React.FocusEvent<HTMLInputElement>);
+    }
+  };
+
+  // Document-level touch listener to simulate blur when touching outside.
+  useEffect(() => {
+    const handleTouchOutside = (event: TouchEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        if (onBlur) {
+          const dummyEvent = {
+            target: containerRef.current,
+          } as unknown as React.FocusEvent<HTMLInputElement>;
+          onBlur(dummyEvent);
+        }
+        onCommit?.(currentValue);
+      }
+    };
+
+    document.addEventListener("touchstart", handleTouchOutside);
+    return () => document.removeEventListener("touchstart", handleTouchOutside);
+  }, [onBlur, onCommit, currentValue]);
 
   const nudgeId = id ? `${id}-nudge` : undefined;
 
@@ -115,6 +146,7 @@ export function Slider({
         onFocus={onFocus}
         onBlur={handleBlur}
         onMouseUp={handleMouseUp}
+        onTouchStart={handleTouchStart} // Added touch support
         aria-label={ariaLabel ?? sliderLabel}
         aria-valuemin={min}
         aria-valuemax={max}
@@ -170,6 +202,7 @@ export function Slider({
         ...(disabled ? theme.slider.disabled : {}),
       }}
       className={styles.wrapper}
+      ref={containerRef} // Attach container ref to detect touches outside
     >
       {sliderLabel && (
         <div style={theme.slider.sliderLabel}>

@@ -1,31 +1,34 @@
 {
   "name": "nudge-library",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A library of nudge UI components",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "files": [
     "dist",
     "dist/components/default-options",
     "dist/components/anchoring",
-    "src/styles/globals.css"
+    "src/styles/globals.css",
+    "src/styles/tokens.css"
   ],
   "exports": {
     ".": {
       "import": "./dist/index.esm.js",
-      "require": "./dist/index.cjs.js",
+      "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
     "./default-options": {
       "import": "./dist/default-options.js",
-      "require": "./dist/default-options.cjs.js",
+      "require": "./dist/default-options.js",
       "types": "./dist/default-options.d.ts"
     },
     "./anchoring": {
       "import": "./dist/anchoring.js",
-      "require": "./dist/anchoring.cjs.js",
+      "require": "./dist/anchoring.js",
       "types": "./dist/anchoring.d.ts"
     }
   },

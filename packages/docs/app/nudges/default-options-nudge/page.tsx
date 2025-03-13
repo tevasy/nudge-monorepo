@@ -18,7 +18,7 @@ export default function InstallSection() {
         title={textContent.title}
         installCommands={textContent.installCommands}
       />
-      <section id="overview" className="mb-12 px-8 md:px-11 pt-12 text-base">
+      <section id="overview" className="mb-12 px-6 md:px-11 pt-12 text-base">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">
           {textContent.overview.title}
         </h2>
@@ -35,7 +35,7 @@ export default function InstallSection() {
         </div>
         <p>{textContent.overview.exampleText}</p>
       </section>
-      <div className="bg-gradient-to-r from-customLightLightOrange via-customLightLightOrange to-transparent px-8 md:px-11 py-12">
+      <div className="bg-gradient-to-r from-customLightLightOrange via-customLightLightOrange to-transparent px-6 md:px-11 py-12">
         <section id="problem" className="scroll-mt-64 mb-12">
           <h2 className="text-xl md:text-2xl font-bold mb-4">
             {textContent.problem.title}
@@ -91,7 +91,7 @@ export default function InstallSection() {
       </div>
       <section
         id="implementation-resources"
-        className="scroll-mt-64 mb-6 md:mb-10 lg:mb-12 px-8 md:px-11 py-12"
+        className="scroll-mt-64 mb-6 md:mb-10 lg:mb-12 px-6 md:px-11 py-12"
       >
         <h2 className="text-xl md:text-2xl font-bold mb-4">
           {textContent.implementationResources.title}

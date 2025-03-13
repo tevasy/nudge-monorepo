@@ -31,7 +31,7 @@ export default {
       emitDeclarationOnly: false,
     }),
     postcss({
-      modules: true,
+      modules: false,
       extract: false,
     }),
     copy({

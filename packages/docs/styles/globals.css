@@ -102,26 +102,6 @@ strong {
   font-weight: 600;
 }
 
-/* Hide main website content on small screens */
-@media (max-width: 1249px) {
-  .desktop-only {
-    display: none;
-  }
-
-  .mobile-message {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    background-color: #f8f8f8;
-    color: #333;
-    padding: 20px;
-  }
-}
-
 @keyframes slideIn {
   from {
     transform: translateX(-100%);
@@ -198,4 +178,40 @@ strong {
 
 .animate-fadeOut50 {
   animation: fadeOut50 0.3s ease-out forwards;
+}
+
+.spinnerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background: #fffbf9; */
+  background: var(--color-customLightLightLightBlue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-fadeOut {
+  animation: fadeOut 0.3s ease-out forwards;
 }

@@ -32,7 +32,7 @@ export default function RadioDocs() {
             label: "Static nudge",
             content: (
               <div>
-                <div className="flex flex-col gap-4 bg-white py-10 px-10 md:px-24 lg:px-28 rounded-b-2xl">
+                <div className="flex flex-col gap-4 bg-white py-10 px-8 md:px-24 lg:px-28 rounded-b-2xl">
                   <RadioGroup
                     radioLabel="Default version"
                     label="High-intensity workout (30 mins)"
@@ -75,7 +75,7 @@ export default function RadioDocs() {
             label: "Dynamic nudge",
             content: (
               <div>
-                <div className="bg-white py-10 px-10 md:px-24 lg:px-28 rounded-b-2xl">
+                <div className="bg-white py-10 px-8 md:px-24 lg:px-28 rounded-b-2xl">
                   <DynamicRadioGroup />
                 </div>
                 <div className="border-t border-customLightBlue">
@@ -88,7 +88,7 @@ export default function RadioDocs() {
             label: "Adaptive nudge",
             content: (
               <div>
-                <div className="bg-white py-10 px-10 md:px-24 lg:px-28 rounded-b-2xl">
+                <div className="bg-white py-10 px-8 md:px-24 lg:px-28 rounded-b-2xl">
                   <AdaptiveRadioGroup />
                 </div>
                 <div className="border-t border-customLightBlue">

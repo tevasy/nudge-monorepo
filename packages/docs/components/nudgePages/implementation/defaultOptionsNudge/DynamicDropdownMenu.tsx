@@ -40,8 +40,6 @@ export default function DynamicDropdownMenu() {
     },
   };
 
-  console.log(isFocused);
-
   return (
     <div>
       <ThemeProvider theme={customTheme}>

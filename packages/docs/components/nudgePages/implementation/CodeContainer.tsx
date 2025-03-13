@@ -19,7 +19,7 @@ export default function CodeContainer({ codeSnippet }: CodeContainerProps) {
 
   return (
     <div className="bg-customLightLightLightBlue rounded-b-2xl relative">
-      <div className="absolute top-4 right-6 z-10">
+      <div className="absolute top-4 right-6 z-8">
         <button
           onClick={copyToClipboard}
           className="bg-customLightLightBlue px-2 py-2 text-base text-customBlack rounded-md flex items-center gap-2 hover:bg-customLightBlue cursor-pointer transition shadow-md"
