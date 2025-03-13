@@ -1,15 +1,10 @@
 {
   "name": "nudge-library",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ],
-    "nohoist": [
-      "nudge-library",
-      "nudge-library/**"
-    ]
-  },
+  "workspaces": [
+    "packages/library",
+    "packages/docs"
+  ],
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.9",
     "@types/react": "^19.0.10",
