@@ -31,3 +31,6 @@ lerna-debug.log*
 # Temporary files
 *.log
 *.lock
+
+# Local Netlify folder
+.netlify
