@@ -18,8 +18,8 @@ export default function RootLayout({
   const [startFade, setStartFade] = useState(false);
 
   // Adjust these durations as needed.
-  const spinnerVisibleDuration = 2500; // 5 seconds visible before fade starts
-  const fadeOutDuration = 2000; // Duration of fade-out animation in milliseconds
+  const spinnerVisibleDuration = 1500; // 5 seconds visible before fade starts
+  const fadeOutDuration = 1000; // Duration of fade-out animation in milliseconds
 
   useEffect(() => {
     const handleLoad = () => {
