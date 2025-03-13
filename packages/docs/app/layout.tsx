@@ -14,15 +14,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const [isLoaded, setIsLoaded] = useState(false);
   const [showSpinner, setShowSpinner] = useState(true);
+  const [startFade, setStartFade] = useState(false);
+
+  // Adjust these durations as needed.
+  const spinnerVisibleDuration = 5000; // 5 seconds visible before fade starts
+  const fadeOutDuration = 2000; // Duration of fade-out animation in milliseconds
 
   useEffect(() => {
     const handleLoad = () => {
-      setIsLoaded(true);
+      // Wait for spinnerVisibleDuration (5 seconds) before starting fade out
       setTimeout(() => {
-        setShowSpinner(false);
-      }, 40000);
+        setStartFade(true);
+        // After fadeOutDuration, remove the spinner completely
+        setTimeout(() => {
+          setShowSpinner(false);
+        }, fadeOutDuration);
+      }, spinnerVisibleDuration);
     };
 
     if (document.readyState === "complete") {
@@ -31,7 +39,7 @@ export default function RootLayout({
       window.addEventListener("load", handleLoad);
       return () => window.removeEventListener("load", handleLoad);
     }
-  }, [300]);
+  }, []); // Using an empty dependency array to run once
 
   let menuItems: MenuItem[] = [];
 
@@ -58,11 +66,9 @@ export default function RootLayout({
       <body className="min-h-screen text-customBlack no-underline">
         {showSpinner && (
           <div
-            className={
-              isLoaded ? "spinnerOverlay animate-fadeOut" : "spinnerOverlay"
-            }
+            className={`spinnerOverlay ${startFade ? "animate-fadeOut" : ""}`}
           >
-            <span className=" uppercase animate-pulse font-bold text-customLightLightBlue text-4xl sm:text-5xl md:text-6xl font-grotesk mb-14 sm:mb-20">
+            <span className="uppercase animate-pulse font-bold text-customLightLightBlue text-4xl sm:text-5xl md:text-6xl font-grotesk mb-14 sm:mb-20">
               Nudge Library
             </span>
           </div>
