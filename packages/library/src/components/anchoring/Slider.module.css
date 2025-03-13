@@ -1,0 +1,48 @@
+.sliderContainer {
+  position: relative;
+}
+
+.inputSlider {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.inputSlider::-webkit-slider-thumb {
+  opacity: 0;
+  cursor: pointer;
+}
+.inputSlider::-moz-range-thumb {
+  opacity: 0;
+  cursor: pointer;
+}
+
+.customThumb {
+  position: absolute;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.sliderTooltip {
+  position: absolute;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.inputSlider:hover + .customThumb + .sliderTooltip {
+  opacity: 1;
+}
+
+.sliderTooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: var(--tooltip-triangle-width, 5px);
+  border-style: solid;
+  border-color: var(--tooltip-triangle-color, var(--color-lightBlue))
+    transparent transparent;
+}

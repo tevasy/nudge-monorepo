@@ -1,0 +1,10 @@
+.inputTextBox {
+  border: var(--base-border, var(--border-gray));
+  transition: border-color 0.2s ease-in-out;
+  outline: none;
+}
+
+.inputTextBox:hover,
+.inputTextBox:focus {
+  border: var(--hover-border, var(--border-selected));
+}

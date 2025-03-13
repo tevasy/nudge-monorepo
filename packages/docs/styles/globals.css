@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-customOrange: #fb8500;
+  --color-customLightOrange: #ffe5cf;
+  --color-customLightLightOrange: #fffaf6;
+  --color-customBlue: #85c2ff;
+  --color-customDarkerBlue: #1b8dff;
+  --color-customLightBlue: #d9ecff;
+  --color-customBlack: #002952;
+  --color-customLightLightBlue: #e7f2ff;
+  --color-customLightLightLightBlue: #fbfdff;
+  --color-customDarkGray: #767e85;
+  --color-customGray: #dfe2e4;
+  --color-customLightGray: #f7f7f7;
+  --font-grotesk: Familjen Grotesk, sans-serif;
+  --font-inter: Inter, sans-serif;
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+}
+
+@layer utilities {
+  /* navbar */
+  @keyframes pulseColor {
+    0% {
+      transform: scale(1);
+      background-color: #fb8500;
+    }
+    12.5%,
+    25% {
+      background-color: #85c2ff;
+    }
+    50% {
+      transform: scale(1.5);
+      background-color: #85c2ff;
+    }
+    62.5%,
+    75% {
+      background-color: #fb8500;
+    }
+    100% {
+      transform: scale(1);
+      background-color: #fb8500;
+    }
+  }
+
+  /* sidebar */
+  .active-indicator {
+    position: relative;
+  }
+  .active-indicator::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    border-radius: 2px;
+    background-color: #002952;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+code.language-jsx {
+  background: transparent !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    /* transform: translateY(10px); */
+  }
+  to {
+    opacity: 1;
+    /* transform: translateY(0); */
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+b,
+strong {
+  font-weight: 600;
+}
+
+/* Hide main website content on small screens */
+@media (max-width: 1249px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #f8f8f8;
+    color: #333;
+    padding: 20px;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.animate-slideOut {
+  animation: slideOut 0.3s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes fadeIn50 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+@keyframes fadeOut50 {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.animate-slideOut {
+  animation: slideOut 0.3s ease-out forwards;
+}
+
+.animate-fadeIn50 {
+  animation: fadeIn50 0.3s ease-out forwards;
+}
+
+.animate-fadeOut50 {
+  animation: fadeOut50 0.3s ease-out forwards;
+}

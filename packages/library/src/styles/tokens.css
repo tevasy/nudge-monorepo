@@ -1,0 +1,54 @@
+/* 🎨 Color Variables */
+:root {
+  --color-orange: #fb8500;
+  --color-lightOrange: #ffe5cf;
+  --color-lightLightOrange: #fffaf6;
+  --color-blue: #85c2ff;
+  --color-darkerBlue: #1b8dff;
+  --color-lightBlue: #d9ecff;
+  --color-lightLightBlue: #e7f2ff;
+  --color-lightLightLightBlue: #fbfdff;
+  --color-darkGray: #767e85;
+  --color-gray: #dfe2e4;
+  --color-lightGray: #f7f7f7;
+  --color-black: #002952;
+}
+
+/* 🛠️ Spacing */
+:root {
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2.25rem;
+  --spacing-2xl: 3rem;
+}
+
+/* 🔠 Typography */
+:root {
+  --font-body: "Inter", sans-serif;
+  --font-size-xs: 0.75rem; /*12px*/
+  --font-size-sm: 0.875rem; /*14px*/
+  --font-size-md: 1rem; /*16px*/
+  --font-size-lg: 1.125rem; /*18px*/
+  --font-size-xl: 1.25rem; /*20px*/
+  --font-size-2xl: 1.5rem; /*24px*/
+  --font-size-3xl: 1.875rem; /*30px*/
+  --font-size-4xl: 2.25rem; /*36px*/
+  --font-size-5xl: 3rem; /*48px*/
+  --font-size-6xl: 3.75rem; /*64px*/
+}
+
+/* Border Radius */
+:root {
+  --border-radius-xs: 0.25rem; /*4px*/
+  --border-radius-sm: 0.4rem; /*6px*/
+  --border-radius-md: 0.5rem; /*8px*/
+  --border-radius-lg: 1rem; /*12px*/
+  --border-radius-xl: 1.5rem; /*16px*/
+}
+
+:root {
+  --border-gray: 1.5px solid var(--color-darkGray);
+  --border-selected: 1.5px solid var(--color-darkerBlue);
+}

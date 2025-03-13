@@ -1,0 +1,6 @@
+.inputCheckbox {
+  appearance: none;
+  opacity: 0;
+  position: absolute;
+  -webkit-appearance: none;
+}

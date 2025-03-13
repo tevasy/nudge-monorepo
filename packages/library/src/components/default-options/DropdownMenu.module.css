@@ -1,0 +1,112 @@
+/* .dropdownWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.dropdownButton {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: var(--font-size-md);
+  background: white;
+  border: var(--border-gray);
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.dropdownButton:hover,
+.dropdownButton:focus {
+  border-color: var(--dropdown-hover-border-color, var(--color-darkerBlue));
+}
+
+.dropdownButton.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.chevron {
+  font-size: var(--font-size-lg);
+  transition: transform 0.3s ease-in-out;
+  color: var(--color-black);
+}
+
+.chevron.open {
+  transform: rotate(180deg);
+}
+
+.dropdownList {
+  color: var(--color-black);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1.5px solid var(--color-lightBlue);
+  border-radius: var(--border-radius-sm);
+  box-shadow: 0px 4px 10px rgba(0, 6, 41, 0.1);
+  list-style: none;
+  padding: 6px 0;
+  margin-top: 4px;
+  z-index: 10;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.dropdownItem {
+  color: var(--color-black);
+  padding: 10px 14px;
+  font-size: var(--font-size-md);
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 4px;
+}
+
+.dropdownContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.dropdownItem:hover {
+  background: var(--color-lightLightBlue);
+}
+
+.dropdownItem.selected .dropdownLabel {
+  font-weight: 500;
+}
+
+.checkIcon {
+  font-size: var(--font-size-md);
+  color: var(--color-black);
+}
+
+.nudge {
+  font-size: var(--font-size-sm);
+  color: var(--color-black);
+  padding-top: 2px;
+} */
+
+.dropdownButton {
+  border: var(--base-border, var(--border-selected));
+  transition: border-color 0.2s ease-in-out;
+}
+
+.dropdownButton:hover,
+.dropdownButton:focus {
+  border: var(--hover-border, var(--border-selected));
+}
+
+.dropdownItem {
+  transition: background 0.2s ease-in-out;
+}
+
+.dropdownItem:hover {
+  background: var(--item-hover-bg, var(--color-lightLightBlue));
+}

@@ -1,0 +1,22 @@
+{
+  "name": "nudge-library",
+  "private": true,
+  "workspaces": [
+    "packages/library",
+    "packages/docs"
+  ],
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.9",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.9"
+  },
+  "dependencies": {
+    "react-icons": "^5.5.0",
+    "react-markdown": "^10.0.1",
+    "react-syntax-highlighter": "^15.6.1"
+  }
+}
