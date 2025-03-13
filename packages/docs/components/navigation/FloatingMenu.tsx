@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 export interface MenuItem {
   id: string;
@@ -19,7 +19,8 @@ export default function FloatingMenu({ menuItems }: FloatingMenuProps) {
     menuItems[0]?.id || ""
   );
 
-  const handleScroll = () => {
+  // Memoize handleScroll so it doesn’t change on every render
+  const handleScroll = useCallback(() => {
     if (isClickScrolling.current) return;
 
     const sections = document.querySelectorAll("section[id]");
@@ -33,13 +34,14 @@ export default function FloatingMenu({ menuItems }: FloatingMenuProps) {
     });
 
     setActiveSection(currentSectionId);
-  };
+  }, [menuItems]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    // Initialize active section on mount
     setActiveSection(menuItems[0]?.id || "");
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [menuItems]);
+  }, [handleScroll, menuItems]);
 
   const handleMenuClick = (id: string) => {
     const section = document.getElementById(id);
@@ -63,13 +65,7 @@ export default function FloatingMenu({ menuItems }: FloatingMenuProps) {
     return item.id === activeSection;
   };
 
-  const hasActiveChild = (item: MenuItem): boolean => {
-    return item.children
-      ? item.children.some(
-          (child) => isItemActive(child) || hasActiveChild(child)
-        )
-      : false;
-  };
+  // Removed hasActiveChild since it wasn't used
 
   const renderMenuItems = (items: MenuItem[], depth: number = 0) => {
     return (
