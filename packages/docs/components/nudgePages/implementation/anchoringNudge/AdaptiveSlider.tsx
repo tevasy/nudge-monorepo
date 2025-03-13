@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Slider } from "nudge-library/anchoring";
+import { Slider } from "nudge-library";
 
 export default function AdaptiveSlider() {
   // Retrieve the previous volume from localStorage.

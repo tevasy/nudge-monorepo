@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { RadioGroup } from "nudge-library/default-options";
+import { RadioGroup } from "nudge-library";
 
 export default function AdaptiveRadioGroup() {
   // Manage which format is currently selected

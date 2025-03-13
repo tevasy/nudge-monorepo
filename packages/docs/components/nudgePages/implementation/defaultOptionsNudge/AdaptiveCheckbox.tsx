@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Checkbox } from "nudge-library/default-options";
+import { Checkbox } from "nudge-library";
 
 export default function DarkModeCheckbox() {
   const hour = new Date().getHours();
