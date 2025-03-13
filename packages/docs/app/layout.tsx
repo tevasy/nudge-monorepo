@@ -22,7 +22,7 @@ export default function RootLayout({
       setIsLoaded(true);
       setTimeout(() => {
         setShowSpinner(false);
-      }, 15000);
+      }, 25000);
     };
 
     if (document.readyState === "complete") {
