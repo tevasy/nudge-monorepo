@@ -15,13 +15,13 @@ export default function DarkModeCheckbox() {
         label="Enable Dark Mode"
         renderNudge={(isDarkMode) =>
           isDarkMode
-            ? "It's after 6 PM. Dark Mode is active to reduce eye strain at night."
-            : "It's before 6 PM. Dark Mode is off, but can be activated."
+            ? "It's after 18:00. Dark Mode is active to reduce eye strain at night."
+            : "It's before 18:00. Dark Mode is off, but can be activated."
         }
         onChange={(checked: boolean) => setIsDarkMode(checked)}
       />
       <p style={{ fontSize: "0.875rem" }}>
-        After 6 PM, this box is checked by default, encouraging the use of Dark
+        After 18:00, this box is checked by default, encouraging the use of Dark
         Mode in the evening to reduce eye strain and promote better relaxation.
         It can be manually toggled if desired.
       </p>

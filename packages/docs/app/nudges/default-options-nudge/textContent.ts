@@ -68,7 +68,7 @@ export const textContent = {
   checkbox: {
     title: "Checkbox",
     content:
-      "A bedtime reminder is checked by default in the **Static nudge** example, with nudge text reinforcing healthy sleep habits. A custom-themed variant demonstrates label and background overrides, while a disabled checkbox prevents changes to a recommended setting. The **Dynamic nudge** example includes an audio descriptions checkbox that toggles a bold label on focus, and displays context-based nudge text. Another example keeps the nudge visible until the box is checked, as seen in dynamic course materials. In the **Adaptive nudge** example, Dark Mode activates automatically after 6 PM to reduce eye strain, showing different nudge text based on enabled state.",
+      "A bedtime reminder is checked by default in the **Static nudge** example, with nudge text reinforcing healthy sleep habits. A custom-themed variant demonstrates label and background overrides, while a disabled checkbox prevents changes to a recommended setting. The **Dynamic nudge** example includes an audio descriptions checkbox that toggles a bold label on focus, and displays context-based nudge text. Another example keeps the nudge visible until the box is checked, as seen in dynamic course materials. In the **Adaptive nudge** example, Dark Mode activates automatically after 18:00 to reduce eye strain, showing different nudge text based on enabled state.",
   },
   radioGroup: {
     title: "Radio Group",
