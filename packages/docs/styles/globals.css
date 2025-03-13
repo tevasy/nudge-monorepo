@@ -213,5 +213,9 @@ strong {
 }
 
 .animate-fadeOut {
-  animation: fadeOut 0.3s ease-out forwards;
+  animation: fadeOut 3s ease-out forwards;
+}
+
+.spinner-fade-in {
+  animation: fadeIn 1s ease-out;
 }

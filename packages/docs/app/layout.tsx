@@ -72,7 +72,7 @@ export default function RootLayout({
         <div className="flex font-inter">
           <SideBar />
           <main className="w-[100%] lg:w-[77%] xl:w-[60%] mx-auto ml-[0px] lg:ml-[23%] xl:ml-[19%] min-h-screen overflow-y-auto">
-            <div className="max-w-6xl mx-auto fade-in">
+            <div className="max-w-6xl mx-auto spinner-fade-in">
               {children}
               <BottomNavigation />
             </div>
