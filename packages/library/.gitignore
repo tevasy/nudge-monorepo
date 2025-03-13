@@ -13,4 +13,5 @@ pnpm-debug.log*
 .vscode/
 .idea/
 
-.tgz
+# Ignore npm pack tarballs
+*.tgz
