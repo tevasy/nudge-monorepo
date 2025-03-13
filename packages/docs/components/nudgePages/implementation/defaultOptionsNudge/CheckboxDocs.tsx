@@ -1,8 +1,4 @@
-import {
-  Checkbox,
-  ThemeProvider,
-  defaultTheme,
-} from "nudge-library/default-options";
+import { Checkbox, ThemeProvider, defaultTheme } from "nudge-library";
 
 import CodeContainer from "../CodeContainer";
 import {
