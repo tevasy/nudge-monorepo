@@ -1,5 +1,5 @@
 "use client";
-import "nudge-library/dist/default-options";
+import "nudge-library/default-options";
 import "../styles/globals.css";
 import { useEffect, useState } from "react";
 import NavBar from "../components/navigation/NavBar";
@@ -17,6 +17,14 @@ export default function RootLayout({
   const pathname = usePathname();
   const [isLoaded, setIsLoaded] = useState(false);
   const [showSpinner, setShowSpinner] = useState(true);
+
+  try {
+    console.log("Trying to load default-options...");
+    const defaultOptions = require("nudge-library/default-options");
+    console.log("Loaded default-options:", defaultOptions);
+  } catch (e) {
+    console.error("Error loading default-options:", e);
+  }
 
   useEffect(() => {
     const handleLoad = () => {
