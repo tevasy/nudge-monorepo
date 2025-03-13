@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { DropdownMenu } from "nudge-library";
+import { DropdownMenu } from "nudge-library/default-options";
 
 export default function LanguageSelector() {
   const ALL_LANGUAGES = [

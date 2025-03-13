@@ -52,10 +52,7 @@ export function Slider({
 
   // Calculate the percentage for the current value (for the background fill).
   const percentage = ((currentValue - min) / (max - min)) * 100;
-  const filledPercentage = Math.min(
-    percentage + theme.slider.input.filledAdjust,
-    100
-  );
+  const filledPercentage = Math.min(percentage + 0, 100);
 
   // Update sliderValue when controlled prop changes
   useEffect(() => {

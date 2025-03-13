@@ -1,5 +1,6 @@
 # Ignore build files
 dist/
+dev/
 node_modules/
 
 # Ignore logs

@@ -1,9 +1,11 @@
 {
   "name": "nudge-library",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "description": "A library of nudge UI components",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "sideEffects": false,
   "files": [
     "dist",
     "dist/components/default-options",
@@ -32,46 +34,32 @@
     "react-dom": "^18.2.0"
   },
   "scripts": {
+    "clean": "rm -rf dist",
     "dev": "vite",
     "build": "rollup -c",
+    "prepublishOnly": "npm run clean && npm run build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "format": "prettier --write .",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^3.2.5",
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-typescript": "^12.1.2",
-    "@storybook/addon-essentials": "^8.6.3",
-    "@storybook/addon-interactions": "^8.6.3",
-    "@storybook/addon-onboarding": "^8.6.3",
-    "@storybook/blocks": "^8.6.3",
-    "@storybook/react": "^8.6.3",
-    "@storybook/react-vite": "^8.6.3",
-    "@storybook/test": "^8.6.3",
-    "@tailwindcss/postcss": "^4.0.9",
     "@vitejs/plugin-react": "^4.3.4",
-    "autoprefixer": "^10.4.20",
     "eslint": "^8.0.0",
-    "eslint-plugin-storybook": "^0.11.3",
-    "postcss": "^8.5.3",
     "prettier": "^2.8.0",
     "rollup": "^3.0.0",
-    "rollup-plugin-copy": "^3.5.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "storybook": "^8.6.3",
-    "tailwindcss": "^4.0.9",
+    "rollup-plugin-postcss": "^4.0.2",
     "vite": "^4.0.0"
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "rollup-plugin-postcss": "^4.0.2"
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4"
   },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextBox } from "nudge-library";
+import { TextBox } from "nudge-library/anchoring";
 
 export default function AdaptiveTextBox() {
   // Determine default duration based on the current time of day.

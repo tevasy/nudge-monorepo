@@ -32,7 +32,7 @@ export default {
     }),
     postcss({
       modules: true,
-      extract: true,
+      extract: false,
     }),
     copy({
       targets: [

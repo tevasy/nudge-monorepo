@@ -7,6 +7,10 @@ type BaseCSS = {
 export type ThemeCSS = BaseCSS & {
   baseBorder?: string;
   hoverBorder?: string;
+  triangleColor?: string;
+  triangleWidth?: string;
+  filledColor?: string;
+  emptyColor?: string;
   [key: string]: any;
 };
 
@@ -356,7 +360,6 @@ export const defaultTheme: Theme = {
       transition: "background 0.2s ease-in-out",
       filledColor: "var(--color-darkerBlue)",
       emptyColor: "var(--color-lightLightBlue)",
-      filledAdjust: 0,
     },
     thumb: {
       width: "20px",

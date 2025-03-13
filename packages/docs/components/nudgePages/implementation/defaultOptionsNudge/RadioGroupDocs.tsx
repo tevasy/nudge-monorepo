@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { RadioGroup, ThemeProvider, defaultTheme } from "nudge-library";
+import {
+  RadioGroup,
+  ThemeProvider,
+  defaultTheme,
+} from "nudge-library/default-options";
 import CodeContainer from "../CodeContainer";
 import AdaptiveRadioGroup from "./AdaptiveRadioGroup";
 import {
