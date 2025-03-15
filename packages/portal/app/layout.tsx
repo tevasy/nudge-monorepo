@@ -69,7 +69,7 @@ export default function RootLayout({
             className={`spinnerOverlay ${startFade ? "animate-fadeOut" : ""}`}
           >
             <span className="uppercase animate-pulse font-bold text-customLightLightBlue text-4xl sm:text-5xl md:text-6xl font-grotesk mb-14 sm:mb-20">
-              Nudge Library
+              Nudge Portal
             </span>
           </div>
         )}

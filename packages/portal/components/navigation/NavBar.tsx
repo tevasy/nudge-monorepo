@@ -151,7 +151,7 @@ export default function NavBar() {
           <span className="uppercase font-bold text-customBlack text-2xl mb-1 font-grotesk">
             Nudge
             <span className="inline-block w-2.5 h-2.5 rounded-full ml-3.5 mr-3.5 mb-1 bg-customOrange will-change-transform animate-[pulseColor_2s_infinite_ease-in-out]"></span>
-            Library
+            Portal
           </span>
         </Link>
       </nav>
