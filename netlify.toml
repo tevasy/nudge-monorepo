@@ -1,4 +1,4 @@
 [build]
-  base = "packages/docs"
+  base = "packages/portal"
   command = "npm install && npm run build"
   publish = "/out"
