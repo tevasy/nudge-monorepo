@@ -4,10 +4,10 @@ node_modules/
 # Build artifacts
 packages/library/dist/
 packages/library/dev/
-packages/docs/.next/
-packages/docs/out/
-packages/docs/.turbo/
-packages/docs/.vercel/
+packages/portal/.next/
+packages/portal/out/
+packages/portal/.turbo/
+packages/portal/.vercel/
 
 # Environment variables
 .env
