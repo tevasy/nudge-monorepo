@@ -94,8 +94,8 @@ export default function DynamicTooltip() {
         Pressing the &quot;Wrong Answer&quot; button triggers a tooltip that
         encourages to review the selected answer. The tooltip remains visible
         until dismissed via the &quot;Retry&quot; button, close icon, or
-        clicking outside. Clicking the "Correct Answer" button changes its text
-        for 5 seconds.
+        clicking outside. Clicking the &quot;Correct Answer&quot; button changes
+        its text for 5 seconds.
       </p>
     </div>
   );
