@@ -1,0 +1,41 @@
+.ratingContainer {
+  display: inline-flex;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  gap: 0;
+  cursor: pointer;
+}
+
+.star {
+  line-height: 0;
+  color: var(--star-color);
+  transition: transform 0.05s ease, color 0.2s ease;
+}
+
+.filled {
+  color: var(--filled-star-color);
+  fill: var(--filled-star-color);
+}
+
+.star:hover,
+.star:hover ~ .star {
+  color: var(--filled-star-color);
+}
+
+.star svg {
+  fill: transparent;
+  transition: fill 0.05s ease-in-out;
+}
+
+.filled svg {
+  fill: var(--filled-star-color);
+}
+
+.star:hover svg,
+.star:hover ~ .star svg,
+.star:focus svg,
+.star:focus ~ .star svg,
+.star:active svg,
+.star:active ~ .star svg {
+  fill: var(--filled-star-color);
+}

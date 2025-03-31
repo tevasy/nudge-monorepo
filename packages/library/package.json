@@ -12,6 +12,11 @@
     "dist",
     "dist/components/default-options",
     "dist/components/anchoring",
+    "dist/components/reminder",
+    "dist/components/social-norms",
+    "dist/components/confidence",
+    "dist/components/decision-friction",
+    "dist/components/reflection",
     "src/styles/globals.css",
     "src/styles/tokens.css"
   ],
@@ -30,6 +35,31 @@
       "import": "./dist/anchoring.js",
       "require": "./dist/anchoring.js",
       "types": "./dist/anchoring.d.ts"
+    },
+    "./reminder": {
+      "import": "./dist/reminder.js",
+      "require": "./dist/reminder.js",
+      "types": "./dist/reminder.d.ts"
+    },
+    "./social-norms": {
+      "import": "./dist/social-norms.js",
+      "require": "./dist/social-norms.js",
+      "types": "./dist/social-norms.d.ts"
+    },
+    "./confidence": {
+      "import": "./dist/confidence.js",
+      "require": "./dist/confidence.js",
+      "types": "./dist/confidence.d.ts"
+    },
+    "./decision-friction": {
+      "import": "./dist/decision-friction.js",
+      "require": "./dist/decision-friction.js",
+      "types": "./dist/decision-friction.d.ts"
+    },
+    "./reflection": {
+      "import": "./dist/reflection.js",
+      "require": "./dist/reflection.js",
+      "types": "./dist/reflection.d.ts"
     }
   },
   "peerDependencies": {
@@ -58,6 +88,7 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
+    "@rollup/plugin-url": "^8.0.2",
     "clsx": "^2.1.1",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-peer-deps-external": "^2.2.4"

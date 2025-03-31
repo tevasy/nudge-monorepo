@@ -1,0 +1,105 @@
+.tooltipContainer {
+  position: absolute;
+  z-index: 1000;
+}
+
+.tooltipTop {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+}
+
+.tooltipBottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+}
+
+.tooltipLeft {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 8px;
+}
+
+.tooltipRight {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 8px;
+}
+
+.fade {
+  transition: opacity var(--animation-duration, 200ms) ease-in-out;
+}
+.fade.hidden {
+  opacity: 0;
+}
+.fade.visible {
+  opacity: 1;
+}
+
+.slide {
+  transition: transform var(--animation-duration, 200ms) ease-in-out,
+    opacity var(--animation-duration, 200ms) ease-in-out;
+}
+.slide.hidden {
+  opacity: 0;
+}
+.slide.visible {
+  opacity: 1;
+}
+
+.tooltipLeft.slide.hidden {
+  transform: translateY(-50%) translateX(-15px);
+}
+
+.tooltipRight.slide.hidden {
+  transform: translateY(-50%) translateX(15px);
+}
+
+.tooltipTop.slide.hidden {
+  transform: translateX(-50%) translateY(-15px);
+}
+
+.tooltipBottom.slide.hidden {
+  transform: translateX(-50%) translateY(15px);
+}
+
+.tooltipArrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.tooltipContentContainer {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr auto;
+}
+
+.gridWithIcon {
+  grid-template-columns: auto 1fr auto;
+}
+
+.tooltipIconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.tooltipTextContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.tooltipCloseButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-self: start;
+  margin-left: 6px;
+  margin-right: -3px;
+}

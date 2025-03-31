@@ -11,7 +11,7 @@ interface ThemePropertiesTableProps {
 }
 
 export default function ThemePropertiesTable({
-  data,
+  data = [],
 }: ThemePropertiesTableProps) {
   return (
     <table className="w-full border-separate rounded-b-2xl border-spacing-0 overflow-hidden text-[12px] sm:text-[13px] md:text-sm">

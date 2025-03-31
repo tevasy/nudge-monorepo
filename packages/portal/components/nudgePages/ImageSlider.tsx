@@ -12,10 +12,26 @@ interface ImageData {
 }
 
 interface ImageSliderProps {
-  nudge?: "defaultOptions" | "anchoring";
+  nudge?:
+    | "defaultOptions"
+    | "anchoring"
+    | "reminder"
+    | "socialNorms"
+    | "reflection"
+    | "decisionFriction"
+    | "confidence";
 }
 
-const images: Record<"defaultOptions" | "anchoring", ImageData[]> = {
+const images: Record<
+  | "defaultOptions"
+  | "anchoring"
+  | "reminder"
+  | "socialNorms"
+  | "reflection"
+  | "decisionFriction"
+  | "confidence",
+  ImageData[]
+> = {
   defaultOptions: [
     {
       src: "/defaultOptions/google_modal.png",
@@ -46,6 +62,93 @@ const images: Record<"defaultOptions" | "anchoring", ImageData[]> = {
       title: "Example 2: macOS keyboard preferences",
       description:
         "The predefined positions of macOS keyboard sliders serve as an Anchoring Nudge. The “Key repeat rate” (set closer to “Fast”) determines how quickly a held key repeats, and the “Delay until repeat” (set closer to “Short”) controls how long a key must be pressed before it begins repeating. These anchors offer a helpful starting point for users unsure of the preferred keyboard configuration, simplifying initial decisions while still allowing customization.",
+    },
+  ],
+  reminder: [
+    {
+      src: "/reminder/apple_reminder.png",
+      alt: "Example 1: Apple Reminders",
+      title: "Example 1: Apple Reminders",
+      description:
+        "An example of the Reminder Nudge is the use of popup notifications from Apple Reminders, which help users stay on track with scheduled tasks. When a task is due, a notification appears, reminding the user to take action. This ensures that important tasks are not overlooked, with options to decide whether to act immediately or postpone.",
+    },
+    {
+      src: "/reminder/google_keep.png",
+      alt: "Example 2: Google Keep Reminders",
+      title: "Example 2: Google Keep Reminders",
+      description:
+        "Google Keep displays reminder popups based on times users set for individual notes. For instance, a reminder may appear with the message “Visit a meeting. Don't forget!” scheduled for 12:05 PM. The popup includes an “Open Note” button and a close option, helping users follow through with their intentions at the time they've chosen. This supports better organization and timely action on personal tasks.",
+    },
+  ],
+  socialNorms: [
+    {
+      src: "/socialNorms/coursera.png",
+      alt: "Example 1: Coursera's Course Page",
+      title: "Example 1: Coursera's Course Page",
+      description:
+        "Coursera's use of social norm cues on the Google Prompting Essentials course page helps users make more confident and informed decisions. When a message such as “46,404 already enrolled” is displayed, it signals to potential learners that many others have found the course worthwhile, reducing uncertainty and helping them feel part of a broader learning community. Similarly, the statement “97% – Most learners liked this course” reassures users of the course's quality based on peer feedback.",
+    },
+    {
+      src: "/socialNorms/kaggle.png",
+      alt: "Example 2: Kaggle's Front Page",
+      title: "Example 2: Kaggle's Front Page",
+      description:
+        "Kaggle uses a descriptive social norm in the message “Join over 23M+ machine learners…”, implying that participation in the platform is typical among peers in the ML/AI community. This helps users feel that joining, sharing, and learning is standard behavior, reducing hesitation and increasing confidence.",
+    },
+  ],
+  reflection: [
+    {
+      src: "/reflection/langotalk.png",
+      alt: "Example 1: Apple Reminders",
+      title: "Example 1: Apple Reminders",
+      description:
+        "A Real-world Example of the Reflection Nudge is the use of mood reflection prompts in Langotalk after completing a learning session (Figure 6.5) [67]. When users finish a lesson, they are encouraged to rate their experience using mood-based emojis and select a reason that best describes their feelings about the session. This reflection helps users become more aware of their emotions, which promotes a deeper connection to the learning process. Additionally, it allows the system to personalize future lessons based on user feedback, improving overall learning outcomes.",
+    },
+    {
+      src: "/reflection/insightTimer.png",
+      alt: "Example 1: Khan Academy's Tooltips",
+      title: "Example 1: Khan Academy's Tooltips",
+      description:
+        "Insight Timer [43] prompts users to reflect at the end of meditation, encouraging self-awareness. Prompting users to reflect on their emotional state, intentions, or outcomes before or after a task.",
+    },
+  ],
+  decisionFriction: [
+    {
+      src: "/decisionFriction/khanAcademy.png",
+      alt: "Example 1: Khan Academy's Tooltips",
+      title: "Example 1: Khan Academy's Tooltips",
+      description:
+        "A Real-world Example of the Decision Friction Nudge is the use of a confirmation dialog before deleting a coding program in Khan Academy (Figure 6.6) [40]. When attempting to delete a program, a modal appears asking, “Are you sure you want to delete your program?”, providing users with an extra moment to reconsider their action. This slight friction ensures that users do not accidentally erase their work and gives them a chance to reflect on the consequences of deletion.",
+    },
+    {
+      src: "/decisionFriction/calm.png",
+      alt: "Example 1: Khan Academy's Tooltips",
+      title: "Example 1: Khan Academy's Tooltips",
+      description:
+        "Calm [39] displays a confirmation prompt before cancelling a bedtime reminder: “Are you sure? It’s hard to get ready for bed without a little help”, encouraging adherence to consistent sleep schedule. Introducing a small friction or pause before an impulsive or high-impact action, prompting users to reconsider.",
+    },
+    {
+      src: "/decisionFriction/github.png",
+      alt: "Example 1: Khan Academy's Tooltips",
+      title: "Example 1: Khan Academy's Tooltips",
+      description:
+        "GitHub [17] requires users to type the repository name before deleting it, preventing accidental irreversible actions. Introducing a small friction or pause before an impulsive or high-impact action, prompting users to reconsider.",
+    },
+  ],
+  confidence: [
+    {
+      src: "/confidence/khanAcademy.png",
+      alt: "Example 1: Khan Academy's Tooltips",
+      title: "Example 1: Khan Academy's Tooltips",
+      description:
+        "Khan Academy displays supportive tooltip “Not quite! Give it another try!” when learners make a mistake. This message reduces self-doubt and encourages persistence. It also includes a “Show a step” button, offering a hint to guide the learner forward and increase the likelihood of task completion.",
+    },
+    {
+      src: "/confidence/brilliant.png",
+      alt: "Example 2: Brilliant's Feedback",
+      title: "Example 2: Brilliant's eedback",
+      description:
+        "The Confidence Nudge in Brilliant's interactive exercises supports users when they struggle. Instead of a discouraging error message, the system provides a prompt like “Try again. Think about shifting the ship's position right 5 units and up 3 units”, offering both encouragement and a specific hint. Users are given two options: “Try again” to reinforce persistence or “See answer” for additional help. This approach reduces self-doubt and increases the likelihood of task completion.",
     },
   ],
 };
@@ -97,9 +200,11 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                 className="object-contain"
               />
             </div>
-            <div className="flex flex-col items-center justify-center text-center p-6">
-              <h4 className="text-lg font-semibold mb-2">{image.title}</h4>
-              <p className="text-base">{image.description}</p>
+            <div className="flex flex-col items-center justify-center text-center p-6 h-full">
+              <div>
+                <h4 className="text-lg font-semibold mb-2">{image.title}</h4>
+                <p className="text-base">{image.description}</p>
+              </div>
             </div>
           </div>
         ))}

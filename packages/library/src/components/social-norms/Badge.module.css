@@ -1,0 +1,24 @@
+.badgeContent {
+  display: inline-flex;
+  align-items: center;
+}
+
+.badgeContainer {
+  display: flex;
+  align-items: center;
+}
+
+.count {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 25px;
+  height: 25px;
+}
+
+.icon {
+  line-height: 0;
+}

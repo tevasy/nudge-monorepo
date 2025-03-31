@@ -5,7 +5,7 @@ import ThemePropertiesTable, { ThemePropertyRow } from "./ThemePropertiesTable";
 export interface ComponentDocumentationData {
   title: string;
   functionalProps: PropsTableRow[];
-  themeProperties: ThemePropertyRow[];
+  themeProps: ThemePropertyRow[];
 }
 
 interface ComponentDocumentationTabsProps {
@@ -38,7 +38,7 @@ export default function ComponentDocumentationTabs({
         <h2 className="text-lg font-bold mb-2.5 pl-4">Functional properties</h2>
         <PropsTable data={tabsData[activeTab].functionalProps} />
         <h2 className="text-lg font-bold mt-8 mb-2.5 pl-4">Theme properties</h2>
-        <ThemePropertiesTable data={tabsData[activeTab].themeProperties} />
+        <ThemePropertiesTable data={tabsData[activeTab].themeProps} />
       </div>
     </div>
   );

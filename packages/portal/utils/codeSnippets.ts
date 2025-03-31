@@ -894,3 +894,856 @@ export default function AdaptiveTextBox() {
     </div>
   );
 }`;
+
+export const popupSnippet = `import React, { useState } from "react";
+import { Popup, ThemeProvider, defaultTheme } from "nudge-library";
+
+export default function StaticPopupExample() {
+  const [showPopupDefault, setShowPopupDefault] = useState(false);
+  const [showPopupCustom, setShowPopupCustom] = useState(false);
+
+  const customTheme = {
+    ...defaultTheme,
+    popup: {
+      ...defaultTheme.popup,
+      actionButton: {
+        ...defaultTheme.popup.actionButton,
+        backgroundColor: "white",
+        border: "2px solid #fb8500",
+        color: "#002952",
+        padding: "5px 16px",
+        fontWeight: "500",
+      },
+      closeButton: {
+        ...defaultTheme.popup.closeButton,
+        fontSize: "0.875rem",
+        border: "1px solid #f7f7f7",
+        padding: "0.3rem",
+        borderRadius: "50%",
+        boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
+      },
+    },
+  };
+
+  return (
+    <div>
+      <button onClick={() => setShowPopupDefault(true)}>Show Default Popup</button>
+      <Popup
+        id="study-default-popup"
+        ariaLabel="study-default-popup"
+        title="Study Break Reminder"
+        message="Taking short, regular breaks helps increase focus. Consider a quick stretch or a walk before continuing."
+        buttonText="Take a Break"
+        onButtonClick={() => setShowPopupDefault(false)}
+        visible={showPopupDefault}
+        onClose={() => setShowPopupDefault(false)}
+      />
+
+      <button onClick={() => setShowPopupCustom(true)}>Show Custom Popup</button>
+      <ThemeProvider theme={customTheme}>
+        <Popup
+          id="study-custom-popup"
+          ariaLabel="study-custom-popup"
+          message="Taking short, regular breaks helps increase focus. Consider a quick stretch or a walk before continuing."
+          buttonText="Take a Break"
+          onButtonClick={() => setShowPopupCustom(false)}
+          visible={showPopupCustom}
+          onClose={() => setShowPopupCustom(false)}
+          animationType="slide"
+          position="top-right"
+          animationDuration={800}
+        />
+      </ThemeProvider>
+    </div>
+  );
+}`;
+
+export const popupDynamicSnippet =
+  `import { useState, useEffect } from "react";
+import { Popup } from "nudge-library";
+
+export default function DynamicPopup() {
+  const [popupState, setPopupState] = useState({ type: null, visible: false });
+  const [countdown, setCountdown] = useState(5);
+  const [notificationMessage, setNotificationMessage] = useState("");
+  const animationDuration = 300;
+  const autoCloseDelay = 5000;
+
+  useEffect(() => {
+    let intervalId;
+    if (popupState.visible) {
+      intervalId = setInterval(() => {
+        setCountdown((prev) => {
+          if (prev <= 1) {
+            clearInterval(intervalId);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(intervalId);
+  }, [popupState.visible]);
+
+  const handleShowReminder = (type) => {
+    if (popupState.visible && popupState.type !== type) {
+      setPopupState((prev) => ({ ...prev, visible: false }));
+      setTimeout(() => {
+        setCountdown(5);
+        setPopupState({ type, visible: true });
+      }, animationDuration);
+    } else if (!popupState.visible) {
+      setCountdown(5);
+      setPopupState({ type, visible: true });
+    }
+  };
+
+  return (
+    <div>
+      <button onClick={() => handleShowReminder("doctor")}>Doctor Appointment</button>
+      <button onClick={() => handleShowReminder("dentist")}>Dentist Appointment</button>
+      {popupState.type && (
+        <Popup
+          key={popupState.type}
+          visible={popupState.visible}
+          onOpen={() => setNotificationMessage("Reminder open for selected appointment.")}
+          onClose={() => setPopupState((prev) => ({ ...prev, visible: false }))}
+          autoClose={true}
+          autoCloseDelay={autoCloseDelay}
+          animationType="slide"
+          animationDuration={animationDuration}
+          closeOutside={true}
+          title={` +
+  "`" +
+  "${popupState.type === 'doctor' ? 'Doctor' : 'Dentist'} Appointment Reminder" +
+  "`" +
+  `}
+          renderContent={() => (
+            <div>
+              <p>{popupState.type === "doctor" ? "Please bring your medical records." : "Please bring your dental records."}</p>
+              <p>The reminder will close in <strong>{countdown}</strong> seconds.</p>
+            </div>
+          )}
+        />
+      )}
+    </div>
+  );
+}`;
+
+export const popupAdaptiveSnippet = `import { useState, useEffect } from "react";
+import { Popup } from "nudge-library";
+
+export default function AdaptivePopup() {
+  const [showPopup, setShowPopup] = useState(false);
+  const [lastResponse, setLastResponse] = useState(null);
+  const [hasRespondedThisSession, setHasRespondedThisSession] = useState(false);
+  const [hasEverInteracted, setHasEverInteracted] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("hydration-last-response");
+    if (stored === "acknowledged" || stored === "dismissed") {
+      setLastResponse(stored);
+      setHasEverInteracted(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (lastResponse) {
+      localStorage.setItem("hydration-last-response", lastResponse);
+      setHasEverInteracted(true);
+    }
+  }, [lastResponse]);
+
+  const handleAcknowledge = () => {
+    setHasRespondedThisSession(true);
+    setShowPopup(false);
+    setTimeout(() => {
+      setLastResponse("acknowledged");
+    }, 300);
+  };
+
+  const handleDismiss = () => {
+    if (!hasRespondedThisSession && hasEverInteracted) {
+      setLastResponse("dismissed");
+    }
+    setShowPopup(false);
+  };
+
+  const getAdaptiveMessage = () => {
+    if (lastResponse === "dismissed") return "Don't forget to hydrate. Skipping water can affect your focus.";
+    if (lastResponse === "acknowledged") return "Great job staying hydrated! Keep it up!";
+    return "Staying hydrated helps your brain and body.";
+  };
+
+  return (
+    <div>
+      <button onClick={() => setShowPopup(true)}>Check Hydration</button>
+      <Popup
+        id="hydration-popup"
+        visible={showPopup}
+        autoClose={true}
+        autoCloseDelay={6000}
+        animationType="fade"
+        animationDuration={300}
+        position="bottom-left"
+        title="Hydration Reminder"
+        message={getAdaptiveMessage()}
+        buttonText="I drank water"
+        onButtonClick={handleAcknowledge}
+        closeOutside={true}
+        onClose={handleDismiss}
+        ariaLabel="hydration-reminder"
+      />
+    </div>
+  );
+}`;
+
+export const ratingSnippet = `import { Rating, ThemeProvider, defaultTheme } from "nudge-library";
+
+const customTheme = {
+  ...defaultTheme,
+  rating: {
+    ...defaultTheme.rating,
+    star: {
+      ...defaultTheme.rating.star,
+      fontSize: "1.85rem",
+      color: "#1b8dff",
+      strokeWidth: "1.5",
+    },
+    filledStar: {
+      color: "#1b8dff",
+    },
+  },
+};
+
+export default function RatingExample() {
+  return (
+    <div>
+      <Rating
+        id="rating-default"
+        rating={3}
+        ariaLabel="Default rating"
+        ratingLabel="Default version"
+        nudgeText="Share the rating to support better experiences for everyone."
+        nudgePosition="bottom"
+      />
+      <ThemeProvider theme={customTheme}>
+        <Rating
+          id="rating-custom"
+          rating={4}
+          ariaLabel="Custom rating"
+          ratingLabel="Custom version"
+          nudgeText="Share the rating to support better experiences for everyone."
+          nudgePosition="bottom"
+        />
+      </ThemeProvider>
+      <Rating
+        id="rating-disabled"
+        rating={2}
+        ariaLabel="Disabled rating"
+        ratingLabel="Disabled version"
+        nudgeText="Share the rating to support better experiences for everyone."
+        nudgePosition="top"
+        disabled={true}
+      />
+    </div>
+  );
+}`;
+
+export const ratingDynamicSnippet = `import React, { useState } from "react";
+import { Rating } from "nudge-library";
+
+export default function DynamicRating() {
+  const [courseRating, setCourseRating] = useState<number>(4);
+  const [showAfterRatingHint, setShowAfterRatingHint] = useState<boolean>(false);
+
+  const handleRatingChange = (newRating: number) => {
+    setCourseRating(newRating);
+  };
+
+  const renderCustomNudge = (rating: number) => {
+    const completionText =
+      rating >= 4
+        ? "Highly rated. Over 2,300 students completed this course!"
+        : rating >= 2
+        ? "Popular. Many learners found this course useful."
+        : "This course is still gathering reviews.";
+    return <span style={{ fontSize: "0.9rem" }}>{completionText}</span>;
+  };
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <p style={{ fontWeight: "500", marginBottom: "1.5rem" }}>
+        Select a rating for a dynamic feedback:
+      </p>
+
+      <Rating
+        rating={courseRating}
+        max={5}
+        id="courseRating"
+        ariaLabel="CourseRating"
+        onChange={handleRatingChange}
+        nudgeVisible={true}
+        nudgePosition="bottom"
+        renderNudge={renderCustomNudge}
+        onFocus={() => setShowAfterRatingHint(false)}
+        onBlur={() => setShowAfterRatingHint(true)}
+      />
+
+      <div
+        style={{
+          color: "#555",
+          opacity: showAfterRatingHint ? 1 : 0,
+          maxHeight: showAfterRatingHint ? "50px" : "0px",
+          overflow: "hidden",
+          transition: "opacity 0.5s ease-in-out, max-height 0.5s ease-in-out",
+          marginTop: "0.9rem",
+        }}
+      >
+        The rating can be updated anytime.
+      </div>
+    </div>
+  );
+}`;
+
+export const ratingAdaptiveSnippet = `import React, { useState, useEffect } from "react";
+import { Rating, DropdownMenu } from "nudge-library";
+
+export default function AdaptiveRating() {
+  const [userExperience, setUserExperience] = useState("intermediate");
+  const [userRating, setUserRating] = useState(0);
+  const [adaptiveNudgeText, setAdaptiveNudgeText] = useState("");
+
+  const experienceOptions = [
+    { label: "Beginner", value: "beginner" },
+    { label: "Intermediate", value: "intermediate" },
+    { label: "Advanced", value: "advanced" }
+  ];
+
+  useEffect(() => {
+    const fetchNudgeText = () => {
+      switch (userExperience) {
+        case "beginner":
+          return "85% of beginners value clear documentation!";
+        case "intermediate":
+          return "75% of intermediate developers rate this project highly!";
+        case "advanced":
+          return "90% of experts endorse its code quality!";
+        default:
+          return "See how your peers are rating this project!";
+      }
+    };
+
+    const timeoutId = setTimeout(() => {
+      setAdaptiveNudgeText(fetchNudgeText());
+    }, 0);
+
+    return () => clearTimeout(timeoutId);
+  }, [userExperience]);
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <DropdownMenu
+        dropdownLabel="Select the experience level:"
+        id="experienceDropdown"
+        ariaLabel="Experience Dropdown"
+        options={experienceOptions}
+        selected={userExperience}
+        onChange={(value) => setUserExperience(value)}
+        placeholder="Select experience level"
+      />
+
+      <Rating
+        ratingLabel="Rating of the project:"
+        defaultRating={userRating}
+        max={5}
+        onChange={(newRating) => setUserRating(newRating)}
+        nudgeText={adaptiveNudgeText}
+        nudgePosition="bottom"
+        renderNudge={(rating) => (
+          <div style={{ fontSize: "0.9rem", marginTop: "4px" }}>
+            {adaptiveNudgeText} {rating > 0 && <span>(Rating: {rating})</span>}
+          </div>
+        )}
+      />
+    </div>
+  );
+}`;
+
+export const badgeSnippet = `import { Badge, ThemeProvider, defaultTheme } from "nudge-library";
+import { FaBolt } from "react-icons/fa";
+
+const customTheme = {
+  ...defaultTheme,
+  badge: {
+    ...defaultTheme.badge,
+    container: {
+      ...defaultTheme.badge.container,
+      border: "none",
+      boxShadow: "rgba(0, 0, 0, 0.42) 0px 1px 4px",
+    },
+    count: {
+      ...defaultTheme.badge.count,
+      background: "#ffe5cf",
+    },
+    icon: {
+      ...defaultTheme.badge.icon,
+      color: "#fb8500",
+    },
+    nudgeText: {
+      ...defaultTheme.badge.nudgeText,
+      background: "#ffe5cf",
+    },
+  },
+};
+
+export default function BadgeExample() {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <Badge
+        id="default-badge"
+        badgeLabel="Default Version"
+        label="Archived Feedback"
+        count={120}
+        nudgeText="Teams are encouraged to review shared feedback regularly."
+        nudgePosition="bottom"
+        ariaLabel="Default feedback badge"
+      />
+      <ThemeProvider theme={customTheme}>
+        <Badge
+          id="custom-badge"
+          badgeLabel="Custom Version"
+          label="Archived Feedback"
+          count={120}
+          icon={<FaBolt />}
+          nudgeText="Teams are encouraged to review shared feedback regularly."
+          nudgePosition="bottom"
+          ariaLabel="Custom feedback badge"
+        />
+      </ThemeProvider>
+      <Badge
+        id="disabled-badge"
+        badgeLabel="Disabled Version"
+        label="Archived Feedback"
+        nudgeText="Teams are encouraged to review shared feedback regularly."
+        nudgePosition="top"
+        ariaLabel="Disabled feedback badge"
+        disabled={true}
+      />
+    </div>
+  );
+}`;
+
+export const badgeDynamicSnippet = `import React, { useState } from "react";
+import { Badge, ThemeProvider, defaultTheme } from "nudge-library";
+import { FiThumbsUp } from "react-icons/fi";
+
+const Icon = FiThumbsUp as React.ElementType;
+
+const customTheme = {
+  ...defaultTheme,
+  badge: {
+    ...defaultTheme.badge,
+    nudgeText: {
+      ...defaultTheme.badge.nudgeText,
+      padding: "0",
+    },
+  },
+};
+
+export default function DynamicBadge() {
+  const [endorsements, setEndorsements] = useState<number>(78);
+  const [hasEndorsed, setHasEndorsed] = useState<boolean>(false);
+  const [showEndorsedNudge, setShowEndorsedNudge] = useState<boolean>(true);
+
+  const handleEndorse = () => {
+    if (!hasEndorsed) {
+      setEndorsements((prev) => prev + 1);
+      setHasEndorsed(true);
+      setShowEndorsedNudge(true);
+      setTimeout(() => {
+        setShowEndorsedNudge(false);
+      }, 5000);
+    }
+  };
+
+  const renderCustomNudge = ({ count }: { count?: number }) => {
+    if (!count) return null;
+
+    const fadeStyle: React.CSSProperties = {
+      fontSize: "0.875rem",
+      opacity: hasEndorsed && !showEndorsedNudge ? 0 : 1,
+      maxHeight: hasEndorsed && !showEndorsedNudge ? 0 : "auto",
+      padding: hasEndorsed && !showEndorsedNudge ? 0 : "8px 12px",
+      overflow: "hidden",
+      transition: "opacity 0.5s ease, max-height 0.5s ease, padding 0.5s ease",
+    };
+
+    if (hasEndorsed) {
+      return <div style={fadeStyle}>You endorsed this document.</div>;
+    }
+
+    return (
+      <div style={fadeStyle}>
+        {count > 50
+          ? "Widely endorsed! A favorite among collaborators."
+          : count > 10
+          ? "Trusted by many, a useful document to reuse."
+          : "Just starting to get attention. Be one of the first to endorse it!"}
+      </div>
+    );
+  };
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <p style={{ fontWeight: "500" }}>Endorse a shared document:</p>
+      <ThemeProvider theme={customTheme}>
+        <Badge
+          id="strategy-doc-badge"
+          label="Endorsed"
+          count={endorsements}
+          icon={<Icon />}
+          ariaLabel="Document endorsement badge"
+          nudgeVisible={true}
+          nudgePosition="bottom"
+          renderNudge={renderCustomNudge}
+        />
+      </ThemeProvider>
+      <button
+        onClick={handleEndorse}
+        disabled={hasEndorsed}
+        style={{
+          padding: "0.5rem 1rem",
+          fontSize: "0.875rem",
+          backgroundColor: hasEndorsed ? "#ccc" : "#0070f3",
+          color: "#fff",
+          border: "none",
+          borderRadius: "6px",
+          cursor: hasEndorsed ? "not-allowed" : "pointer",
+        }}
+      >
+        {hasEndorsed ? "Endorsed" : "Endorse this Document"}
+      </button>
+    </div>
+  );
+}`;
+
+export const badgeAdaptiveSnippet = `import React, { useState } from "react";
+import { Badge } from "nudge-library";
+
+export default function AdaptiveBadgeExample() {
+  const [userProfile, setUserProfile] = useState({
+    skillLevel: "Intermediate",
+    favoriteTopic: "React",
+    coursesCompleted: 2,
+    recentActivity: "",
+  });
+
+  const dynamicNudgeMessage = (): string => {
+    if (userProfile.recentActivity) {
+      return userProfile.recentActivity;
+    }
+    if (userProfile.coursesCompleted < 3) {
+      return "Keep going! 80% of learners have completed more than 3 courses.";
+    }
+    if (userProfile.coursesCompleted < 7) {
+      return \`Great progress! As an \${userProfile.skillLevel} learner, consider exploring advanced \${userProfile.favoriteTopic} courses, endorsed by 60% of learners.\`;
+    }
+    return "Outstanding performance! Join the community challenges to put new skills to the test.";
+  };
+
+  const completeCourse = () => {
+    setUserProfile((prevProfile) => ({
+      ...prevProfile,
+      coursesCompleted: prevProfile.coursesCompleted + 1,
+      recentActivity: "The new course is completed!",
+    }));
+
+    setTimeout(() => {
+      setUserProfile((prevProfile) => ({
+        ...prevProfile,
+        recentActivity: "",
+      }));
+    }, 3000);
+  };
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <div style={{ fontWeight: "500", marginBottom: "1.5rem" }}>
+        Click to complete a course:
+      </div>
+      <Badge
+        label="Courses Completed"
+        count={userProfile.coursesCompleted}
+        renderNudge={() => <p>{dynamicNudgeMessage()}</p>}
+        nudgePosition="bottom"
+      />
+      <button
+        onClick={completeCourse}
+        style={{
+          padding: "0.5rem 1rem",
+          fontSize: "0.875rem",
+          backgroundColor: "#0070f3",
+          color: "#fff",
+          border: "none",
+          borderRadius: "6px",
+          cursor: "pointer",
+          marginTop: "1rem",
+        }}
+      >
+        Complete Course
+      </button>
+    </div>
+  );
+}`;
+
+export const tooltipSnippet = `import { Tooltip, ThemeProvider, defaultTheme } from "nudge-library";
+import { FaBolt } from "react-icons/fa";
+
+const customTheme = {
+  ...defaultTheme,
+  tooltip: {
+    ...defaultTheme.tooltip,
+    message: {
+      ...defaultTheme.tooltip.message,
+      fontWeight: "500",
+    },
+    icon: {
+      ...defaultTheme.tooltip.icon,
+      color: "#fb8500",
+    },
+  },
+};
+
+export default function TooltipExample() {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <p className="font-medium -mb-3">Default Version</p>
+      <Tooltip
+        id="default-tooltip"
+        text="Great effort, keep going!"
+        position="dynamic"
+        dismissible={false}
+        ariaLabel="Default tooltip"
+      >
+        <button
+          style={{
+            background: "linear-gradient(135deg, #2492ff, #1675d5)",
+            color: "white",
+            width: "100%",
+            padding: "10px 20px",
+            fontSize: "0.875rem",
+            fontWeight: "500",
+            borderRadius: "8px",
+            cursor: "pointer",
+          }}
+          role="button"
+        >
+          Hover or Press Button
+        </button>
+      </Tooltip>
+
+      <p className="font-medium -mb-3">Custom Version</p>
+      <ThemeProvider theme={customTheme}>
+        <Tooltip
+          id="custom-tooltip"
+          text="Great effort, keep going!"
+          position="bottom"
+          dismissible={false}
+          ariaLabel="Custom tooltip"
+          animationType="slide"
+          animationDuration={400}
+          icon={<FaBolt />}
+        >
+          <button
+            style={{
+              background: "linear-gradient(135deg, #2492ff, #1675d5)",
+              color: "white",
+              width: "100%",
+              padding: "10px 20px",
+              fontSize: "0.875rem",
+              fontWeight: "500",
+              borderRadius: "8px",
+              cursor: "pointer",
+            }}
+            role="button"
+          >
+            Hover or Press Button
+          </button>
+        </Tooltip>
+      </ThemeProvider>
+    </div>
+  );
+}`;
+
+export const tooltipDynamicSnippet = `import React, { useState, useEffect } from "react";
+import { Tooltip } from "nudge-library";
+
+export default function DynamicTooltip() {
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [correctClicked, setCorrectClicked] = useState(false);
+
+  const handleWrongAnswer = () => {
+    setShowTooltip(true);
+  };
+
+  const handleCorrectAnswer = () => {
+    setShowTooltip(false);
+    setCorrectClicked(true);
+  };
+
+  const handleTooltipClose = () => {
+    setShowTooltip(false);
+  };
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    if (correctClicked) {
+      timer = setTimeout(() => {
+        setCorrectClicked(false);
+      }, 5000);
+    }
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [correctClicked]);
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <p className="font-medium">Select the answer:</p>
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <button
+          onClick={handleCorrectAnswer}
+          style={{
+            padding: "0.6rem 1.2rem",
+            fontSize: "0.875rem",
+            border: "2px solid #1b8dff",
+            boxShadow: "#1b8dff45 0px 2px 8px 0px",
+            borderRadius: "10px",
+            backgroundColor: "white",
+            cursor: "pointer",
+            width: "100%",
+          }}
+        >
+          {correctClicked ? "Well done!" : "Correct Answer"}
+        </button>
+
+        <Tooltip
+          visible={showTooltip}
+          onClose={handleTooltipClose}
+          onButtonClick={handleTooltipClose}
+          text="Take a moment to double-check the answer. Try again, almost there!"
+          position="bottom"
+          dismissible
+          closeOutside
+          closeOnHover={false}
+          ariaLabel="Wrong answer tooltip"
+          buttonText="Retry"
+        >
+          <button
+            onClick={handleWrongAnswer}
+            style={{
+              padding: "0.6rem 1.2rem",
+              fontSize: "0.875rem",
+              border: "2px solid #fb8500",
+              boxShadow: "#fb850045 0px 2px 8px 0px",
+              borderRadius: "10px",
+              cursor: "pointer",
+              width: "100%",
+            }}
+          >
+            Wrong Answer
+          </button>
+        </Tooltip>
+      </div>
+    </div>
+  );
+}`;
+
+export const tooltipAdaptiveSnippet = `import React, { useState } from "react";
+import { Tooltip, DropdownMenu } from "nudge-library";
+
+export default function AdaptiveTooltip() {
+  const [performance, setPerformance] = useState("neutral");
+  const [context, setContext] = useState("onboarding");
+
+  const contextOptions = [
+    { label: "Onboarding", value: "onboarding" },
+    { label: "Skill Building", value: "skillBuilding" }
+  ];
+
+  const performanceOptions = [
+    { label: "Struggling", value: "struggling" },
+    { label: "Neutral", value: "neutral" },
+    { label: "Successful", value: "excelling" }
+  ];
+
+  const getTooltipMessage = () => {
+    if (context === "onboarding") {
+      if (performance === "struggling") {
+        return "Starting something can feel overwhelming. Take it one step at a time.";
+      } else if (performance === "excelling") {
+        return "Great job! Feel free to seek more information if needed.";
+      } else {
+        return "Welcome! Begin at a comfortable pace.";
+      }
+    } else if (context === "skillBuilding") {
+      if (performance === "struggling") {
+        return "Every challenge builds a stronger foundation, continue and see improvement!";
+      } else if (performance === "excelling") {
+        return "Amazing work! The progress is impressive, keep going!";
+      } else {
+        return "Consistent practice leads to noticeable progress.";
+      }
+    }
+    return "";
+  };
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <DropdownMenu
+        dropdownLabel="Choose Context:"
+        id="contextDropdown"
+        ariaLabel="Context Dropdown"
+        options={contextOptions}
+        selected={context}
+        onChange={(value) => setContext(value)}
+        placeholder="Select the context"
+      />
+
+      <DropdownMenu
+        dropdownLabel="Choose Performance:"
+        id="performanceDropdown"
+        ariaLabel="Performance Dropdown"
+        options={performanceOptions}
+        selected={performance}
+        onChange={(value) => setPerformance(value)}
+        placeholder="Select performance level"
+      />
+
+      <Tooltip
+        text={getTooltipMessage()}
+        defaultVisible={true}
+        position="dynamic"
+        animationType="slide"
+        animationDuration={300}
+      >
+        <button
+          style={{
+            display: "block",
+            padding: "0.6rem 1.2rem",
+            fontSize: "0.875rem",
+            fontWeight: "500",
+            color: "white",
+            background: "#007fff",
+            borderRadius: "10px",
+            cursor: "pointer",
+            width: "100%",
+          }}
+        >
+          Hover here
+        </button>
+      </Tooltip>
+    </div>
+  );
+}`;

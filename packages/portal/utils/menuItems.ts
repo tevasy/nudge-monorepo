@@ -32,5 +32,18 @@ export const menuItemsMap: Record<string, MenuItem[]> = {
     { id: "textBox", label: "Text Box" },
     { id: "api-reference", label: "API Reference" },
   ],
+  "/nudges/reminder-nudge": [
+    { id: "popup", label: "Popup" },
+    { id: "api-reference", label: "API Reference" },
+  ],
+  "/nudges/social-norms-nudge": [
+    { id: "rating", label: "Rating" },
+    { id: "badge", label: "Badge" },
+    { id: "api-reference", label: "API Reference" },
+  ],
+  "/nudges/confidence-nudge": [
+    { id: "tooltip", label: "Tooltip" },
+    { id: "api-reference", label: "API Reference" },
+  ],
   // Add additional page-specific configurations as needed.
 };

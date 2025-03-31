@@ -4,6 +4,8 @@ const nextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
+
+  transpilePackages: ["nudge-library"],
 };
 
 module.exports = nextConfig;

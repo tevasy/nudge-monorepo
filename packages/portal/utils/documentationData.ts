@@ -519,9 +519,433 @@ export const textBoxProps: PropsTableRow[] = [
   },
 ];
 
+export const popupProps: PropsTableRow[] = [
+  {
+    propName: "id",
+    type: "string",
+    defaultValue: "–",
+    description: "Sets the HTML id attribute for the popup container.",
+  },
+  {
+    propName: "title",
+    type: "string",
+    defaultValue: "–",
+    description: "Title text displayed at the top of the popup.",
+  },
+  {
+    propName: "message",
+    type: "string",
+    defaultValue: "–",
+    description:
+      "Main content of the popup. Ignored if 'renderContent' is provided.",
+  },
+  {
+    propName: "visible",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Controls whether the popup is visible.",
+  },
+  {
+    propName: "onClose",
+    type: "() => void",
+    defaultValue: "–",
+    description: "Callback triggered when the popup is dismissed.",
+  },
+  {
+    propName: "onOpen",
+    type: "() => void",
+    defaultValue: "–",
+    description: "Callback triggered when the popup becomes visible.",
+  },
+  {
+    propName: "autoClose",
+    type: "boolean",
+    defaultValue: "false",
+    description: "If true, popup will automatically close after a delay.",
+  },
+  {
+    propName: "autoCloseDelay",
+    type: "number",
+    defaultValue: "–",
+    description: "Delay in milliseconds before the popup auto-closes.",
+  },
+  {
+    propName: "position",
+    type: `top-left | top-right | bottom-left | bottom-right`,
+    defaultValue: "bottom-right",
+    description: "Popup's position on the screen.",
+  },
+  {
+    propName: "renderContent",
+    type: "() => React.ReactNode",
+    defaultValue: "–",
+    description:
+      "Custom render function for popup content. Overrides 'message' and 'buttonText'.",
+  },
+  {
+    propName: "ariaLabel",
+    type: "string",
+    defaultValue: "–",
+    description: "Accessible label for screen readers.",
+  },
+  {
+    propName: "animationType",
+    type: `fade | slide | none`,
+    defaultValue: "fade",
+    description: "Type of popup entrance/exit animation.",
+  },
+  {
+    propName: "animationDuration",
+    type: "number",
+    defaultValue: "300",
+    description: "Animation duration in milliseconds.",
+  },
+  {
+    propName: "dismissible",
+    type: "boolean",
+    defaultValue: "true",
+    description: "If true, displays a close button to dismiss the popup.",
+  },
+  {
+    propName: "closeOutside",
+    type: "boolean",
+    defaultValue: "false",
+    description: "If true, clicking outside the popup will close it.",
+  },
+  {
+    propName: "image",
+    type: "string | false | null",
+    defaultValue: "defaultImage",
+    description: "Image shown inside the popup. Set to false or null to hide.",
+  },
+  {
+    propName: "buttonText",
+    type: "string",
+    defaultValue: "–",
+    description: "Text for the optional action button.",
+  },
+  {
+    propName: "onButtonClick",
+    type: "() => void",
+    defaultValue: "–",
+    description: "Callback triggered when the action button is clicked.",
+  },
+];
+
+export const ratingProps: PropsTableRow[] = [
+  {
+    propName: "ratingLabel",
+    type: "string",
+    defaultValue: "–",
+    description: "An optional label displayed above the rating stars.",
+  },
+  {
+    propName: "rating",
+    type: "number",
+    defaultValue: "–",
+    description:
+      "Sets the current rating value in controlled mode. Overrides defaultRating if provided.",
+  },
+  {
+    propName: "defaultRating",
+    type: "number",
+    defaultValue: "0",
+    description:
+      "Initial rating value in uncontrolled mode. Ignored if 'rating' is provided.",
+  },
+  {
+    propName: "max",
+    type: "number",
+    defaultValue: "5",
+    description: "Total number of stars to render.",
+  },
+  {
+    propName: "onChange",
+    type: "(rating: number) => void",
+    defaultValue: "–",
+    description:
+      "Callback fired when the user selects a rating. Receives the new rating as an argument.",
+  },
+  {
+    propName: "disabled",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Disables interaction and visual hover effects when true.",
+  },
+  {
+    propName: "nudgeText",
+    type: "string",
+    defaultValue: "–",
+    description: "Text displayed below or beside the rating as a static nudge.",
+  },
+  {
+    propName: "id",
+    type: "string",
+    defaultValue: "–",
+    description:
+      "The unique identifier for the component. Used to associate nudge and accessibility labels.",
+  },
+  {
+    propName: "ariaLabel",
+    type: "string",
+    defaultValue: "ratingLabel or empty string",
+    description:
+      "Accessibility label for each star. Defaults to 'ratingLabel' if not provided.",
+  },
+  {
+    propName: "onFocus",
+    type: "React.FocusEventHandler<HTMLSpanElement>",
+    defaultValue: "–",
+    description: "Fired when a star gains focus via keyboard or touch.",
+  },
+  {
+    propName: "onBlur",
+    type: "React.FocusEventHandler<HTMLSpanElement>",
+    defaultValue: "–",
+    description: "Called when focus moves outside the component.",
+  },
+  {
+    propName: "nudgeVisible",
+    type: "boolean",
+    defaultValue: "true",
+    description:
+      "Controls visibility of the nudge. If false, nudge text is hidden even if defined.",
+  },
+  {
+    propName: "nudgePosition",
+    type: `top | bottom | left | right`,
+    defaultValue: `"bottom"`,
+    description:
+      "Controls where the nudge is displayed in relation to the stars.",
+  },
+  {
+    propName: "renderNudge",
+    type: "(rating: number) => React.ReactNode",
+    defaultValue: "–",
+    description:
+      "Optional function that returns a custom nudge element based on the current rating value.",
+  },
+];
+
+export const badgeProps: PropsTableRow[] = [
+  {
+    propName: "label",
+    type: "string",
+    defaultValue: "Required",
+    description: "Primary text displayed inside the badge.",
+  },
+  {
+    propName: "badgeLabel",
+    type: "string",
+    defaultValue: "–",
+    description: "Optional label displayed above the badge component.",
+  },
+  {
+    propName: "count",
+    type: "number",
+    defaultValue: "–",
+    description: "Optional count value displayed as a number within the badge.",
+  },
+  {
+    propName: "icon",
+    type: "React.ReactNode",
+    defaultValue: "–",
+    description: "Optional icon rendered next to the label inside the badge.",
+  },
+  {
+    propName: "nudgeText",
+    type: "string",
+    defaultValue: "–",
+    description: "Static nudge message shown alongside the badge.",
+  },
+  {
+    propName: "id",
+    type: "string",
+    defaultValue: "–",
+    description:
+      "Sets the id attribute of the component and links the nudge element via aria-describedby.",
+  },
+  {
+    propName: "ariaLabel",
+    type: "string",
+    defaultValue: "badgeLabel or empty string",
+    description:
+      "Accessibility label for screen readers. Defaults to the badgeLabel if not provided.",
+  },
+  {
+    propName: "disabled",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Disables styling and interaction if set to true.",
+  },
+  {
+    propName: "nudgeVisible",
+    type: "boolean",
+    defaultValue: "true",
+    description:
+      "Controls whether the nudge is displayed. If false, nudge is hidden even if defined.",
+  },
+  {
+    propName: "nudgePosition",
+    type: `top | bottom | left | right`,
+    defaultValue: `bottom`,
+    description:
+      "Controls the position of the nudge relative to the badge component.",
+  },
+  {
+    propName: "renderNudge",
+    type: "(badgeData: { label?: string; count?: number }) => React.ReactNode",
+    defaultValue: "–",
+    description:
+      "Custom render function for dynamic nudges based on badge data (label and count).",
+  },
+];
+
+export const tooltipProps: PropsTableRow[] = [
+  {
+    propName: "id",
+    type: "string",
+    defaultValue: "–",
+    description: "Sets the id attribute for the tooltip container.",
+  },
+  {
+    propName: "text",
+    type: "string",
+    defaultValue: "–",
+    description:
+      "Text content displayed inside the tooltip when 'renderContent' is not used.",
+  },
+  {
+    propName: "visible",
+    type: "boolean",
+    defaultValue: "–",
+    description:
+      "Controls tooltip visibility in controlled mode. If provided, overrides internal visibility logic.",
+  },
+  {
+    propName: "defaultVisible",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Initial visibility of the tooltip in uncontrolled mode. Used when 'visible' is not defined.",
+  },
+  {
+    propName: "onOpen",
+    type: "() => void",
+    defaultValue: "–",
+    description: "Callback triggered when the tooltip becomes visible.",
+  },
+  {
+    propName: "onClose",
+    type: "() => void",
+    defaultValue: "–",
+    description: "Callback triggered when the tooltip is hidden.",
+  },
+  {
+    propName: "position",
+    type: `top | bottom | left | right | dynamic`,
+    defaultValue: `"top"`,
+    description:
+      "Position of the tooltip relative to its trigger. 'dynamic' auto-determines best fit.",
+  },
+  {
+    propName: "autoClose",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "If true, tooltip will close automatically after a delay when opened.",
+  },
+  {
+    propName: "autoCloseDelay",
+    type: "number",
+    defaultValue: "3000",
+    description: "Delay in milliseconds before auto-closing the tooltip.",
+  },
+  {
+    propName: "renderContent",
+    type: "() => React.ReactNode",
+    defaultValue: "–",
+    description:
+      "Function that returns custom content to render inside the tooltip, overriding 'text'.",
+  },
+  {
+    propName: "children",
+    type: "React.ReactNode",
+    defaultValue: "–",
+    description:
+      "The target element that triggers the tooltip on hover or focus.",
+  },
+  {
+    propName: "ariaLabel",
+    type: "string",
+    defaultValue: "–",
+    description:
+      "Accessibility label applied to the trigger element for screen readers.",
+  },
+  {
+    propName: "dismissible",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Displays a close button inside the tooltip when true.",
+  },
+  {
+    propName: "animationType",
+    type: `"fade" | "slide" | "none"`,
+    defaultValue: `"fade"`,
+    description:
+      "Controls the animation style used when the tooltip appears and disappears.",
+  },
+  {
+    propName: "animationDuration",
+    type: "number",
+    defaultValue: "300",
+    description: "Duration of the tooltip animation in milliseconds.",
+  },
+  {
+    propName: "closeOnHover",
+    type: "boolean",
+    defaultValue: "true",
+    description:
+      "If true, the tooltip will close when the mouse leaves or focus is lost.",
+  },
+  {
+    propName: "openOnHover",
+    type: "boolean",
+    defaultValue: "true",
+    description:
+      "If true, the tooltip will open on mouse enter or when the trigger gains focus.",
+  },
+  {
+    propName: "closeOutside",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Closes the tooltip when clicking outside of it.",
+  },
+  {
+    propName: "buttonText",
+    type: "string",
+    defaultValue: "–",
+    description:
+      "Optional text for an action button inside the tooltip. Only rendered if 'text' is used (not 'renderContent').",
+  },
+  {
+    propName: "onButtonClick",
+    type: "() => void",
+    defaultValue: "–",
+    description: "Callback fired when the action button is clicked.",
+  },
+  {
+    propName: "icon",
+    type: "React.ReactNode",
+    defaultValue: "–",
+    description:
+      "Optional icon displayed inside the tooltip next to the message.",
+  },
+];
+
 // Theme attributes for Checkbox
 // Extended Theme attributes for Checkbox
-export const checkboxThemeProperties = [
+export const checkboxThemeProps = [
   {
     propName: "wrapper",
     cssProperties: ["–"],
@@ -615,7 +1039,7 @@ export const checkboxThemeProperties = [
 ];
 
 // Extended Theme attributes for Radio Group
-export const radioGroupThemeProperties = [
+export const radioGroupThemeProps = [
   {
     propName: "wrapper",
     cssProperties: ["–"],
@@ -714,7 +1138,7 @@ export const radioGroupThemeProperties = [
   },
 ];
 
-export const dropdownThemeProperties = [
+export const dropdownThemeProps = [
   {
     propName: "wrapper",
     cssProperties: ["position"],
@@ -838,7 +1262,7 @@ export const dropdownThemeProperties = [
   },
 ];
 
-export const sliderThemeProperties = [
+export const sliderThemeProps = [
   {
     propName: "wrapper",
     cssProperties: ["–"],
@@ -944,7 +1368,7 @@ export const sliderThemeProperties = [
   },
 ];
 
-export const textBoxThemeProperties = [
+export const textBoxThemeProps = [
   {
     propName: "wrapper",
     cssProperties: ["–"],
@@ -1016,34 +1440,361 @@ export const textBoxThemeProperties = [
   },
 ];
 
+export const popupThemeProps = [
+  {
+    propName: "container",
+    cssProperties: [
+      "background",
+      "boxShadow",
+      "borderRadius",
+      "padding",
+      "minWidth",
+      "maxWidth",
+      "boxSizing",
+    ],
+    description: "Styling for the outer popup container.",
+  },
+  {
+    propName: "content",
+    cssProperties: ["position"],
+    description: "Styling for the inner content area.",
+  },
+  {
+    propName: "closeButton",
+    cssProperties: ["border", "background", "cursor", "fontSize", "padding"],
+    description: "Styling for the close (X) button.",
+  },
+  {
+    propName: "title",
+    cssProperties: [
+      "marginTop",
+      "marginBottom",
+      "fontSize",
+      "fontWeight",
+      "color",
+    ],
+    description: "Styling for the popup title text.",
+  },
+  {
+    propName: "message",
+    cssProperties: ["fontSize", "color", "lineHeight"],
+    description: "Styling for the popup message or content.",
+  },
+  {
+    propName: "image",
+    cssProperties: ["width"],
+    description: "Styling for the image inside the popup.",
+  },
+  {
+    propName: "actionButton",
+    cssProperties: [
+      "marginTop",
+      "padding",
+      "fontSize",
+      "backgroundColor",
+      "color",
+      "border",
+      "borderRadius",
+      "cursor",
+    ],
+    description: "Styling for the action button.",
+  },
+];
+
+export const ratingThemeProps = [
+  {
+    propName: "wrapper",
+    cssProperties: ["–"],
+    description: "Wrapper style for the entire rating component.",
+  },
+  {
+    propName: "container",
+    cssProperties: ["–"],
+    description: "Container for the star elements.",
+  },
+  {
+    propName: "ratingLabel",
+    cssProperties: ["fontSize", "color", "fontWeight", "marginBottom"],
+    description: "Styles for the optional label shown above the rating stars.",
+  },
+  {
+    propName: "star",
+    cssProperties: [
+      "color",
+      "fontSize",
+      "marginRight",
+      "cursor",
+      "transition",
+      "strokeWidth",
+    ],
+    description:
+      "Styles for the appearance of each star (unfilled or hovered).",
+  },
+  {
+    propName: "filledStar",
+    cssProperties: ["color"],
+    description:
+      "Styles applied to stars that represent the selected rating value.",
+  },
+  {
+    propName: "disabled",
+    cssProperties: ["opacity", "pointerEvents", "cursor"],
+    description: "Styles applied when the rating component is disabled.",
+  },
+  {
+    propName: "nudgeText",
+    cssProperties: [
+      "padding",
+      "backgroundColor",
+      "borderRadius",
+      "fontSize",
+      "color",
+      "display",
+      "alignItems",
+      "gap",
+      "transition",
+    ],
+    description: "Styles for the nudge message displayed near the rating.",
+  },
+  {
+    propName: "nudgeLeft",
+    cssProperties: ["marginRight"],
+    description:
+      "Styling for the nudge when positioned to the left of the stars.",
+  },
+  {
+    propName: "nudgeRight",
+    cssProperties: ["marginLeft"],
+    description:
+      "Styling for the nudge when positioned to the right of the stars.",
+  },
+  {
+    propName: "nudgeTop",
+    cssProperties: ["marginBottom"],
+    description: "Styling for the nudge when positioned above the stars.",
+  },
+  {
+    propName: "nudgeBottom",
+    cssProperties: ["marginTop"],
+    description: "Styling for the nudge when positioned below the stars.",
+  },
+];
+
+export const badgeThemeProps = [
+  {
+    propName: "wrapper",
+    cssProperties: ["–"],
+    description: "Wrapper style for the entire badge component.",
+  },
+  {
+    propName: "container",
+    cssProperties: ["background", "border", "borderRadius", "padding"],
+    description:
+      "Styles applied to the main badge container holding label, icon, and count.",
+  },
+  {
+    propName: "badgeLabel",
+    cssProperties: ["fontSize", "color", "fontWeight", "marginBottom"],
+    description: "Styles for the optional label displayed above the badge.",
+  },
+  {
+    propName: "label",
+    cssProperties: ["fontSize", "color", "fontWeight"],
+    description: "Styles for the main text label inside the badge.",
+  },
+  {
+    propName: "count",
+    cssProperties: [
+      "fontSize",
+      "color",
+      "marginLeft",
+      "background",
+      "borderRadius",
+      "fontWeight",
+      "padding",
+    ],
+    description: "Styles applied to the badge count element.",
+  },
+  {
+    propName: "icon",
+    cssProperties: ["fontSize", "color", "marginRight"],
+    description: "Styles applied to the icon displayed next to the label.",
+  },
+  {
+    propName: "disabled",
+    cssProperties: ["opacity", "pointerEvents", "cursor"],
+    description: "Styles applied to the badge when it is disabled.",
+  },
+  {
+    propName: "nudgeText",
+    cssProperties: [
+      "padding",
+      "backgroundColor",
+      "borderRadius",
+      "fontSize",
+      "color",
+      "display",
+      "alignItems",
+      "gap",
+      "transition",
+    ],
+    description: "Styles for the nudge text shown near the badge.",
+  },
+  {
+    propName: "nudgeLeft",
+    cssProperties: ["marginRight"],
+    description:
+      "Styling for the nudge element when positioned to the left of the badge.",
+  },
+  {
+    propName: "nudgeRight",
+    cssProperties: ["marginLeft"],
+    description:
+      "Styling for the nudge element when positioned to the right of the badge.",
+  },
+  {
+    propName: "nudgeTop",
+    cssProperties: ["marginBottom"],
+    description:
+      "Styling for the nudge element when positioned above the badge.",
+  },
+  {
+    propName: "nudgeBottom",
+    cssProperties: ["marginTop"],
+    description:
+      "Styling for the nudge element when positioned below the badge.",
+  },
+];
+
+export const tooltipThemeProps = [
+  {
+    propName: "container",
+    cssProperties: [
+      "background",
+      "border",
+      "boxShadow",
+      "borderRadius",
+      "padding",
+      "width",
+      "minWidth",
+      "boxSizing",
+      "position",
+      "zIndex",
+    ],
+    description: "Main container for the tooltip popup.",
+  },
+  {
+    propName: "content",
+    cssProperties: ["–"],
+    description: "Wrapper for the entire content area inside the tooltip.",
+  },
+  {
+    propName: "closeButton",
+    cssProperties: [
+      "border",
+      "background",
+      "cursor",
+      "fontSize",
+      "padding",
+      "color",
+    ],
+    description: "Styles applied to the tooltip's close (dismiss) button.",
+  },
+  {
+    propName: "closeButtonContainer",
+    cssProperties: ["–"],
+    description: "Container for positioning the close button.",
+  },
+  {
+    propName: "message",
+    cssProperties: [
+      "fontSize",
+      "color",
+      "lineHeight",
+      "wordBreak",
+      "textAlign",
+    ],
+    description: "Styles for the tooltip message or content area.",
+  },
+  {
+    propName: "actionButton",
+    cssProperties: [
+      "marginTop",
+      "padding",
+      "fontSize",
+      "backgroundColor",
+      "color",
+      "border",
+      "borderRadius",
+      "cursor",
+      "textDecoration",
+      "letterSpacing",
+      "wordBreak",
+    ],
+    description:
+      "Styles for the optional action button shown within the tooltip.",
+  },
+  {
+    propName: "icon",
+    cssProperties: ["fontSize", "color"],
+    description: "Styles for the optional icon displayed in the tooltip.",
+  },
+];
+
 export const documentationData = {
   defaultOptions: [
     {
       title: "Checkbox",
       functionalProps: checkboxProps,
-      themeProperties: checkboxThemeProperties,
+      themeProps: checkboxThemeProps,
     },
     {
       title: "Radio Group",
       functionalProps: radioGroupProps,
-      themeProperties: radioGroupThemeProperties,
+      themeProps: radioGroupThemeProps,
     },
     {
       title: "Dropdown Menu",
       functionalProps: dropdownMenuProps,
-      themeProperties: dropdownThemeProperties,
+      themeProps: dropdownThemeProps,
     },
   ],
   anchoring: [
     {
       title: "Slider",
       functionalProps: sliderProps,
-      themeProperties: sliderThemeProperties,
+      themeProps: sliderThemeProps,
     },
     {
       title: "Text Box",
       functionalProps: textBoxProps,
-      themeProperties: textBoxThemeProperties,
+      themeProps: textBoxThemeProps,
+    },
+  ],
+  reminder: [
+    {
+      title: "Popup",
+      functionalProps: popupProps,
+      themeProps: popupThemeProps,
+    },
+  ],
+  socialNorms: [
+    {
+      title: "Rating",
+      functionalProps: ratingProps,
+      themeProps: ratingThemeProps,
+    },
+    {
+      title: "Badge",
+      functionalProps: badgeProps,
+      themeProps: badgeThemeProps,
+    },
+  ],
+  confidence: [
+    {
+      title: "Tooltip",
+      functionalProps: tooltipProps,
+      themeProps: tooltipThemeProps,
     },
   ],
 };

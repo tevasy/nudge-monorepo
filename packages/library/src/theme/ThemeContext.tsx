@@ -93,6 +93,51 @@ export type Theme = {
     nudgeLeft: ThemeCSS;
     nudgeRight: ThemeCSS;
   };
+  popup: {
+    container: ThemeCSS;
+    content: ThemeCSS;
+    closeButton: ThemeCSS;
+    title: ThemeCSS;
+    message: ThemeCSS;
+    image: ThemeCSS;
+    actionButton: ThemeCSS;
+  };
+  rating: {
+    wrapper: ThemeCSS;
+    container: ThemeCSS;
+    ratingLabel: ThemeCSS;
+    star: ThemeCSS;
+    filledStar: ThemeCSS;
+    disabled: ThemeCSS;
+    nudgeText: ThemeCSS;
+    nudgeTop: ThemeCSS;
+    nudgeBottom: ThemeCSS;
+    nudgeLeft: ThemeCSS;
+    nudgeRight: ThemeCSS;
+  };
+  badge: {
+    wrapper: ThemeCSS;
+    container: ThemeCSS;
+    badgeLabel: ThemeCSS;
+    label: ThemeCSS;
+    count: ThemeCSS;
+    icon: ThemeCSS;
+    disabled: ThemeCSS;
+    nudgeText: ThemeCSS;
+    nudgeLeft: ThemeCSS;
+    nudgeRight: ThemeCSS;
+    nudgeTop: ThemeCSS;
+    nudgeBottom: ThemeCSS;
+  };
+  tooltip: {
+    container: ThemeCSS;
+    closeButton: ThemeCSS;
+    content: ThemeCSS;
+    closeButtonContainer: ThemeCSS;
+    message: ThemeCSS;
+    actionButton: ThemeCSS;
+    icon: ThemeCSS;
+  };
 };
 
 export const defaultTheme: Theme = {
@@ -101,10 +146,6 @@ export const defaultTheme: Theme = {
     container: {
       display: "flex",
       alignItems: "center",
-    },
-    input: {
-      opacity: 0,
-      position: "absolute",
     },
     checkboxLabel: {
       fontSize: "var(--font-size-md)",
@@ -136,6 +177,10 @@ export const defaultTheme: Theme = {
       opacity: 0.4,
       pointerEvents: "none",
       cursor: "not-allowed",
+    },
+    input: {
+      opacity: 0,
+      position: "absolute",
     },
     label: {
       color: "var(--color-black)",
@@ -444,6 +489,213 @@ export const defaultTheme: Theme = {
     nudgeTop: { marginBottom: "6px" },
     nudgeBottom: { marginTop: "6px" },
   },
+  popup: {
+    container: {
+      background: "white",
+      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+      borderRadius: "16px",
+      padding: "22px",
+      minWidth: "300px",
+      maxWidth: "450px",
+      boxSizing: "border-box",
+    },
+    content: {
+      position: "relative",
+    },
+    closeButton: {
+      border: "none",
+      background: "transparent",
+      cursor: "pointer",
+      fontSize: "var(--font-size-lg)",
+      padding: "0px",
+    },
+    title: {
+      marginTop: "0px",
+      marginBottom: "14px",
+      fontSize: "var(--font-size-lg)",
+      fontWeight: "600",
+      color: "var(--color-black)",
+      wordBreak: "break-word",
+    },
+    message: {
+      fontSize: "var(--font-size-md)",
+      color: "var(--color-black)",
+      lineHeight: 1.5,
+      wordBreak: "break-word",
+    },
+    image: {
+      width: "77px",
+    },
+    actionButton: {
+      marginTop: "16px",
+      padding: "7px 16px",
+      fontSize: "var(--font-size-sm)",
+      backgroundColor: "var(--color-darkerBlue)",
+      color: "white",
+      border: "none",
+      borderRadius: "5px",
+      cursor: "pointer",
+      textDecoration: "none",
+      letterSpacing: "0.3px",
+      wordBreak: "break-word",
+    },
+  },
+  rating: {
+    wrapper: {},
+    container: {},
+    ratingLabel: {
+      fontSize: "var(--font-size-md)",
+      color: "var(--color-black)",
+      fontWeight: "500",
+      marginBottom: "16px",
+    },
+    star: {
+      color: "#ccc",
+      fontSize: "var(--font-size-2xl)",
+      marginRight: "4px",
+      cursor: "pointer",
+      transition: "color 0.2s ease-in-out",
+      strokeWidth: "2",
+    },
+    filledStar: {
+      color: "#ffc700",
+    },
+    disabled: {
+      opacity: 0.4,
+      pointerEvents: "none",
+      cursor: "not-allowed",
+    },
+    nudgeText: {
+      padding: "8px 12px",
+      backgroundColor: "var(--color-lightLightBlue)",
+      borderRadius: "6px",
+      fontSize: "var(--font-size-sm)",
+      color: "var(--color-black)",
+      display: "flex",
+      alignItems: "center",
+      gap: "8px",
+      transition: "opacity 0.3s ease-in-out",
+    },
+    nudgeLeft: {
+      marginRight: "12px",
+    },
+    nudgeRight: {
+      marginLeft: "12px",
+    },
+    nudgeTop: {
+      marginBottom: "8px",
+    },
+    nudgeBottom: {
+      marginTop: "6px",
+    },
+  },
+  badge: {
+    wrapper: {},
+    container: {
+      background: "white",
+      border: "2px solid var(--color-darkerBlue)",
+      borderRadius: "25px",
+      padding: "10px 20px",
+    },
+    badgeLabel: {
+      fontSize: "var(--font-size-md)",
+      color: "var(--color-black)",
+      fontWeight: "500",
+      marginBottom: "16px",
+    },
+    label: {
+      fontSize: "var(--font-size-md)",
+      color: "var(--color-black)",
+      fontWeight: "500",
+    },
+    count: {
+      fontSize: "12px",
+      color: "var(--color-black)",
+      marginLeft: "10px",
+      background: "var(--color-lightBlue)",
+      borderRadius: "20px",
+      fontWeight: "500",
+      padding: "0 6px",
+    },
+    icon: {
+      fontSize: "var(--font-size-lg)",
+      color: "var(--color-black)",
+      marginRight: "10px",
+    },
+    disabled: {
+      opacity: 0.4,
+      pointerEvents: "none",
+      cursor: "not-allowed",
+    },
+    nudgeText: {
+      padding: "8px 12px",
+      backgroundColor: "var(--color-lightLightBlue)",
+      borderRadius: "6px",
+      fontSize: "var(--font-size-sm)",
+      color: "var(--color-black)",
+      display: "flex",
+      alignItems: "center",
+      gap: "8px",
+      transition: "opacity 0.3s ease-in-out",
+    },
+    nudgeLeft: {
+      marginRight: "12px",
+    },
+    nudgeRight: {
+      marginLeft: "12px",
+    },
+    nudgeTop: {
+      marginBottom: "10px",
+    },
+    nudgeBottom: {
+      marginTop: "10px",
+    },
+  },
+  tooltip: {
+    container: {
+      background: "white",
+      border: "1px solid #ddd",
+      boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.15)",
+      borderRadius: "8px",
+      padding: "14px",
+      width: "100%",
+      minWidth: "200px",
+      boxSizing: "border-box",
+      position: "absolute",
+      zIndex: 1000,
+    },
+    content: {},
+    closeButton: {
+      border: "none",
+      background: "transparent",
+      cursor: "pointer",
+      fontSize: "var(--font-size-lg)",
+      padding: "0px",
+      color: "var(--color-darkGray)",
+    },
+    closeButtonContainer: {},
+    message: {
+      fontSize: "var(--font-size-md)",
+      color: "var(--color-black)",
+      lineHeight: 1.5,
+      wordBreak: "break-word",
+      textAlign: "left",
+    },
+    actionButton: {
+      marginTop: "12px",
+      padding: "7px 16px",
+      fontSize: "var(--font-size-sm)",
+      backgroundColor: "var(--color-darkerBlue)",
+      color: "white",
+      border: "none",
+      borderRadius: "5px",
+      cursor: "pointer",
+      textDecoration: "none",
+      letterSpacing: "0.3px",
+      wordBreak: "break-word",
+    },
+    icon: { fontSize: "var(--font-size-xl)", color: "var(--color-black)" },
+  },
 };
 
 export const ThemeContext = createContext<Theme>(defaultTheme);
@@ -453,8 +705,8 @@ type ThemeProviderProps = {
   children: ReactNode;
 };
 
-export const ThemeProvider: FC<ThemeProviderProps> = ({ theme, children }) => {
+export function ThemeProvider({ theme, children }: ThemeProviderProps) {
   return (
     <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
   );
-};
+}
