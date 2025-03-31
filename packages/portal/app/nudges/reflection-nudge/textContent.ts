@@ -9,10 +9,10 @@ export const textContent = {
     content:
       "The Reflection Nudge is designed to encourage individuals to pause and consider their emotional state, intentions, or the potential outcomes of their actions before or after engaging in a task. This nudge improves self-awareness and promotes more thoughtful decision-making by prompting users to reflect on their choices, experiences, or progress, while still allowing them to proceed without unnecessary friction.",
     exampleText:
-      "Insight Timer [43] prompting the user to reflect on their feelings at the end of a meditation session, illustrating a Reflection nudge.",
+      "Screenshot of Insight Timer that prompts the user to reflect on their feelings at the end of a meditation session, illustrating a Reflection Nudge.",
     image: {
       src: "/reflection/insightTimer.png",
-      alt: " Insight Timer [43] prompting the user to reflect on their feelings at the end of a meditation session, illustrating a Reflection nudge.",
+      alt: "Screenshot of Insight Timer that prompts the user to reflect on their feelings at the end of a meditation session, illustrating a Reflection Nudge.",
     },
   },
   problem: {

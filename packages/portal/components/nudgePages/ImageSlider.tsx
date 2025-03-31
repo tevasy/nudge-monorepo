@@ -98,41 +98,41 @@ const images: Record<
   ],
   reflection: [
     {
-      src: "/reflection/langotalk.png",
-      alt: "Example 1: Apple Reminders",
-      title: "Example 1: Apple Reminders",
+      src: "/reflection/insightTimer.png",
+      alt: "Example 1: Insight Timer's Reflection Prompt",
+      title: "Example 1: Insight Timer's Reflection Prompt",
       description:
-        "A Real-world Example of the Reflection Nudge is the use of mood reflection prompts in Langotalk after completing a learning session (Figure 6.5) [67]. When users finish a lesson, they are encouraged to rate their experience using mood-based emojis and select a reason that best describes their feelings about the session. This reflection helps users become more aware of their emotions, which promotes a deeper connection to the learning process. Additionally, it allows the system to personalize future lessons based on user feedback, improving overall learning outcomes.",
+        "Insight Timer prompts users to reflect at the end of a meditation session, encouraging self-awareness. After completing a session, users interact with a “How are you feeling?” mood slider, followed by the option to describe their emotional state in more detail using prompts like “What best describes this feeling?” and “What’s having the biggest impact?” Additionally, users can complete a “Journal about your session” form, offering space to process and describe their experience.",
     },
     {
-      src: "/reflection/insightTimer.png",
-      alt: "Example 1: Khan Academy's Tooltips",
-      title: "Example 1: Khan Academy's Tooltips",
+      src: "/reflection/langotalk.png",
+      alt: "Example 2: Langotalk's Reflection Prompts",
+      title: "Example 2: Langotalk's Reflection Prompts",
       description:
-        "Insight Timer [43] prompts users to reflect at the end of meditation, encouraging self-awareness. Prompting users to reflect on their emotional state, intentions, or outcomes before or after a task.",
+        "Langotalk shows mood reflection prompts after completing a learning session, illustrating Reflection Nudge. When users finish a lesson, they are encouraged to rate their experience using mood-based emojis and select a reason that best describes their feelings about the session. This reflection helps users become more aware of their emotions, which promotes a deeper connection to the learning process. Additionally, it allows the system to personalize future lessons based on user feedback, improving overall learning outcomes.",
     },
   ],
   decisionFriction: [
     {
       src: "/decisionFriction/khanAcademy.png",
-      alt: "Example 1: Khan Academy's Tooltips",
-      title: "Example 1: Khan Academy's Tooltips",
+      alt: "Example 1: Khan Academy's Confirmation Dialog",
+      title: "Example 1: Khan Academy's Confirmation Dialog",
       description:
-        "A Real-world Example of the Decision Friction Nudge is the use of a confirmation dialog before deleting a coding program in Khan Academy (Figure 6.6) [40]. When attempting to delete a program, a modal appears asking, “Are you sure you want to delete your program?”, providing users with an extra moment to reconsider their action. This slight friction ensures that users do not accidentally erase their work and gives them a chance to reflect on the consequences of deletion.",
+        "Khan Academy shows a confirmation dialog before deleting a coding program, which serves as a Decision Friction Nudge. When attempting to delete a program, a modal appears asking, “Are you sure you want to delete your program?”, providing users with an extra moment to reconsider their action. This slight friction ensures that users do not accidentally erase their work and gives them a chance to reflect on the consequences of deletion.",
     },
     {
       src: "/decisionFriction/calm.png",
-      alt: "Example 1: Khan Academy's Tooltips",
-      title: "Example 1: Khan Academy's Tooltips",
+      alt: "Example 2: Calm's Confirmation Dialog",
+      title: "Example 2: Calm's Confirmation Dialog",
       description:
-        "Calm [39] displays a confirmation prompt before cancelling a bedtime reminder: “Are you sure? It’s hard to get ready for bed without a little help”, encouraging adherence to consistent sleep schedule. Introducing a small friction or pause before an impulsive or high-impact action, prompting users to reconsider.",
+        "Calm displays a confirmation prompt before cancelling a bedtime reminder: “Are you sure? It's hard to get ready for bed without a little help.” This acts as a Decision Friction Nudge, introducing a brief pause before an impulsive or high-impact action. By prompting users to reconsider, it encourages adherence to a consistent sleep schedule.",
     },
     {
       src: "/decisionFriction/github.png",
-      alt: "Example 1: Khan Academy's Tooltips",
-      title: "Example 1: Khan Academy's Tooltips",
+      alt: "Example 3: Github's Additional Input Dialog",
+      title: "Example 3: Github's Additional Input Dialog",
       description:
-        "GitHub [17] requires users to type the repository name before deleting it, preventing accidental irreversible actions. Introducing a small friction or pause before an impulsive or high-impact action, prompting users to reconsider.",
+        "GitHub displays a confirmation modal that includes an additional input field, requiring users to manually type the repository name before deletion. This serves as a Decision Friction Nudge by introducing a small friction, which prompts users to reconsider an impulsive or high-impact action.",
     },
   ],
   confidence: [

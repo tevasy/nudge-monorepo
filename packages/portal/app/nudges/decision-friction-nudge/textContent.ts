@@ -11,7 +11,7 @@ export const textContent = {
     exampleText:
       "Screenshot of Khan Academy's program deletion confirmation modal, illustrating the Decision Friction Nudge.",
     image: {
-      src: "/reminder/apple_reminder.png",
+      src: "/decisionFriction/khanAcademy.png",
       alt: "Screenshot of Khan Academy's program deletion confirmation modal, illustrating the Decision Friction Nudge.",
     },
   },
