@@ -102,10 +102,10 @@ export default function AdaptivePopup() {
 
       <p style={{ fontSize: "0.875rem" }}>
         This popup adapts its message based on past interaction. Acknowledging
-        it with the <em>"I drank water"</em> button shows an encouraging message
-        next time, dismissing it via close or outside click results in a more
-        assertive tone. If there's no prior interaction, a neutral tip is shown.
-        The response is saved in{" "}
+        it with the <em>&quot;I drank water&quot;</em> button shows an
+        encouraging message next time, dismissing it via close or outside click
+        results in a more assertive tone. If there&apos;s no prior interaction,
+        a neutral tip is shown. The response is saved in{" "}
         <code style={{ fontSize: "0.813rem" }}>localStorage</code>, so
         adaptivity persists across sessions and page reloads.
       </p>

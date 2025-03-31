@@ -91,10 +91,11 @@ export default function DynamicTooltip() {
         </Tooltip>
       </div>
       <p style={{ fontSize: "0.875rem" }}>
-        Pressing the "Wrong Answer" button triggers a tooltip that encourages to
-        review the selected answer. The tooltip remains visible until dismissed
-        via the "Retry" button, close icon, or clicking outside. Clicking the
-        "Correct Answer" button changes its text for 5 seconds.
+        Pressing the &quot;Wrong Answer&quot; button triggers a tooltip that
+        encourages to review the selected answer. The tooltip remains visible
+        until dismissed via the &quot;Retry&quot; button, close icon, or
+        clicking outside. Clicking the "Correct Answer" button changes its text
+        for 5 seconds.
       </p>
     </div>
   );

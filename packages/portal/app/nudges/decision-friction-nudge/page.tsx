@@ -105,7 +105,7 @@ export default function InstallSection() {
           <span className="font-mono text-[15px] bg-customLightLightBlue rounded-md py-1 px-1.5">
             npm install nudge-library/reminder
           </span>
-          . The component's usage examples are shown in three tabs: Static
+          . The component&apos;s usage examples are shown in three tabs: Static
           nudge, Dynamic nudge, and Adaptive nudge. All tabs include code
           snippets for integration, and the section concludes with an API
           Reference outlining both functional and theme properties.

@@ -71,11 +71,12 @@ const AdaptiveBadgeExample = () => {
         Complete Course
       </button>
       <p style={{ fontSize: "0.875rem", marginTop: "1.5rem" }}>
-        This adaptive badge updates its nudge text based on the user's profile
-        data, such as skill level, favorite topics, and learning progress. In
-        real-world scenarios, this information would be derived from the
-        learner's activity history and profile metadata. Clicking the button
-        triggers a real-time update in the badge count and the nudge message.
+        This adaptive badge updates its nudge text based on the user&apos;s
+        profile data, such as skill level, favorite topics, and learning
+        progress. In real-world scenarios, this information would be derived
+        from the learner&apos;s activity history and profile metadata. Clicking
+        the button triggers a real-time update in the badge count and the nudge
+        message.
       </p>
     </div>
   );

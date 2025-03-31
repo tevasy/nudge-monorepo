@@ -75,9 +75,9 @@ function AdaptiveRating() {
 
       <p style={{ fontSize: "0.875rem" }}>
         This adaptive rating component personalizes its the nudge text based on
-        the user's experience level. The dropdown is included for demonstration
-        purposes. In a real-world implementation, the experience level would be
-        inferred from user profile data or activity history.
+        the user&apos;s experience level. The dropdown is included for
+        demonstration purposes. In a real-world implementation, the experience
+        level would be inferred from user profile data or activity history.
       </p>
     </div>
   );
