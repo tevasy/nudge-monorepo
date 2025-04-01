@@ -58,7 +58,7 @@ export default function AdaptiveTextArea() {
     }
   };
 
-  const renderNudge = (_value: string) => {
+  const renderNudge = () => {
     return <span>{adaptiveNudgeText}</span>;
   };
 
@@ -76,13 +76,13 @@ export default function AdaptiveTextArea() {
         nudgePosition="bottom"
       />
       <p style={{ marginTop: "1rem", fontSize: "0.875rem" }}>
-        This adaptive text area adjusts nudge message based on the reflection's
-        length, the number of reflections submitted, and the time of day. As
-        text is entered, the message evolves. A time-appropriate greeting
-        appears when the component loads or resets after a reflection is saved.
-        When the text area is focused, it selects existing text, and a nudge
-        message invites to reflect. Any present text is automatically committed
-        upon losing focus.
+        This adaptive text area adjusts nudge message based on the
+        reflection&apos;s length, the number of reflections submitted, and the
+        time of day. As text is entered, the message evolves. A time-appropriate
+        greeting appears when the component loads or resets after a reflection
+        is saved. When the text area is focused, it selects existing text, and a
+        nudge message invites to reflect. Any present text is automatically
+        committed upon losing focus.
       </p>
     </div>
   );

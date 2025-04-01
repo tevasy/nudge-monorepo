@@ -8,7 +8,7 @@ const moodDefinitions = [
 ];
 
 function getMoodLabel(value: number): string {
-  for (let mood of moodDefinitions) {
+  for (const mood of moodDefinitions) {
     if (mood.threshold !== undefined && value <= mood.threshold) {
       return mood.label;
     }

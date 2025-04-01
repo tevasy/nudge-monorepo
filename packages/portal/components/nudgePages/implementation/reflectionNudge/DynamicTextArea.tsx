@@ -17,11 +17,11 @@ export default function DynamicTextArea() {
     }, 5000);
   };
 
-  const handleBlur = (e: React.FocusEvent<HTMLTextAreaElement>): void => {
+  const handleBlur = (): void => {
     handleCommit();
   };
 
-  const renderNudge = (_value: string) => {
+  const renderNudge = () => {
     return <span>{nudgeMessage}</span>;
   };
 
