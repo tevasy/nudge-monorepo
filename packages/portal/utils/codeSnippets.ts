@@ -2032,7 +2032,7 @@ export default function DynamicTextArea() {
     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
       <TextArea
         textAreaLabel="Daily Reflection"
-        placeholder="Share the thoughts on today's progress and any target adjustments..."
+        placeholder="Share the thoughts on today's progress and any target adjustments"
         value={reflection}
         onChange={handleReflectionChange}
         onBlur={handleBlur}

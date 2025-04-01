@@ -35,7 +35,7 @@ export default function DynamicTextArea() {
     >
       <TextArea
         textAreaLabel="Daily Reflection"
-        placeholder="Share the thoughts on today's progress and any target adjustments..."
+        placeholder="Share the thoughts on today's progress and any target adjustments"
         value={reflection}
         onChange={handleReflectionChange}
         onBlur={handleBlur}
