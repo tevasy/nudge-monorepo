@@ -96,8 +96,8 @@ export default function InstallSection() {
           {textContent.implementationResources.title}
         </h2>
         <p className="mb-4">
-          Social norms nudges can be implemented through <b>Ratings</b>&nbsp;and{" "}
-          <b>Badges</b>, which are available via &nbsp;
+          Social norms nudges can be implemented through the <b>Rating</b>
+          &nbsp;and <b>Badge</b> components, which are available via &nbsp;
           <span className="font-mono text-[15px] bg-customLightLightBlue rounded-md py-1 px-1.5">
             npm install nudge-library
           </span>{" "}

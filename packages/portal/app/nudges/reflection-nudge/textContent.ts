@@ -64,18 +64,18 @@ export const textContent = {
     title: "Implementation Resources",
   },
   rating: {
-    title: "Rating",
+    title: "Mood Slider",
     content:
-      "The **Static nudge** displays default and themed popups for study reminders. The **Dynamic nudge** highlights how the component responds to user interaction by updating its content based on the selected appointment type, including a countdown before auto-closing and contextual feedback when switching between reminders. The **Adaptive nudge** presents a hydration reminder that adjusts its tone based on previous user responses, demonstrating how reminder's content can evolve using saved user engagement data.",
+      "The **Static nudge** includes a default version, a custom-themed version that displays nudge text to encourage self-awareness, and a disabled version. The **Dynamic nudge** displays a slider with mood-specific icons and labels, along with responsive nudge messages tailored to the selected mood. The **Adaptive nudge** personalizes its feedback by referencing the user's previously saved mood. When the slider loses focus, it compares the current value to the stored one and adjusts the nudge text accordingly.",
   },
   badge: {
-    title: "Badge",
+    title: "Text Area",
     content:
-      "The **Static nudge** displays default and themed popups for study reminders. The **Dynamic nudge** highlights how the component responds to user interaction by updating its content based on the selected appointment type, including a countdown before auto-closing and contextual feedback when switching between reminders. The **Adaptive nudge** presents a hydration reminder that adjusts its tone based on previous user responses, demonstrating how reminder's content can evolve using saved user engagement data.",
+      "The **Static nudge** presents a default version, a custom-themed version, and a disabled version with nudge text, motivating users to record their daily routines. The **Dynamic nudge** features a text area that responds to user interaction. When the text area loses focus, the nudge temporarily changes to confirm that the reflection has been saved. The **Adaptive nudge** adjusts its message based on the content of the reflection, the time of day, and the user's history of submissions. When a reflection is submitted, the nudge text acknowledges the update.",
   },
   apiReference: {
     title: "API Reference",
     content:
-      "The API Reference provides detailed documentation for the **Popup** component. It tab outlines **functional properties** that can be passed to a component to control its behavior, as well as **theme properties** that can be modified to customize its appearance.",
+      "The API Reference provides detailed documentation for the **Mood Slider** and **Text Area** components. Each tab outlines **functional properties** that can be passed to a component to control its behavior, as well as **theme properties** that can be modified to customize its appearance. The **Mood Slider** component inherits all functional and theme properties from the base Slider component, in addition to introducing mood-specific props and styles. The shared props are documented on the Anchoring Nudge page.",
   },
 };

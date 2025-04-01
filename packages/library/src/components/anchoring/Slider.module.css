@@ -8,6 +8,7 @@
   appearance: none;
 }
 
+/* Hide native slider thumbs */
 .inputSlider::-webkit-slider-thumb {
   opacity: 0;
   cursor: pointer;
@@ -31,10 +32,17 @@
   pointer-events: none;
 }
 
+/* Tooltip appears on hover */
 .inputSlider:hover + .customThumb + .sliderTooltip {
   opacity: 1;
 }
 
+/* When always visible, force tooltip to be shown */
+.sliderTooltip.alwaysVisible {
+  opacity: 1;
+}
+
+/* Tooltip arrow */
 .sliderTooltip::after {
   content: "";
   position: absolute;
@@ -43,6 +51,5 @@
   transform: translateX(-50%);
   border-width: var(--tooltip-triangle-width, 5px);
   border-style: solid;
-  border-color: var(--tooltip-triangle-color, var(--color-lightBlue))
-    transparent transparent;
+  border-color: var(--tooltip-triangle-color, #add8e6) transparent transparent;
 }

@@ -1747,3 +1747,372 @@ export default function AdaptiveTooltip() {
     </div>
   );
 }`;
+
+export const moodSliderSnippet = `import { MoodSlider, ThemeProvider, defaultTheme } from "nudge-library";
+
+const customTheme = {
+  ...defaultTheme,
+  moodSlider: {
+    ...defaultTheme.moodSlider,
+    tooltip: {
+      ...defaultTheme.moodSlider.tooltip,
+      backgroundColor: "#ffe5cf",
+      triangleColor: "#ffe5cf",
+    },
+    icon: {
+      ...defaultTheme.tooltip.icon,
+      fontSize: "20px",
+    },
+  },
+  slider: {
+    ...defaultTheme.slider,
+    input: {
+      ...defaultTheme.slider.input,
+      filledColor: "#fb8500",
+      emptyColor: "#fffaf6",
+    },
+    thumb: {
+      ...defaultTheme.slider.thumb,
+      background: "#fb8500",
+    },
+    tooltip: {
+      ...defaultTheme.slider.tooltip,
+      backgroundColor: "#ffe5cf",
+      triangleColor: "#ffe5cf",
+    },
+    nudgeText: {
+      ...defaultTheme.slider.nudgeText,
+      backgroundColor: "#ffe5cf",
+    },
+  },
+};
+
+export default function MoodSliderExample() {
+  return (
+    <div>
+      <MoodSlider
+        id="defaultMoodSlider"
+        ariaLabel="default Mood Slider"
+        sliderLabel="Default version"
+        defaultValue={60}
+        min={0}
+        max={100}
+        tooltipMode="icon"
+        alwaysShowTooltip
+      />
+      <ThemeProvider theme={customTheme}>
+        <MoodSlider
+          id="customMoodSlider"
+          ariaLabel="custom Mood Slider"
+          sliderLabel="Custom version"
+          defaultValue={80}
+          min={0}
+          max={100}
+          tooltipMode="text"
+          nudgeText="Reflect on the mood to improve self-awareness."
+        />
+      </ThemeProvider>
+      <MoodSlider
+        id="disabledMoodSlider"
+        ariaLabel="disabled Mood Slider"
+        sliderLabel="Disabled version"
+        disabled
+        defaultValue={30}
+        min={0}
+        max={100}
+        showValueTooltip={false}
+        tooltipMode="text"
+      />
+    </div>
+  );
+}`;
+
+export const moodSliderDynamicSnippet = `import React, { useState } from "react";
+import { MoodSlider } from "nudge-library";
+
+const workoutMoodDefinitions = [
+  { id: "exhausted", icon: "😫", label: "Exhausted", threshold: 20 },
+  { id: "tired", icon: "😓", label: "Tired", threshold: 40 },
+  { id: "energized", icon: "💪", label: "Energized", threshold: 60 },
+  { id: "refreshed", icon: "🤩", label: "Refreshed", threshold: 80 },
+  { id: "amazing", icon: "😁", label: "Amazing", threshold: 100 },
+];
+
+export default function DynamicMoodSlider() {
+  const [moodValue, setMoodValue] = useState(50);
+  const [selectedMood, setSelectedMood] = useState("energized");
+
+  const handleMoodChange = (moodId) => {
+    setSelectedMood(moodId);
+  };
+
+  const handleSliderChange = (value) => {
+    setMoodValue(value);
+  };
+
+  const renderNudge = (value) => {
+    const currentMood =
+      workoutMoodDefinitions.find((m) => m.id === selectedMood) ||
+      workoutMoodDefinitions[0];
+
+    let baseText = "";
+    if (value < 20) baseText = "Rest up.";
+    else if (value < 40) baseText = "Slow down next time.";
+    else if (value < 60) baseText = "Keep it up!";
+    else if (value < 80) baseText = "Good progress!";
+    else baseText = "Great job!";
+    
+    return \`Feeling \${currentMood.label}? \${baseText}\`;
+  };
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <MoodSlider
+        sliderLabel="Post-workout mood"
+        moodDefinitions={workoutMoodDefinitions}
+        value={moodValue}
+        onChange={handleSliderChange}
+        onCommit={handleSliderChange}
+        onMoodChange={handleMoodChange}
+        tooltipMode="text"
+        showIcon={true}
+        renderNudge={renderNudge}
+      />
+    </div>
+  );
+}`;
+
+export const moodSliderAdaptiveSnippet = `import React, { useState } from "react";
+import { MoodSlider } from "nudge-library";
+
+const moodDefinitions = [
+  { id: "confused", icon: "😕", label: "Confused", threshold: 33 },
+  { id: "reflective", icon: "🤔", label: "Reflective", threshold: 66 },
+  { id: "enlightened", icon: "🤩", label: "Enlightened" },
+];
+
+function getMoodLabel(value) {
+  for (let mood of moodDefinitions) {
+    if (mood.threshold !== undefined && value <= mood.threshold) {
+      return mood.label;
+    }
+  }
+  return moodDefinitions[moodDefinitions.length - 1].label;
+}
+
+export default function AdaptiveMoodSlider() {
+  const storedMoodStr = localStorage.getItem("preferredLessonMood");
+  const initialMood = storedMoodStr === null ? 50 : Number(storedMoodStr);
+
+  const [currentMood, setCurrentMood] = useState(initialMood);
+  const [previousMood, setPreviousMood] = useState(initialMood);
+
+  const handleMoodChange = (value) => {
+    setCurrentMood(value);
+    localStorage.setItem("preferredLessonMood", value.toString());
+  };
+
+  const handleBlur = (event) => {
+    const newValue = Number(event.target.value);
+    setPreviousMood(newValue);
+  };
+
+  const currentMoodLabel = getMoodLabel(currentMood);
+  const previousMoodLabel = getMoodLabel(previousMood);
+
+  const adaptiveNudgeText =
+    currentMoodLabel === previousMoodLabel
+      ? \`Self-assessment remains at \${currentMoodLabel}. Take moment to summarize key takeaways from the lesson.\`
+      : currentMood < previousMood
+      ? \`Self-assessment dropped from \${previousMoodLabel} to \${currentMoodLabel}. Consider revisiting challenging concepts for greater clarity.\`
+      : \`Self-assessment increased from \${previousMoodLabel} to \${currentMoodLabel}. Great progress!\`;
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <MoodSlider
+        sliderLabel="Reflect on the lesson:"
+        moodDefinitions={moodDefinitions}
+        min={0}
+        max={100}
+        value={currentMood}
+        onChange={handleMoodChange}
+        onBlur={handleBlur}
+        renderNudge={() => adaptiveNudgeText}
+        tooltipMode="text"
+      />
+    </div>
+  );
+}`;
+
+export const textAreaSnippet = `import { TextArea, ThemeProvider, defaultTheme } from "nudge-library";
+
+const customTheme = {
+  ...defaultTheme,
+  textArea: {
+    ...defaultTheme.textArea,
+    input: {
+      ...defaultTheme.textArea.input,
+      placeholderColor: "#c3c4c5",
+    },
+    nudgeText: {
+      ...defaultTheme.textArea.nudgeText,
+      backgroundColor: "#ffe5cf",
+    },
+    hover: {
+      hoverBorder: "2px solid #fb8500",
+    },
+  },
+};
+
+export default function TextAreaExample() {
+  return (
+    <div>
+      <TextArea
+        defaultValue=""
+        placeholder="Enter daily habits here"
+        textAreaLabel="Default version"
+        nudgeText="Log daily habits to monitor physical and mental well-being."
+        id="defaultTextArea"
+        ariaLabel="Default Text Box"
+        nudgePosition="bottom"
+      />
+      <ThemeProvider theme={customTheme}>
+        <TextArea
+          rows={5}
+          defaultValue=""
+          placeholder="Enter daily habits here"
+          textAreaLabel="Custom version"
+          nudgeText="Log daily habits to monitor physical and mental well-being."
+          id="customTextArea"
+          ariaLabel="Custom Text Area"
+          nudgePosition="bottom"
+        />
+      </ThemeProvider>
+      <TextArea
+        defaultValue="Walked 8,000 steps and slept 7 hours."
+        textAreaLabel="Disabled version"
+        nudgeText="Log daily habits to monitor physical and mental well-being."
+        id="disabledTextArea"
+        ariaLabel="Disabled Text Area"
+        nudgePosition="top"
+        disabled={true}
+      />
+    </div>
+  );
+}`;
+
+export const textAreaDynamicSnippet = `import React, { useState } from "react";
+import { TextArea } from "nudge-library";
+
+export default function DynamicTextArea() {
+  const originalNudge = "Small steps lead to big changes!";
+  const [reflection, setReflection] = useState("");
+  const [nudgeMessage, setNudgeMessage] = useState(originalNudge);
+
+  const handleReflectionChange = (value) => {
+    setReflection(value);
+  };
+
+  const handleCommit = () => {
+    setNudgeMessage("Reflection saved!");
+    setTimeout(() => {
+      setNudgeMessage(originalNudge);
+    }, 5000);
+  };
+
+  const handleBlur = (e) => {
+    handleCommit();
+  };
+
+  const renderNudge = () => {
+    return <span>{nudgeMessage}</span>;
+  };
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <TextArea
+        textAreaLabel="Daily Reflection"
+        placeholder="Share the thoughts on today's progress and any target adjustments..."
+        value={reflection}
+        onChange={handleReflectionChange}
+        onBlur={handleBlur}
+        renderNudge={renderNudge}
+        nudgePosition="bottom"
+      />
+    </div>
+  );
+}`;
+
+export const textAreaAdaptiveSnippet = `import React, { useState } from "react";
+import { TextArea } from "nudge-library";
+
+export default function AdaptiveTextArea() {
+  const getTimeBasedGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return "Good morning!";
+    else if (hour < 18) return "Good afternoon!";
+    else return "Good evening!";
+  };
+
+  const initialNudgeText = \`\${getTimeBasedGreeting()} Reflect on today's lesson: what are the key takeaways?\`;
+
+  const [reflection, setReflection] = useState("");
+  const [adaptiveNudgeText, setAdaptiveNudgeText] = useState(initialNudgeText);
+  const [reflectionCount, setReflectionCount] = useState(0);
+
+  const handleChange = (value) => {
+    setReflection(value);
+    const len = value.trim().length;
+    if (len === 0) {
+      setAdaptiveNudgeText("The reflection is empty. Summarize the takeaways.");
+    } else if (len < 30) {
+      setAdaptiveNudgeText("Consider adding more details to capture the thoughts.");
+    } else if (len < 100) {
+      setAdaptiveNudgeText("Good start! Maybe elaborate a bit more on the lesson.");
+    } else {
+      setAdaptiveNudgeText("Great detailed reflection!");
+    }
+  };
+
+  const handleCommit = (value) => {
+    if (value.trim() === "") return;
+    const newCount = reflectionCount + 1;
+    setReflectionCount(newCount);
+    setAdaptiveNudgeText(\`Reflection #\${newCount} saved!\`);
+    setReflection("");
+    setTimeout(() => {
+      setAdaptiveNudgeText(\`\${getTimeBasedGreeting()} Reflect on today's lesson: what are the key takeaways?\`);
+    }, 5000);
+  };
+
+  const handleFocus = (e) => {
+    setAdaptiveNudgeText("Take a time to reflect. What was learned today?");
+    e.target.select();
+  };
+
+  const handleBlur = (e) => {
+    if (e.target.value.trim() !== "") {
+      handleCommit(e.target.value);
+    }
+  };
+
+  const renderNudge = () => {
+    return <span>{adaptiveNudgeText}</span>;
+  };
+
+  return (
+    <div>
+      <TextArea
+        textAreaLabel="Daily Lesson Reflection"
+        placeholder="Summarize key takeaways from today's lesson"
+        value={reflection}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onCommit={handleCommit}
+        renderNudge={renderNudge}
+        nudgePosition="bottom"
+      />
+    </div>
+  );
+}`;

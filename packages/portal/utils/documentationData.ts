@@ -354,6 +354,13 @@ export const sliderProps: PropsTableRow[] = [
     description: "Controls the display of a tooltip showing the current value.",
   },
   {
+    propName: "alwaysShowTooltip",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Forces the tooltip to remain visible at all times, rather than only on hover or focus.",
+  },
+  {
     propName: "onChange",
     type: "(value: number) => void",
     defaultValue: "–",
@@ -890,8 +897,8 @@ export const tooltipProps: PropsTableRow[] = [
   },
   {
     propName: "animationType",
-    type: `"fade" | "slide" | "none"`,
-    defaultValue: `"fade"`,
+    type: `fade | slide | none`,
+    defaultValue: `fade`,
     description:
       "Controls the animation style used when the tooltip appears and disappears.",
   },
@@ -940,6 +947,143 @@ export const tooltipProps: PropsTableRow[] = [
     defaultValue: "–",
     description:
       "Optional icon displayed inside the tooltip next to the message.",
+  },
+];
+
+export const moodSliderProps: PropsTableRow[] = [
+  {
+    propName: "moodDefinitions",
+    type: "MoodDefinition[]",
+    defaultValue: `Moods: bad, okay, good`,
+    description:
+      "Defines the moods shown along the slider, including icon, label, and optional threshold for mapping values.",
+  },
+  {
+    propName: "onMoodChange",
+    type: "(moodId: string) => void",
+    defaultValue: "–",
+    description:
+      "Callback that runs when the slider value changes and a new mood is selected. Provides the corresponding mood's `id`.",
+  },
+  {
+    propName: "tooltipMode",
+    type: `value | text | icon`,
+    defaultValue: `value`,
+    description:
+      "Controls what is shown inside the tooltip: the raw numeric value, the mood label, or the mood icon. Falls back to `value` if `showIcon` is false and mode is `icon`.",
+  },
+  {
+    propName: "showIcon",
+    type: "boolean",
+    defaultValue: "true",
+    description:
+      "Whether to display the mood icon in the tooltip. If false, `tooltipMode: 'icon'` has no effect.",
+  },
+];
+
+export const textAreaProps: PropsTableRow[] = [
+  {
+    propName: "textAreaLabel",
+    type: "string",
+    defaultValue: "–",
+    description: "Label displayed above the text area.",
+  },
+  {
+    propName: "placeholder",
+    type: "string",
+    defaultValue: "–",
+    description: "Text displayed when the text area is empty.",
+  },
+  {
+    propName: "value",
+    type: "string",
+    defaultValue: "–",
+    description:
+      "Current text area value (controlled mode). Cannot be used with `defaultValue`.",
+  },
+  {
+    propName: "defaultValue",
+    type: "string",
+    defaultValue: "–",
+    description:
+      "Initial value for uncontrolled mode. Cannot be used with `value`.",
+  },
+  {
+    propName: "onChange",
+    type: "(value: string) => void",
+    defaultValue: "–",
+    description: "Callback fired when the text area value changes.",
+  },
+  {
+    propName: "onCommit",
+    type: "(value: string) => void",
+    defaultValue: "–",
+    description:
+      "Callback triggered when the user finishes interacting with the text area.",
+  },
+  {
+    propName: "onFocus",
+    type: "React.FocusEventHandler<HTMLTextAreaElement>",
+    defaultValue: "–",
+    description: "Event handler called when the text area gains focus.",
+  },
+  {
+    propName: "onBlur",
+    type: "React.FocusEventHandler<HTMLTextAreaElement>",
+    defaultValue: "–",
+    description: "Event handler called when the text area loses focus.",
+  },
+  {
+    propName: "disabled",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Disables the text area if true.",
+  },
+  {
+    propName: "nudgeText",
+    type: "string",
+    defaultValue: "–",
+    description: "Message displayed as contextual guidance near the text area.",
+  },
+  {
+    propName: "nudgeVisible",
+    type: "boolean",
+    defaultValue: "true",
+    description: "Controls whether the nudge text is visible.",
+  },
+  {
+    propName: "nudgePosition",
+    type: `top | bottom | left | right`,
+    defaultValue: `bottom`,
+    description:
+      "Determines where the nudge text appears relative to the text area.",
+  },
+  {
+    propName: "renderNudge",
+    type: "(value: string) => React.ReactNode",
+    defaultValue: "–",
+    description:
+      "Function that renders a custom nudge element based on the current text area value.",
+  },
+  {
+    propName: "id",
+    type: "string",
+    defaultValue: "–",
+    description:
+      "Sets the `id` attribute for the text area and associates it with the label and aria-describedby.",
+  },
+  {
+    propName: "ariaLabel",
+    type: "string",
+    defaultValue: "–",
+    description:
+      "Accessibility label for screen readers. Defaults to `textAreaLabel` if not provided.",
+  },
+  {
+    propName: "rows",
+    type: "number",
+    defaultValue: "4",
+    description: "Number of visible text lines in the text area.",
   },
 ];
 
@@ -1282,7 +1426,6 @@ export const sliderThemeProps = [
       "padding",
       "borderRadius",
       "whiteSpace",
-      "top",
       "triangleColor",
       "triangleWidth",
       "zIndex",
@@ -1318,7 +1461,7 @@ export const sliderThemeProps = [
       "top",
       "borderRadius",
       "background",
-      "shadow",
+      "boxShadow",
     ],
     description: "Styling for the slider thumb.",
   },
@@ -1741,6 +1884,105 @@ export const tooltipThemeProps = [
   },
 ];
 
+export const moodSliderThemeProps = [
+  {
+    propName: "tooltip",
+    cssProperties: [
+      "fontSize",
+      "backgroundColor",
+      "color",
+      "padding",
+      "borderRadius",
+      "triangleColor",
+      "triangleWidth",
+      "zIndex",
+      "bottom",
+    ],
+    description: "Styles for the tooltip displayed above the slider thumb.",
+  },
+  {
+    propName: "icon",
+    cssProperties: ["fontSize"],
+    description: "Styles for the mood icon rendered inside the tooltip.",
+  },
+];
+
+export const textAreaThemeProps = [
+  {
+    propName: "wrapper",
+    cssProperties: ["–"],
+    description: "Wrapper style for the entire text area component.",
+  },
+  {
+    propName: "textAreaLabel",
+    cssProperties: ["fontSize", "color", "fontWeight", "marginTop"],
+    description: "Styles for the label rendered above the text area.",
+  },
+  {
+    propName: "input",
+    cssProperties: [
+      "padding",
+      "fontSize",
+      "color",
+      "background",
+      "borderRadius",
+      "transition",
+      "baseBorder",
+      "lineHeight",
+      "placeholderColor",
+      "placeholderFontSize",
+    ],
+    description: "Styles applied to the text area input field.",
+  },
+  {
+    propName: "hover",
+    cssProperties: ["hoverBorder"],
+    description: "Styles applied to the text area input when hovered.",
+  },
+  {
+    propName: "nudgeText",
+    cssProperties: [
+      "marginTop",
+      "padding",
+      "backgroundColor",
+      "borderRadius",
+      "fontSize",
+      "color",
+      "transition",
+    ],
+    description: "Styles for the nudge text providing contextual guidance.",
+  },
+  {
+    propName: "disabled",
+    cssProperties: ["opacity", "pointerEvents", "cursor"],
+    description: "Styles applied when the text area is disabled.",
+  },
+  {
+    propName: "nudgeLeft",
+    cssProperties: ["marginRight"],
+    description:
+      "Styling for the nudge text when positioned to the left of the text area.",
+  },
+  {
+    propName: "nudgeRight",
+    cssProperties: ["marginLeft"],
+    description:
+      "Styling for the nudge text when positioned to the right of the textarea.",
+  },
+  {
+    propName: "nudgeTop",
+    cssProperties: ["marginBottom"],
+    description:
+      "Styling for the nudge text when positioned above the textarea.",
+  },
+  {
+    propName: "nudgeBottom",
+    cssProperties: ["marginTop"],
+    description:
+      "Styling for the nudge text when positioned below the textarea.",
+  },
+];
+
 export const documentationData = {
   defaultOptions: [
     {
@@ -1788,6 +2030,18 @@ export const documentationData = {
       title: "Badge",
       functionalProps: badgeProps,
       themeProps: badgeThemeProps,
+    },
+  ],
+  reflection: [
+    {
+      title: "Mood Slider",
+      functionalProps: moodSliderProps,
+      themeProps: moodSliderThemeProps,
+    },
+    {
+      title: "Text Area",
+      functionalProps: textAreaProps,
+      themeProps: textAreaThemeProps,
     },
   ],
   confidence: [

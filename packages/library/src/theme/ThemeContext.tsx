@@ -138,6 +138,22 @@ export type Theme = {
     actionButton: ThemeCSS;
     icon: ThemeCSS;
   };
+  moodSlider: {
+    tooltip: ThemeCSS;
+    icon: ThemeCSS;
+  };
+  textArea: {
+    wrapper: ThemeCSS;
+    textAreaLabel: ThemeCSS;
+    input: ThemeCSS;
+    hover: ThemeCSS;
+    nudgeText: ThemeCSS;
+    disabled: ThemeCSS;
+    nudgeLeft: ThemeCSS;
+    nudgeRight: ThemeCSS;
+    nudgeTop: ThemeCSS;
+    nudgeBottom: ThemeCSS;
+  };
 };
 
 export const defaultTheme: Theme = {
@@ -378,13 +394,14 @@ export const defaultTheme: Theme = {
       width: "100%",
     },
     tooltip: {
+      display: "flex",
+      alignItems: "center",
       fontSize: "13px",
       backgroundColor: "var(--color-lightBlue)",
       color: "var(--color-black)",
       padding: "4px 8px",
       borderRadius: "4px",
       whiteSpace: "nowrap",
-      top: "-30px",
       triangleColor: "var(--color-lightBlue)",
       triangleWidth: "5px",
       zIndex: "5",
@@ -394,7 +411,7 @@ export const defaultTheme: Theme = {
       fontSize: "var(--font-size-md)",
       color: "var(--color-black)",
       fontWeight: "500",
-      marginBottom: "10px",
+      marginBottom: "16px",
     },
     input: {
       width: "100%",
@@ -412,7 +429,9 @@ export const defaultTheme: Theme = {
       top: "4px",
       borderRadius: "50%",
       background: "var(--color-darkerBlue)",
-      shadow: "0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06)",
+      boxShadow:
+        "0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06)",
+      cursor: "pointer",
     },
     value: {
       fontSize: "var(--font-size-sm)",
@@ -443,6 +462,25 @@ export const defaultTheme: Theme = {
     },
     nudgeRight: {
       marginLeft: "24px",
+    },
+  },
+  moodSlider: {
+    tooltip: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontSize: "13px",
+      backgroundColor: "var(--color-lightBlue)",
+      color: "var(--color-black)",
+      padding: "8px 10px",
+      borderRadius: "4px",
+      triangleColor: "var(--color-lightBlue)",
+      triangleWidth: "5px",
+      zIndex: "5",
+      bottom: "calc(100% + 3px)",
+    },
+    icon: {
+      fontSize: "22px",
     },
   },
   textBox: {
@@ -695,6 +733,52 @@ export const defaultTheme: Theme = {
       wordBreak: "break-word",
     },
     icon: { fontSize: "var(--font-size-xl)", color: "var(--color-black)" },
+  },
+  textArea: {
+    wrapper: {},
+    textAreaLabel: {
+      fontSize: "var(--font-size-md)",
+      color: "var(--color-black)",
+      fontWeight: "500",
+      marginTop: "10px",
+    },
+    input: {
+      padding: "10px",
+      fontSize: "var(--font-size-md)",
+      color: "var(--color-black)",
+      background: "white",
+      borderRadius: "var(--border-radius-sm)",
+      transition: "border-color 0.2s ease-in-out",
+      baseBorder: "var(--border-gray)",
+      lineHeight: "1.3",
+      placeholderColor: "var(--color-darkGray)",
+      placeholderFontSize: "var(--font-size-md)",
+    },
+    hover: {
+      hoverBorder: "var(--border-selected)",
+    },
+    nudgeText: {
+      marginTop: "4px",
+      padding: "6px 10px",
+      backgroundColor: "var(--color-lightLightBlue)",
+      borderRadius: "6px",
+      fontSize: "var(--font-size-sm)",
+      color: "var(--color-black)",
+      transition: "opacity 0.3s ease-in-out",
+    },
+    disabled: {
+      opacity: 0.4,
+      pointerEvents: "none",
+      cursor: "not-allowed",
+    },
+    nudgeLeft: {
+      marginRight: "12px",
+    },
+    nudgeRight: {
+      marginLeft: "12px",
+    },
+    nudgeTop: { marginBottom: "6px" },
+    nudgeBottom: { marginTop: "6px" },
   },
 };
 

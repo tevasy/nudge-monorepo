@@ -1,0 +1,21 @@
+.textArea {
+  box-sizing: border-box;
+  border: var(--base-border, var(--border-gray));
+  transition: border-color 0.2s ease-in-out;
+  outline: none;
+  resize: vertical;
+  font-family: inherit;
+  width: 100%;
+}
+
+.textArea:hover,
+.textArea:focus {
+  outline: none;
+  border: var(--hover-border, var(--border-selected));
+}
+
+.textArea::placeholder {
+  color: var(--placeholder-color);
+  font-size: var(--placeholder-font-size);
+  font-family: inherit;
+}

@@ -7,8 +7,8 @@ import { textContent } from "./textContent";
 import ReactMarkdown from "react-markdown";
 import { documentationData } from "../../../utils/documentationData";
 import ComponentDocumentationTabs from "../../../components/nudgePages/PropsTables/ComponentDocumentationTabs";
-import RatingDocs from "../../../components/nudgePages/implementation/socialNormsNudge/RatingDocs";
-import BadgeDocs from "../../../components/nudgePages/implementation/socialNormsNudge/BadgeDocs";
+import MoodSliderDocs from "../../../components/nudgePages/implementation/reflectionNudge/MoodSliderDocs";
+import TextAreaDocs from "../../../components/nudgePages/implementation/reflectionNudge/TextAreaDocs";
 
 export default function InstallSection() {
   return (
@@ -96,37 +96,46 @@ export default function InstallSection() {
           {textContent.implementationResources.title}
         </h2>
         <p className="mb-4">
-          Reminder nudges can be implemented using the <b>Popup</b> component,
-          available via &nbsp;
+          Reflection nudges can be implemented through the <b>Mood Slider</b>
+          &nbsp;and <b>Text Area</b> components, which are available via &nbsp;
           <span className="font-mono text-[15px] bg-customLightLightBlue rounded-md py-1 px-1.5">
             npm install nudge-library
           </span>{" "}
           or &nbsp;
           <span className="font-mono text-[15px] bg-customLightLightBlue rounded-md py-1 px-1.5">
-            npm install nudge-library/reminder
+            npm install nudge-library/reflection
           </span>
-          . The component&apos;s usage examples are shown in three tabs: Static
-          nudge, Dynamic nudge, and Adaptive nudge. All tabs include code
-          snippets for integration, and the section concludes with an API
-          Reference outlining both functional and theme properties.
+          . Each component is presented with three tabs: Static nudge, Dynamic
+          nudge, and Adaptive nudge.{" "}
         </p>
-        <section id="rating" className="scroll-mt-64">
+        <p className="mb-4">
+          The <b>Static nudge</b> covers basic component usage, including static
+          properties and customization options. The <b>Dynamic nudge</b>
+          &nbsp;demonstrates how components respond to user interactions through
+          dynamic properties. The <b>Adaptive nudge</b> illustrates how each
+          component can shift its behavior based on external factors like time
+          of day, past user choices, or other contextual data. All tabs include{" "}
+          <b>code snippets</b>&nbsp;detailing how to integrate these components
+          into the project. <b>API Reference section </b> details functional and
+          theme properties for the components.
+        </p>
+        <section id="moodSlider" className="scroll-mt-64">
           <h3 className="text-xl font-bold mt-10 mb-4">
             {textContent.rating.title}
           </h3>
           <div className="mb-4">
             <ReactMarkdown>{textContent.rating.content}</ReactMarkdown>
           </div>
-          <RatingDocs />
+          <MoodSliderDocs />
         </section>
-        <section id="badge" className="scroll-mt-64">
+        <section id="textArea" className="scroll-mt-64">
           <h3 className="text-xl font-bold mt-10 mb-4">
             {textContent.badge.title}
           </h3>
           <div className="mb-4">
             <ReactMarkdown>{textContent.badge.content}</ReactMarkdown>
           </div>
-          <BadgeDocs />
+          <TextAreaDocs />
         </section>
         <section id="api-reference" className="scroll-mt-64">
           <h3 className="text-xl font-bold mt-10 mb-4">
@@ -135,7 +144,7 @@ export default function InstallSection() {
           <div className="mb-4">
             <ReactMarkdown>{textContent.apiReference.content}</ReactMarkdown>
           </div>
-          <ComponentDocumentationTabs tabsData={documentationData.reminder} />
+          <ComponentDocumentationTabs tabsData={documentationData.reflection} />
         </section>
       </section>
     </div>

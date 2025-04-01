@@ -41,6 +41,11 @@ export const menuItemsMap: Record<string, MenuItem[]> = {
     { id: "badge", label: "Badge" },
     { id: "api-reference", label: "API Reference" },
   ],
+  "/nudges/reflection-nudge": [
+    { id: "moodSlider", label: "Mood Slider" },
+    { id: "textArea", label: "Text Area" },
+    { id: "api-reference", label: "API Reference" },
+  ],
   "/nudges/confidence-nudge": [
     { id: "tooltip", label: "Tooltip" },
     { id: "api-reference", label: "API Reference" },
