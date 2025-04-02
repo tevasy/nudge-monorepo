@@ -68,7 +68,7 @@ export default function DynamicReminder() {
         gap: "2rem",
       }}
     >
-      <p className="font-medium">
+      <p style={{ fontWeight: "500" }}>
         Select the appointment type to receive a reminder:
       </p>
       <div

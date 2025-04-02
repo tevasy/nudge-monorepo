@@ -1610,7 +1610,7 @@ export default function DynamicTooltip() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-      <p className="font-medium">Select the answer:</p>
+      <p style={{ fontWeight: "500" }}>Select the answer:</p>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         <button
           onClick={handleCorrectAnswer}
@@ -2113,6 +2113,380 @@ export default function AdaptiveTextArea() {
         renderNudge={renderNudge}
         nudgePosition="bottom"
       />
+    </div>
+  );
+}`;
+
+export const dialogSnippet = `import React, { useState } from "react";
+import { Dialog, ThemeProvider, defaultTheme } from "nudge-library";
+
+const customTheme = {
+  ...defaultTheme,
+  dialog: {
+    ...defaultTheme.dialog,
+    header: {
+      ...defaultTheme.dialog.header,
+      backgroundColor: "#ffe5cf",
+      border: "none",
+    },
+    confirmButton: {
+      ...defaultTheme.dialog.confirmButton,
+      backgroundColor: "#fb8500",
+    },
+  },
+  textBox: {
+    ...defaultTheme.textBox,
+    input: {
+      ...defaultTheme.textBox.input,
+      placeholderColor: "#c3c4c5",
+    },
+    hover: {
+      hoverBorder: "1.5px solid #fb8500",
+    },
+  },
+};
+
+export default function DialogExample() {
+  const [dialogConfirmationVisible, setDialogConfirmationVisible] = useState(false);
+  const [dialogInputVisible, setDialogInputVisible] = useState(false);
+  const [dialogThemedVisible, setDialogThemedVisible] = useState(false);
+  const [confirmationInput, setConfirmationInput] = useState("");
+
+  const handleConfirm = () => {
+    console.log("Confirmed:", confirmationInput);
+    setConfirmationInput("");
+    setDialogConfirmationVisible(false);
+    setDialogInputVisible(false);
+    setDialogThemedVisible(false);
+  };
+
+  const handleCancel = () => {
+    setConfirmationInput("");
+    setDialogConfirmationVisible(false);
+    setDialogInputVisible(false);
+    setDialogThemedVisible(false);
+  };
+
+  return (
+    <div>
+      <p className="font-medium -mb-3">Default Version</p>
+      <button className="button-popup" onClick={() => setDialogConfirmationVisible(true)}>
+        Confirmation Dialog
+      </button>
+      <Dialog
+        id="confirmation-dialog"
+        ariaLabel="Confirmation Dialog"
+        visible={dialogConfirmationVisible}
+        title="Delete Confirmation"
+        message="Confirm deletion of this item? This action is irreversible and will result in permanent loss of data."
+        confirmButtonText="Delete"
+        cancelButtonText="Cancel"
+        onConfirm={handleConfirm}
+        onCancel={handleCancel}
+        onClose={() => setDialogConfirmationVisible(false)}
+      />
+
+      <button className="button-popup" onClick={() => setDialogInputVisible(true)}>
+        Input Dialog
+      </button>
+      <Dialog
+        id="input-dialog"
+        ariaLabel="Input Dialog"
+        visible={dialogInputVisible}
+        title="Delete Confirmation"
+        message="Confirm deletion of this item? This action is irreversible and will result in permanent loss of data."
+        animationType="slide"
+        requiresInput={true}
+        confirmationPrompt="Please type in DELETE to continue."
+        inputPlaceholder="Type DELETE"
+        expectedInput="DELETE"
+        confirmationValue={confirmationInput}
+        onInputChange={setConfirmationInput}
+        confirmButtonText="Delete"
+        cancelButtonText="Cancel"
+        onConfirm={handleConfirm}
+        onCancel={handleCancel}
+        onClose={() => setDialogInputVisible(false)}
+      />
+
+      <p className="font-medium -mb-3">Custom Version</p>
+      <button className="button-popup" onClick={() => setDialogThemedVisible(true)}>
+        Themed Dialog
+      </button>
+      <ThemeProvider theme={customTheme}>
+        <Dialog
+          id="themed-dialog"
+          ariaLabel="Themed Dialog"
+          visible={dialogThemedVisible}
+          title="Delete Confirmation"
+          message="Confirm deletion of this item? This action is irreversible and will result in permanent loss of data."
+          requiresInput={true}
+          closeOutside={true}
+          confirmationPrompt="Please type in DELETE to continue."
+          inputPlaceholder="Type DELETE"
+          expectedInput="DELETE"
+          confirmationValue={confirmationInput}
+          onInputChange={setConfirmationInput}
+          confirmButtonText="Delete"
+          cancelButtonText="Cancel"
+          onConfirm={handleConfirm}
+          onCancel={handleCancel}
+          onClose={() => setDialogThemedVisible(false)}
+        />
+      </ThemeProvider>
+    </div>
+  );
+}`;
+
+export const dialogDynamicSnippet = `import React, { useState } from "react";
+import { Dialog } from "nudge-library";
+
+export default function DynamicDialog() {
+  const [visibleDisable, setVisibleDisable] = useState(false);
+  const [visibleEnable, setVisibleEnable] = useState(false);
+  const [confirmationValue, setConfirmationValue] = useState("");
+  const [is2FADisabled, setIs2FADisabled] = useState(false);
+
+  const expectedInput = "DISABLE 2FA";
+
+  const openDisableDialog = () => setVisibleDisable(true);
+  const closeDisableDialog = () => {
+    setConfirmationValue("");
+    setVisibleDisable(false);
+  };
+
+  const confirmDisable = () => {
+    setVisibleDisable(false);
+    setTimeout(() => {
+      setIs2FADisabled(true);
+      setConfirmationValue("");
+    }, 400);
+  };
+
+  const openEnableDialog = () => setVisibleEnable(true);
+  const closeEnableDialog = () => setVisibleEnable(false);
+
+  const confirmEnable = () => {
+    setVisibleEnable(false);
+    setTimeout(() => {
+      setIs2FADisabled(false);
+    }, 300);
+  };
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <p style={{ fontWeight: "500" }}>
+        Managing Two-Factor Authentication (2FA) in Account Settings
+      </p>
+      <button
+        className="button-popup"
+        onClick={is2FADisabled ? openEnableDialog : openDisableDialog}
+      >
+        {is2FADisabled ? "Enable 2FA" : "Disable 2FA"}
+      </button>
+
+      <p style={{ marginTop: "-10px" }}>
+        {is2FADisabled
+          ? "2FA is currently disabled. Press the button to enable it again."
+          : "2FA is currently enabled. Press the button to disable it."}
+      </p>
+
+      {!is2FADisabled && (
+        <Dialog
+          id="dialog-disable-2fa"
+          title="Disable Two-Factor Authentication?"
+          message="Disabling 2FA removes an important layer of account protection. This action is not recommended unless necessary."
+          visible={visibleDisable}
+          onOpen={() => console.log("Disable 2FA dialog opened")}
+          onClose={closeDisableDialog}
+          onConfirm={confirmDisable}
+          onCancel={closeDisableDialog}
+          requiresInput={true}
+          confirmationPrompt={\`Please type \${expectedInput} to proceed.\`}
+          inputPlaceholder="Type the phrase here"
+          confirmationValue={confirmationValue}
+          expectedInput={expectedInput}
+          onInputChange={setConfirmationValue}
+          autoClose={true}
+          autoCloseDelay={12000}
+          animationType="fade"
+          animationDuration={400}
+          dismissible={true}
+          confirmButtonText="Yes, Disable 2FA"
+          cancelButtonText="No, Keep It On"
+          ariaLabel="Disable 2FA Confirmation Dialog"
+          inputProps={{
+            id: "2fa-input-box",
+            placeholder: expectedInput,
+            disabled: false,
+            ariaLabel: "Type DISABLE 2FA to confirm",
+            nudgeVisible: true,
+            renderNudge: (val) => {
+              if (!val) {
+                return <span style={{ color: "gray" }}>No input entered.</span>;
+              }
+              if (val === expectedInput) {
+                return <span style={{ color: "green" }}>Confirmation phrase accepted.</span>;
+              }
+              return <span>Input must match "{expectedInput}" exactly.</span>;
+            },
+          }}
+        />
+      )}
+
+      {is2FADisabled && (
+        <Dialog
+          id="dialog-enable-2fa"
+          title="Enable Two-Factor Authentication?"
+          message="Enabling 2FA is strongly recommended to improve account security. Proceed with activation?"
+          visible={visibleEnable}
+          onClose={closeEnableDialog}
+          onConfirm={confirmEnable}
+          onCancel={closeEnableDialog}
+          requiresInput={false}
+          autoClose={false}
+          animationType="slide"
+          animationDuration={300}
+          dismissible={true}
+          confirmButtonText="Enable 2FA"
+          cancelButtonText="Cancel"
+          ariaLabel="Enable 2FA Confirmation Dialog"
+        />
+      )}
+    </div>
+  );
+}`;
+
+export const dialogAdaptiveSnippet = `import React, { useState, useEffect } from "react";
+import { Dialog } from "nudge-library";
+
+export default function AdaptiveDialog() {
+  const [deviceType, setDeviceType] = useState("trusted");
+
+  const [visible, setVisible] = useState(false);
+  const [requiresInput, setRequiresInput] = useState(false);
+  const [expectedInput, setExpectedInput] = useState("");
+  const [confirmationValue, setConfirmationValue] = useState("");
+  const [confirmationPrompt, setConfirmationPrompt] = useState("");
+  const [frictionReason, setFrictionReason] = useState("");
+
+  const [statusMessage, setStatusMessage] = useState(null);
+
+  useEffect(() => {
+    const needsInput = deviceType === "unrecognized";
+    setRequiresInput(needsInput);
+
+    const reasons = [];
+    if (deviceType === "unrecognized") reasons.push("Unrecognized device");
+
+    setFrictionReason(reasons.join(". ") + ".");
+
+    if (needsInput) {
+      const confirmText = \`DELETE ACCOUNT\`;
+      setExpectedInput(confirmText);
+      setConfirmationPrompt(\`To proceed, type \${confirmText} in the field below.\`);
+    } else {
+      setExpectedInput("");
+      setConfirmationPrompt("");
+    }
+  }, [deviceType]);
+
+  const handleConfirm = () => {
+    setStatusMessage("✅ Account has been permanently deleted.");
+    setVisible(false);
+  };
+
+  const handleCancel = () => {
+    setStatusMessage("❌ Deletion process was cancelled.");
+    setVisible(false);
+  };
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <p style={{ fontWeight: "500" }}>
+        Choose Device Type before deleting an account:
+      </p>
+
+      <div style={{ display: "flex", overflow: "hidden" }}>
+        <button
+          onClick={() => setDeviceType("trusted")}
+          style={{
+            flex: 1,
+            fontSize: "0.875rem",
+            padding: "8px 12px",
+            background: deviceType === "trusted" ? "#e7f2ff" : "white",
+            color: deviceType === "trusted" ? "#1b8dff" : "#444",
+            border: "1px solid #dfe2e4",
+            borderRight: "none",
+            borderRadius: "5px 0 0 5px",
+            fontWeight: deviceType === "trusted" ? "500" : "normal",
+            cursor: "pointer",
+          }}
+        >
+          Trusted
+        </button>
+        <button
+          onClick={() => setDeviceType("unrecognized")}
+          style={{
+            flex: 1,
+            fontSize: "0.875rem",
+            padding: "8px 12px",
+            background: deviceType === "unrecognized" ? "#e7f2ff" : "white",
+            color: deviceType === "unrecognized" ? "#1b8dff" : "#444",
+            border: "1px solid #dfe2e4",
+            borderLeft: "none",
+            borderRadius: "0 5px 5px 0",
+            fontWeight: deviceType === "unrecognized" ? "500" : "normal",
+            cursor: "pointer",
+          }}
+        >
+          Unrecognized
+        </button>
+      </div>
+
+      <button onClick={() => setVisible(true)} className="button-popup">
+        Delete Account
+      </button>
+
+      {statusMessage && <p>{statusMessage}</p>}
+
+      <Dialog
+        visible={visible}
+        title="Confirm Account Deletion"
+        message={
+          <>
+            Proceeding will <strong>permanently delete the account</strong>.
+            This action is irreversible.
+            {requiresInput && (
+              <div style={{ marginTop: 10, color: "#a94442" }}>
+                <strong>Additional verification required:</strong>
+                <br />
+                {frictionReason}
+              </div>
+            )}
+          </>
+        }
+        onClose={() => setVisible(false)}
+        onCancel={handleCancel}
+        onConfirm={handleConfirm}
+        requiresInput={requiresInput}
+        expectedInput={expectedInput}
+        confirmationValue={confirmationValue}
+        onInputChange={setConfirmationValue}
+        confirmationPrompt={confirmationPrompt}
+        confirmButtonText="Delete Account"
+        cancelButtonText="Cancel"
+      />
+
+      <p style={{ fontSize: "0.875rem" }}>
+        The example allows switching between trusted and unrecognized device
+        contexts. When the unrecognized device type is selected, an additional
+        verification step is introduced: the user must type a confirmation
+        phrase before the action can proceed. In contrast, the trusted device
+        context allows immediate confirmation with minimal friction. After the
+        deletion attempt, a success or cancellation message is displayed to
+        provide feedback.
+      </p>
     </div>
   );
 }`;

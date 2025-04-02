@@ -46,9 +46,12 @@ export const menuItemsMap: Record<string, MenuItem[]> = {
     { id: "textArea", label: "Text Area" },
     { id: "api-reference", label: "API Reference" },
   ],
+  "/nudges/decision-friction-nudge": [
+    { id: "dialog", label: "Dialog" },
+    { id: "api-reference", label: "API Reference" },
+  ],
   "/nudges/confidence-nudge": [
     { id: "tooltip", label: "Tooltip" },
     { id: "api-reference", label: "API Reference" },
   ],
-  // Add additional page-specific configurations as needed.
 };

@@ -9,6 +9,7 @@ import { documentationData } from "../../../utils/documentationData";
 import ComponentDocumentationTabs from "../../../components/nudgePages/PropsTables/ComponentDocumentationTabs";
 import RatingDocs from "../../../components/nudgePages/implementation/socialNormsNudge/RatingDocs";
 import BadgeDocs from "../../../components/nudgePages/implementation/socialNormsNudge/BadgeDocs";
+import DialogDocs from "../../../components/nudgePages/implementation/decisionFrictionNudge/DialogDocs";
 
 export default function InstallSection() {
   return (
@@ -96,37 +97,28 @@ export default function InstallSection() {
           {textContent.implementationResources.title}
         </h2>
         <p className="mb-4">
-          Reminder nudges can be implemented using the <b>Popup</b> component,
-          available via &nbsp;
+          Decision friction nudges can be implemented using the <b>Dialog</b>{" "}
+          component, available via &nbsp;
           <span className="font-mono text-[15px] bg-customLightLightBlue rounded-md py-1 px-1.5">
             npm install nudge-library
           </span>{" "}
           or &nbsp;
           <span className="font-mono text-[15px] bg-customLightLightBlue rounded-md py-1 px-1.5">
-            npm install nudge-library/reminder
+            npm install nudge-library/decision-friction
           </span>
           . The component&apos;s usage examples are shown in three tabs: Static
           nudge, Dynamic nudge, and Adaptive nudge. All tabs include code
           snippets for integration, and the section concludes with an API
           Reference outlining both functional and theme properties.
         </p>
-        <section id="rating" className="scroll-mt-64">
+        <section id="dialog" className="scroll-mt-64">
           <h3 className="text-xl font-bold mt-10 mb-4">
-            {textContent.rating.title}
+            {textContent.dialog.title}
           </h3>
           <div className="mb-4">
-            <ReactMarkdown>{textContent.rating.content}</ReactMarkdown>
+            <ReactMarkdown>{textContent.dialog.content}</ReactMarkdown>
           </div>
-          <RatingDocs />
-        </section>
-        <section id="badge" className="scroll-mt-64">
-          <h3 className="text-xl font-bold mt-10 mb-4">
-            {textContent.badge.title}
-          </h3>
-          <div className="mb-4">
-            <ReactMarkdown>{textContent.badge.content}</ReactMarkdown>
-          </div>
-          <BadgeDocs />
+          <DialogDocs />
         </section>
         <section id="api-reference" className="scroll-mt-64">
           <h3 className="text-xl font-bold mt-10 mb-4">
@@ -135,7 +127,9 @@ export default function InstallSection() {
           <div className="mb-4">
             <ReactMarkdown>{textContent.apiReference.content}</ReactMarkdown>
           </div>
-          <ComponentDocumentationTabs tabsData={documentationData.reminder} />
+          <ComponentDocumentationTabs
+            tabsData={documentationData.decisionFriction}
+          />
         </section>
       </section>
     </div>

@@ -64,7 +64,7 @@ export default function AdaptivePopup() {
         gap: "2rem",
       }}
     >
-      <p className="font-medium">Adaptive Hydration Reminder</p>
+      <p style={{ fontWeight: "500" }}>Adaptive Hydration Reminder</p>
       <button
         onClick={handleShowReminder}
         style={{

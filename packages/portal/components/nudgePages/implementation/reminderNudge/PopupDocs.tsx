@@ -1,10 +1,7 @@
 import { useState } from "react";
-import {
-  ThemeProvider,
-  defaultTheme,
-} from "../../../../../library/src/theme/ThemeContext";
+import { ThemeProvider, defaultTheme } from "nudge-library";
 import CodeContainer from "../CodeContainer";
-import { Popup } from "../../../../../library/src/components/reminder/Popup";
+import { Popup } from "nudge-library";
 import {
   popupSnippet,
   popupDynamicSnippet,

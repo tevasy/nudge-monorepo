@@ -38,7 +38,7 @@ export default function DynamicTooltip() {
         gap: "2rem",
       }}
     >
-      <p className="font-medium">Select the answer:</p>
+      <p style={{ fontWeight: "500" }}>Select the answer:</p>
       <div
         style={{
           display: "flex",

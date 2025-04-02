@@ -63,19 +63,14 @@ export const textContent = {
   implementationResources: {
     title: "Implementation Resources",
   },
-  rating: {
-    title: "Rating",
+  dialog: {
+    title: "Dialog",
     content:
-      "The **Static nudge** displays default and themed popups for study reminders. The **Dynamic nudge** highlights how the component responds to user interaction by updating its content based on the selected appointment type, including a countdown before auto-closing and contextual feedback when switching between reminders. The **Adaptive nudge** presents a hydration reminder that adjusts its tone based on previous user responses, demonstrating how reminder's content can evolve using saved user engagement data.",
-  },
-  badge: {
-    title: "Badge",
-    content:
-      "The **Static nudge** displays default and themed popups for study reminders. The **Dynamic nudge** highlights how the component responds to user interaction by updating its content based on the selected appointment type, including a countdown before auto-closing and contextual feedback when switching between reminders. The **Adaptive nudge** presents a hydration reminder that adjusts its tone based on previous user responses, demonstrating how reminder's content can evolve using saved user engagement data.",
+      "The **Static nudge** includes a default confirmation dialog, an input-based dialog that requires users to type a confirmation phrase, and a custom-themed dialog. The **Dynamic nudge** presents two dialogs that change based on user actions, such as disabling or enabling Two-Factor Authentication (2FA). The **Adaptive nudge** customizes the dialog based on contextual factors, such as the device's trust level. When a trusted device is selected, the user can proceed with a single confirmation step. However, if an unrecognized device is detected, the dialog introduces an additional verification layer by requiring the user to manually enter a confirmation phrase.",
   },
   apiReference: {
     title: "API Reference",
     content:
-      "The API Reference provides detailed documentation for the **Popup** component. It tab outlines **functional properties** that can be passed to a component to control its behavior, as well as **theme properties** that can be modified to customize its appearance.",
+      "The API Reference provides detailed documentation for the **Dialog** component. It outlines **functional properties** that can be passed to a component to control its behavior, as well as **theme properties** that can be modified to customize its appearance. The component also inherits properties from the TextBox component, which is documented on the Anchoring Nudge page. These can be used via the `inputProps={{}}` object and the `textBox` theme attribute.",
   },
 };

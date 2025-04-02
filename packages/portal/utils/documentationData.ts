@@ -1087,6 +1087,161 @@ export const textAreaProps: PropsTableRow[] = [
   },
 ];
 
+export const dialogProps: PropsTableRow[] = [
+  {
+    propName: "id",
+    type: "string",
+    defaultValue: "–",
+    description:
+      "Sets the `id` attribute of the dialog container for accessibility or testing.",
+  },
+  {
+    propName: "title",
+    type: "string",
+    defaultValue: "–",
+    description: "Title displayed at the top of the dialog.",
+  },
+  {
+    propName: "message",
+    type: "string | React.ReactNode",
+    defaultValue: "–",
+    description:
+      "The main message content of the dialog. Can be plain text or a React element.",
+  },
+  {
+    propName: "visible",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Controls whether the dialog is shown.",
+  },
+  {
+    propName: "onOpen",
+    type: "() => void",
+    defaultValue: "–",
+    description: "Callback triggered when the dialog becomes visible.",
+  },
+  {
+    propName: "onClose",
+    type: "() => void",
+    defaultValue: "–",
+    description: "Callback triggered when the dialog is closed.",
+  },
+  {
+    propName: "autoClose",
+    type: "boolean",
+    defaultValue: "false",
+    description: "If true, the dialog will automatically close after a delay.",
+  },
+  {
+    propName: "autoCloseDelay",
+    type: "number",
+    defaultValue: "5000",
+    description:
+      "Time in milliseconds before auto-close when `autoClose` is enabled.",
+  },
+  {
+    propName: "animationType",
+    type: `fade | slide | none`,
+    defaultValue: `fade`,
+    description: "Type of animation used when showing or hiding the dialog.",
+  },
+  {
+    propName: "animationDuration",
+    type: "number",
+    defaultValue: "300",
+    description: "Duration of the open/close animation in milliseconds.",
+  },
+  {
+    propName: "dismissible",
+    type: "boolean",
+    defaultValue: "true",
+    description:
+      "If true, a close icon is shown and the user can dismiss the dialog manually.",
+  },
+  {
+    propName: "closeOutside",
+    type: "boolean",
+    defaultValue: "false",
+    description: "If true, clicking outside the dialog will close it.",
+  },
+  {
+    propName: "confirmButtonText",
+    type: "string",
+    defaultValue: `"Confirm"`,
+    description: "Text shown on the confirm button.",
+  },
+  {
+    propName: "cancelButtonText",
+    type: "string",
+    defaultValue: `"Cancel"`,
+    description: "Text shown on the cancel button.",
+  },
+  {
+    propName: "onConfirm",
+    type: "() => void",
+    defaultValue: "–",
+    description: "Callback fired when the confirm button is clicked.",
+  },
+  {
+    propName: "onCancel",
+    type: "() => void",
+    defaultValue: "–",
+    description: "Callback fired when the cancel button is clicked.",
+  },
+  {
+    propName: "requiresInput",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "If true, the dialog includes an input field that must match `expectedInput` to confirm.",
+  },
+  {
+    propName: "confirmationPrompt",
+    type: "string",
+    defaultValue: "–",
+    description:
+      "Prompt displayed above the input when `requiresInput` is true.",
+  },
+  {
+    propName: "inputPlaceholder",
+    type: "string",
+    defaultValue: `"Type to confirm"`,
+    description: "Placeholder text for the confirmation input field.",
+  },
+  {
+    propName: "confirmationValue",
+    type: "string",
+    defaultValue: `""`,
+    description: "Current value of the confirmation input (controlled).",
+  },
+  {
+    propName: "expectedInput",
+    type: "string",
+    defaultValue: "–",
+    description:
+      "The expected string that must be typed to enable confirmation.",
+  },
+  {
+    propName: "onInputChange",
+    type: "(value: string) => void",
+    defaultValue: "–",
+    description: "Callback fired when the confirmation input value changes.",
+  },
+  {
+    propName: "ariaLabel",
+    type: "string",
+    defaultValue: `"Dialog"`,
+    description: "Accessibility label for the dialog container.",
+  },
+  {
+    propName: "inputProps",
+    type: "Partial<TextBoxProps>",
+    defaultValue: "–",
+    description:
+      "Additional props passed to the internal `TextBox` used for input confirmation.",
+  },
+];
+
 // Theme attributes for Checkbox
 // Extended Theme attributes for Checkbox
 export const checkboxThemeProps = [
@@ -1983,6 +2138,144 @@ export const textAreaThemeProps = [
   },
 ];
 
+export const dialogThemeProps = [
+  {
+    propName: "container",
+    cssProperties: [
+      "background",
+      "boxShadow",
+      "borderRadius",
+      "minWidth",
+      "maxWidth",
+      "boxSizing",
+    ],
+    description: "Styles for the outer dialog container box.",
+  },
+  {
+    propName: "overlay",
+    cssProperties: ["background"],
+    description: "Styles for the full-screen overlay behind the dialog.",
+  },
+  {
+    propName: "content",
+    cssProperties: ["position"],
+    description: "Styles for the content wrapper inside the dialog.",
+  },
+  {
+    propName: "header",
+    cssProperties: ["borderBottom", "padding", "borderRadius"],
+    description:
+      "Styles for the dialog header area containing the title and close button.",
+  },
+  {
+    propName: "textContainer",
+    cssProperties: ["borderBottom", "padding"],
+    description:
+      "Styles for the section containing the message and optional input prompt.",
+  },
+  {
+    propName: "inputContainer",
+    cssProperties: ["padding"],
+    description:
+      "Padding for the section containing the confirm/cancel buttons when input is required.",
+  },
+  {
+    propName: "buttonContainer",
+    cssProperties: ["padding"],
+    description:
+      "Padding for the section containing the confirm/cancel buttons when no input is required.",
+  },
+  {
+    propName: "closeButton",
+    cssProperties: [
+      "border",
+      "background",
+      "cursor",
+      "fontSize",
+      "padding",
+      "lineHeight",
+    ],
+    description: "Styles for the 'X' button used to dismiss the dialog.",
+  },
+  {
+    propName: "title",
+    cssProperties: [
+      "marginTop",
+      "marginBottom",
+      "fontSize",
+      "fontWeight",
+      "color",
+      "wordBreak",
+    ],
+    description: "Typography and layout styles for the dialog title.",
+  },
+  {
+    propName: "message",
+    cssProperties: [
+      "fontSize",
+      "color",
+      "lineHeight",
+      "wordBreak",
+      "marginTop",
+      "marginBottom",
+    ],
+    description: "Typography styles for the main dialog message content.",
+  },
+  {
+    propName: "confirmButton",
+    cssProperties: [
+      "padding",
+      "fontSize",
+      "backgroundColor",
+      "color",
+      "border",
+      "borderRadius",
+      "cursor",
+      "textDecoration",
+      "wordBreak",
+      "letterSpacing",
+      "fontWeight",
+      "width",
+    ],
+    description: "Styles for the confirm button in the footer.",
+  },
+  {
+    propName: "cancelButton",
+    cssProperties: [
+      "width",
+      "padding",
+      "fontSize",
+      "backgroundColor",
+      "color",
+      "border",
+      "borderRadius",
+      "cursor",
+      "textDecoration",
+      "letterSpacing",
+      "wordBreak",
+      "marginRight",
+      "fontWeight",
+    ],
+    description: "Styles for the cancel button in the footer.",
+  },
+  {
+    propName: "promptText",
+    cssProperties: ["color", "fontWeight", "marginTop", "marginBottom"],
+    description: "Styles for the prompt shown above the confirmation input.",
+  },
+  {
+    propName: "disabled",
+    cssProperties: ["opacity", "pointerEvents", "cursor"],
+    description:
+      "Styles applied to the confirm button when disabled (input does not match expected value).",
+  },
+  {
+    propName: "input",
+    cssProperties: ["marginBottom"],
+    description: "Styles for the container wrapping the `TextBox` input field.",
+  },
+];
+
 export const documentationData = {
   defaultOptions: [
     {
@@ -2042,6 +2335,13 @@ export const documentationData = {
       title: "Text Area",
       functionalProps: textAreaProps,
       themeProps: textAreaThemeProps,
+    },
+  ],
+  decisionFriction: [
+    {
+      title: "Dialog",
+      functionalProps: dialogProps,
+      themeProps: dialogThemeProps,
     },
   ],
   confidence: [
