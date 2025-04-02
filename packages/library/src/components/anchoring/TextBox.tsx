@@ -7,6 +7,7 @@ import styles from "./TextBox.module.css";
 // Common props shared by both controlled and uncontrolled versions.
 type CommonTextBoxProps = {
   textBoxLabel?: string;
+  placeholder?: string; // New prop for placeholder text
   onChange?: (value: string) => void;
   disabled?: boolean;
   nudgeText?: string;
@@ -35,6 +36,7 @@ export type TextBoxProps = (ControlledTextBoxProps | UncontrolledTextBoxProps) &
 
 export function TextBox({
   textBoxLabel,
+  placeholder, // new placeholder prop
   value,
   defaultValue,
   onChange,
@@ -140,12 +142,15 @@ export function TextBox({
         onBlur?.(e);
         onCommit?.(e.target.value);
       }}
+      placeholder={placeholder} // Use the placeholder prop
       aria-label={ariaLabel ?? textBoxLabel}
       style={
         {
           ...theme.textBox.input,
           "--base-border": theme.textBox.input.baseBorder,
           "--hover-border": theme.textBox.hover.hoverBorder,
+          "--placeholder-color": theme.textBox.input.placeholderColor,
+          "--placeholder-font-size": theme.textBox.input.placeholderFontSize,
         } as React.CSSProperties
       }
       disabled={disabled}

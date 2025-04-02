@@ -1,0 +1,91 @@
+/* Overlay styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: opacity var(--animation-duration) ease;
+  opacity: 0;
+}
+
+.overlayVisible {
+  opacity: 1;
+}
+
+.overlayHidden {
+  opacity: 0;
+}
+
+/* Dialog container styles */
+.dialogContainer {
+  position: relative;
+  z-index: 1000;
+  transition: opacity var(--animation-duration) ease,
+    transform var(--animation-duration) ease;
+}
+
+.fade {
+  opacity: 0;
+}
+
+.fadeVisible {
+  opacity: 1;
+}
+
+.fadeHidden {
+  opacity: 0;
+}
+
+.slide {
+  transform: translateY(-10%);
+  opacity: 0;
+}
+
+.slideVisible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.slideHidden {
+  transform: translateY(-10%);
+  opacity: 0;
+}
+
+.mobileDialog {
+  width: 100%;
+  height: auto;
+  bottom: 0;
+  left: 0;
+  transform: none;
+  border-radius: 16px 16px 0 0;
+}
+
+/* Header row to align title and close button */
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Content container */
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Button and input sections */
+.buttonSection {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.inputSection {
+  display: flex;
+  flex-direction: column;
+}

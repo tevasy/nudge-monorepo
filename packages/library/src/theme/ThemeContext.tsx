@@ -154,6 +154,23 @@ export type Theme = {
     nudgeTop: ThemeCSS;
     nudgeBottom: ThemeCSS;
   };
+  dialog: {
+    container: ThemeCSS;
+    overlay: ThemeCSS;
+    content: ThemeCSS;
+    textContainer: ThemeCSS;
+    inputContainer: ThemeCSS;
+    buttonContainer: ThemeCSS;
+    header: ThemeCSS;
+    closeButton: ThemeCSS;
+    title: ThemeCSS;
+    message: ThemeCSS;
+    confirmButton: ThemeCSS;
+    cancelButton: ThemeCSS;
+    disabled: ThemeCSS;
+    input: ThemeCSS;
+    promptText: ThemeCSS;
+  };
 };
 
 export const defaultTheme: Theme = {
@@ -500,6 +517,8 @@ export const defaultTheme: Theme = {
       transition: "border-color 0.2s ease-in-out",
       baseBorder: "var(--border-gray)",
       width: "100%",
+      placeholderColor: "var(--color-darkGray)",
+      placeholderFontSize: "var(--font-size-md)",
     },
     hover: {
       hoverBorder: "var(--border-selected)",
@@ -779,6 +798,104 @@ export const defaultTheme: Theme = {
     },
     nudgeTop: { marginBottom: "6px" },
     nudgeBottom: { marginTop: "6px" },
+  },
+  dialog: {
+    container: {
+      background: "white",
+      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+      borderRadius: "16px",
+      minWidth: "300px",
+      maxWidth: "450px",
+      boxSizing: "border-box",
+    },
+    overlay: {
+      background: "rgba(0, 0, 0, 0.7)",
+    },
+    content: {
+      position: "relative",
+    },
+    header: {
+      borderBottom: "1px solid var(--color-gray)",
+      padding: "20px",
+      borderRadius: "16px 16px 0 0",
+    },
+    textContainer: {
+      borderBottom: "1px solid var(--color-gray)",
+      padding: "25px",
+    },
+    inputContainer: {
+      padding: "20px",
+    },
+    buttonContainer: {
+      padding: "15px 20px",
+    },
+    closeButton: {
+      border: "none",
+      background: "transparent",
+      cursor: "pointer",
+      fontSize: "var(--font-size-lg)",
+      padding: "0px",
+      lineHeight: "0px",
+    },
+    title: {
+      marginTop: "0px",
+      marginBottom: "0",
+      fontSize: "var(--font-size-lg)",
+      fontWeight: "600",
+      color: "var(--color-black)",
+      wordBreak: "break-word",
+    },
+    message: {
+      fontSize: "var(--font-size-md)",
+      color: "var(--color-black)",
+      lineHeight: 1.5,
+      wordBreak: "break-word",
+      marginTop: "0",
+      marginBottom: "0",
+    },
+    confirmButton: {
+      padding: "8px 20px",
+      fontSize: "var(--font-size-sm)",
+      backgroundColor: "var(--color-darkerBlue)",
+      color: "white",
+      border: "none",
+      borderRadius: "5px",
+      cursor: "pointer",
+      textDecoration: "none",
+      wordBreak: "break-word",
+      letterSpacing: "0.1px",
+      fontWeight: "500",
+      width: "100%",
+    },
+    cancelButton: {
+      width: "100%",
+      padding: "10px 20px",
+      fontSize: "var(--font-size-sm)",
+      backgroundColor: "var(--color-lightGray)",
+      color: "var(--color-black)",
+      border: "none",
+      borderRadius: "5px",
+      cursor: "pointer",
+      textDecoration: "none",
+      letterSpacing: "0.1px",
+      wordBreak: "break-word",
+      marginRight: "10px",
+      fontWeight: "500",
+    },
+    promptText: {
+      color: "var(--color-black)",
+      fontWeight: "500",
+      marginTop: "1rem",
+      marginBottom: "0",
+    },
+    disabled: {
+      opacity: 0.4,
+      pointerEvents: "none",
+      cursor: "not-allowed",
+    },
+    input: {
+      marginBottom: "8px",
+    },
   },
 };
 

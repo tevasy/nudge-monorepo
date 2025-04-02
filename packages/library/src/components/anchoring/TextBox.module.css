@@ -10,3 +10,8 @@
   outline: none;
   border: var(--hover-border, var(--border-selected));
 }
+
+.inputTextBox::placeholder {
+  color: var(--placeholder-color, var(--color-darkGray));
+  font-size: var(--placeholder-font-size, var(--font-size-md));
+}
