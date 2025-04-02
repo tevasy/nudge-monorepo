@@ -98,7 +98,7 @@ export default function DynamicDialog() {
                   </span>
                 );
               }
-              return <span>Input must match "{expectedInput}" exactly.</span>;
+              return <span>Input must match {expectedInput} exactly.</span>;
             },
           }}
         />

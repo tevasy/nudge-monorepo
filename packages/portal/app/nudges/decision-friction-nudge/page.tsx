@@ -7,8 +7,6 @@ import { textContent } from "./textContent";
 import ReactMarkdown from "react-markdown";
 import { documentationData } from "../../../utils/documentationData";
 import ComponentDocumentationTabs from "../../../components/nudgePages/PropsTables/ComponentDocumentationTabs";
-import RatingDocs from "../../../components/nudgePages/implementation/socialNormsNudge/RatingDocs";
-import BadgeDocs from "../../../components/nudgePages/implementation/socialNormsNudge/BadgeDocs";
 import DialogDocs from "../../../components/nudgePages/implementation/decisionFrictionNudge/DialogDocs";
 
 export default function InstallSection() {
