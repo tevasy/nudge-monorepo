@@ -227,13 +227,13 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 
       <button
         onClick={prevSlide}
-        className="absolute -left-2 md:left-4 top-[46%] transform -translate-y-1/2 bg-white/25 md:bg-white/45 backdrop-blur-lg w-10 h-10 md:w-13 md:h-13 flex items-center justify-center rounded-full shadow-md transition z-10 cursor-pointer hover:bg-white/80 hover:scale-105"
+        className="absolute -left-3 md:left-4 top-[46%] transform -translate-y-1/2 bg-white/25 md:bg-white/45 backdrop-blur-lg w-10 h-10 md:w-13 md:h-13 flex items-center justify-center rounded-full shadow-md transition z-10 cursor-pointer hover:bg-white/80 hover:scale-105"
       >
         <FiChevronLeft className="w-6 h-6 md:w-8 md:h-8 mr-0.5 opacity-80" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute -right-2 md:right-4 top-[46%] transform -translate-y-1/2 bg-white/25 md:bg-white/45 backdrop-blur-lg w-10 h-10 md:w-13 md:h-13 flex items-center justify-center rounded-full shadow-md transition z-10 cursor-pointer hover:bg-white/80 hover:scale-105"
+        className="absolute -right-3 md:right-4 top-[46%] transform -translate-y-1/2 bg-white/25 md:bg-white/45 backdrop-blur-lg w-10 h-10 md:w-13 md:h-13 flex items-center justify-center rounded-full shadow-md transition z-10 cursor-pointer hover:bg-white/80 hover:scale-105"
       >
         <FiChevronRight className="w-6 h-6 md:w-8 md:h-8 ml-0.5 opacity-80" />
       </button>
