@@ -172,7 +172,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 
   const handleTouchEnd = () => {
     const distance = touchStartX.current - touchEndX.current;
-    const threshold = 0;
+    const threshold = 50;
 
     if (distance > threshold) {
       nextSlide();
