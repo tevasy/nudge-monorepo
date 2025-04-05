@@ -83,7 +83,6 @@ export default function NavBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close the menu when the route (pathname) changes
   useEffect(() => {
     if (menuOpen) {
       closeMenu();
@@ -95,12 +94,11 @@ export default function NavBar() {
   };
 
   const closeMenu = () => {
-    // Trigger slide-out and fade-out animations
     setIsClosing(true);
     setTimeout(() => {
       setMenuOpen(false);
       setIsClosing(false);
-    }, 300); // Match the animation duration
+    }, 300);
   };
 
   return (
@@ -146,7 +144,7 @@ export default function NavBar() {
             />
           </svg>
         </button>
-        {/* Logo centered */}
+        {/* Logo */}
         <Link href="/overview">
           <span className="uppercase font-bold text-customBlack text-2xl mb-1 font-grotesk">
             Nudge
@@ -172,7 +170,7 @@ export default function NavBar() {
               isClosing ? "animate-slideOut" : "animate-slideIn"
             }`}
           >
-            {/* Close button positioned at the top-right corner */}
+            {/* Close button */}
             <button onClick={closeMenu} className="absolute top-4 right-4 p-2">
               <svg
                 className="w-6 h-6"

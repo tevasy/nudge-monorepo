@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-import { Badge } from "../../../../../library/src/components/social-norms/Badge";
 import { FiThumbsUp } from "react-icons/fi";
-import {
-  ThemeProvider,
-  defaultTheme,
-} from "../../../../../library/src/theme/ThemeContext";
+import { Badge, ThemeProvider, defaultTheme } from "nudge-library";
 
 const Icon = FiThumbsUp as React.ElementType;
 
@@ -69,13 +65,13 @@ export default function DynamicBadge() {
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: "1.5rem",
+        gap: "2rem",
       }}
     >
-      <p style={{ fontWeight: "500" }}>Endorse a shared document:</p>
       <ThemeProvider theme={customTheme}>
         <Badge
           id="strategy-doc-badge"
+          badgeLabel="Endorse a shared document:"
           label="Endorsed"
           count={endorsements}
           icon={<Icon />}
@@ -88,15 +84,7 @@ export default function DynamicBadge() {
       <button
         onClick={handleEndorse}
         disabled={hasEndorsed}
-        style={{
-          padding: "0.5rem 1rem",
-          fontSize: "0.875rem",
-          backgroundColor: hasEndorsed ? "#ccc" : "#0070f3",
-          color: "#fff",
-          border: "none",
-          borderRadius: "6px",
-          cursor: hasEndorsed ? "not-allowed" : "pointer",
-        }}
+        className={hasEndorsed ? "button-popup disabled" : "button-popup"}
       >
         {hasEndorsed ? "Endorsed" : "Endorse this Document"}
       </button>

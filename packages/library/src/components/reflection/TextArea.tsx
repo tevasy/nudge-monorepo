@@ -60,20 +60,19 @@ export function TextArea({
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Sync internal state when a controlled value is provided.
   useEffect(() => {
     if (value !== undefined) {
       setText(value);
     }
   }, [value]);
 
-  // When the textarea is focused or clicked, select all text.
+  // When the textarea is focused or clicked, select all text
   const handleFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
     e.target.select();
     onFocus?.(e);
   };
 
-  // Simulate focus on touch devices.
+  // Simulate focus on touch devices
   const handleTouchStart = (e: React.TouchEvent<HTMLTextAreaElement>) => {
     if (onFocus) {
       onFocus(e as unknown as React.FocusEvent<HTMLTextAreaElement>);
@@ -86,14 +85,14 @@ export function TextArea({
     }
   };
 
-  // Handle input changes.
+  // Handle input changes
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = event.target.value;
     setText(newValue);
     onChange?.(newValue);
   };
 
-  // Listen for touches outside the component to simulate blur.
+  // Listen for touches outside the component to simulate blur
   useEffect(() => {
     const handleTouchOutside = (event: TouchEvent) => {
       if (
@@ -101,7 +100,6 @@ export function TextArea({
         !containerRef.current.contains(event.target as Node)
       ) {
         if (onBlur) {
-          // Create a dummy event with the current text.
           const dummyEvent = {
             target: { value: text },
           } as unknown as React.FocusEvent<HTMLTextAreaElement>;
@@ -116,10 +114,8 @@ export function TextArea({
     };
   }, [onBlur, onCommit, text]);
 
-  // Prepare a nudge ID for accessibility.
   const nudgeId = id ? `${id}-nudge` : undefined;
 
-  // Determine the nudge element.
   const nudgeElement =
     renderNudge && nudgeVisible ? (
       <div id={nudgeId} style={theme.textArea?.nudgeText}>
@@ -131,7 +127,7 @@ export function TextArea({
       </div>
     ) : null;
 
-  // Build the textarea element.
+  // Build the textarea element
   const textAreaElement = (
     <textarea
       id={id}
@@ -162,7 +158,6 @@ export function TextArea({
     />
   );
 
-  // Layout the textarea and nudge based on the nudgePosition prop.
   let content;
   if (nudgeVisible && (nudgePosition === "left" || nudgePosition === "right")) {
     content = (

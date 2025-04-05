@@ -96,8 +96,8 @@ export default function InstallSection() {
           {textContent.implementationResources.title}
         </h2>
         <p className="mb-4">
-          Anchoring nudges can be implemented through <b>Sliders</b> and{" "}
-          <b>Text Boxes</b>, both available via &nbsp;
+          Anchoring nudges can be implemented through <b>Slider</b> and{" "}
+          <b>Text Boxe</b> components, available via &nbsp;
           <span className="font-mono text-[15px] bg-customLightLightBlue rounded-md py-1 px-1.5">
             npm install nudge-library
           </span>{" "}

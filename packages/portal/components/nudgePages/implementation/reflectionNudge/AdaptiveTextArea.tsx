@@ -63,7 +63,13 @@ export default function AdaptiveTextArea() {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "2rem",
+      }}
+    >
       <TextArea
         textAreaLabel="Daily Lesson Reflection"
         placeholder="Summarize key takeaways from today's lesson"
@@ -75,7 +81,7 @@ export default function AdaptiveTextArea() {
         renderNudge={renderNudge}
         nudgePosition="bottom"
       />
-      <p style={{ marginTop: "1rem", fontSize: "0.875rem" }}>
+      <p style={{ fontSize: "0.875rem" }}>
         This adaptive text area adjusts nudge message based on the
         reflection&apos;s length, the number of reflections submitted, and the
         time of day. As text is entered, the message evolves. A time-appropriate

@@ -30,7 +30,7 @@ export default function DynamicTextArea() {
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: "1.5rem",
+        gap: "2rem",
       }}
     >
       <TextArea
@@ -42,7 +42,7 @@ export default function DynamicTextArea() {
         renderNudge={renderNudge}
         nudgePosition="bottom"
       />
-      <p style={{ marginTop: "1rem", fontSize: "0.875rem" }}>
+      <p style={{ fontSize: "0.875rem" }}>
         This text area allows to write daily reflections. When the text area
         loses focus, the reflection is committed. The motivational nudge below
         then updates to a confirmation message. After a short delay, the

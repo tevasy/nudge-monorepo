@@ -13,7 +13,7 @@
     "framer-motion": "^12.5.0",
     "next": "15.2.0",
     "next-transpile-modules": "^10.0.1",
-    "nudge-library": "file:../library",
+    "nudge-library": "^1.0.5",
     "postcss-loader": "^8.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

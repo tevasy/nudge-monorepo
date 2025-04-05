@@ -213,6 +213,7 @@ export function Popup({
               src={imageUrl as string}
               alt="Popup"
               style={theme.popup?.image}
+              loading="lazy"
             />
           </div>
         )}

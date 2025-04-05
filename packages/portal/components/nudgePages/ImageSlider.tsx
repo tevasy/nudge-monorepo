@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
@@ -45,7 +45,7 @@ const images: Record<
       alt: "Example 2: Outlook's “Mail Layout” Settings",
       title: "Example 2: Outlook's “Mail Layout” Settings",
       description:
-        "Outlook's settings let users customize their inbox view. By default, emails are not sorted into “Focused“ and “Other,“ allowing users to control how they organize their inbox. Messages are grouped by conversation, making it easier to follow threads without searching. The text size is set to “Large” for better readability. These defaults enable users to navigate their inbox without manual adjustments.",
+        "Outlook's settings let users customize their inbox view. By default, emails are not sorted into “Focused“ and “Other,“ allowing to control how the inbox is organized. Messages are grouped by conversation, making it easier to follow threads without searching. The text size is set to “Large” for better readability. These defaults enable users to navigate their inbox without manual adjustments.",
     },
   ],
   anchoring: [
@@ -54,7 +54,7 @@ const images: Record<
       alt: "Example 1: Figma's drop shadow settings",
       title: "Example 1: Figma's drop shadow settings",
       description:
-        "Predefined values in Figma's drop shadow settings act as an Anchoring Nudge. When adjusting shadow effects, users encounter default values for position (X: 0, Y: 4), blur (4), spread (0), and opacity (25%), providing a reference point. This helps reduce uncertainty and simplifies the decision-making process while still allowing users to customize their choice.",
+        "Predefined values in Figma's drop shadow settings act as an Anchoring Nudge. When adjusting shadow effects, users encounter default values for position (X: 0, Y: 4), blur (4), spread (0), and opacity (25%), providing a reference point. This helps reduce uncertainty and simplifies decision-making while still allowing users to customize their choice.",
     },
     {
       src: "/anchoring/macos_keyboard.png",
@@ -86,14 +86,14 @@ const images: Record<
       alt: "Example 1: Coursera's Course Page",
       title: "Example 1: Coursera's Course Page",
       description:
-        "Coursera's use of social norm cues on the Google Prompting Essentials course page helps users make more confident and informed decisions. When a message such as “46,404 already enrolled” is displayed, it signals to potential learners that many others have found the course worthwhile, reducing uncertainty and helping them feel part of a broader learning community. Similarly, the statement “97% – Most learners liked this course” reassures users of the course's quality based on peer feedback.",
+        "Coursera's use of social norm on the 'Google Prompting Essentials' course page helps users make more confident and informed decisions. The message “46,404 already enrolled” signals to potential learners that many others have found the course worthwhile. It reduces uncertainty and helps them feel part of a broader learning community. Similarly, the statement “97% – Most learners liked this course” reassures users of the course's quality based on peer feedback.",
     },
     {
       src: "/socialNorms/kaggle.png",
       alt: "Example 2: Kaggle's Front Page",
       title: "Example 2: Kaggle's Front Page",
       description:
-        "Kaggle uses a descriptive social norm in the message “Join over 23M+ machine learners…”, implying that participation in the platform is typical among peers in the ML/AI community. This helps users feel that joining, sharing, and learning is standard behavior, reducing hesitation and increasing confidence.",
+        "Kaggle uses a descriptive social norm in the message “Join over 23M+ machine learners…”, implying that participation in the platform is typical among peers in the ML/AI community. This helps users feel that joining and learning is a standard behavior, reducing hesitation and increasing confidence in the decision to participate.",
     },
   ],
   reflection: [
@@ -102,7 +102,7 @@ const images: Record<
       alt: "Example 1: Insight Timer's Reflection Prompt",
       title: "Example 1: Insight Timer's Reflection Prompt",
       description:
-        "Insight Timer prompts users to reflect at the end of a meditation session, encouraging self-awareness. After completing a session, users interact with a “How are you feeling?” mood slider, followed by the option to describe their emotional state in more detail using prompts like “What best describes this feeling?” and “What’s having the biggest impact?” Additionally, users can complete a “Journal about your session” form, offering space to process and describe their experience.",
+        "Insight Timer prompts users to reflect at the end of a meditation session, encouraging self-awareness. After completing a session, users interact with a “How are you feeling?” mood slider, followed by the option to describe their emotional state in more detail using “Journal about your session” form.",
     },
     {
       src: "/reflection/langotalk.png",
@@ -118,14 +118,14 @@ const images: Record<
       alt: "Example 1: Khan Academy's Confirmation Dialog",
       title: "Example 1: Khan Academy's Confirmation Dialog",
       description:
-        "Khan Academy shows a confirmation dialog before deleting a coding program, which serves as a Decision Friction Nudge. When attempting to delete a program, a modal appears asking, “Are you sure you want to delete your program?”, providing users with an extra moment to reconsider their action. This slight friction ensures that users do not accidentally erase their work and gives them a chance to reflect on the consequences of deletion.",
+        "Khan Academy shows a confirmation dialog, which serves as a Decision Friction Nudge. When attempting to delete a program, a modal appears asking, “Are you sure you want to delete your program?”, providing users with an extra moment to reconsider their action. This slight friction ensures that users do not accidentally erase their work and gives them a chance to reflect on the consequences of deletion.",
     },
     {
       src: "/decisionFriction/calm.png",
       alt: "Example 2: Calm's Confirmation Dialog",
       title: "Example 2: Calm's Confirmation Dialog",
       description:
-        "Calm displays a confirmation prompt before cancelling a bedtime reminder: “Are you sure? It's hard to get ready for bed without a little help.” This acts as a Decision Friction Nudge, introducing a brief pause before an impulsive or high-impact action. By prompting users to reconsider, it encourages adherence to a consistent sleep schedule.",
+        "Calm displays a confirmation prompt before cancelling a bedtime reminder: “Are you sure? It's hard to get ready for bed without a little help”. This acts as a Decision Friction Nudge by creating a brief pause before an impulsive action, encouraging users to maintain a consistent sleep schedule.",
     },
     {
       src: "/decisionFriction/github.png",
@@ -146,7 +146,7 @@ const images: Record<
     {
       src: "/confidence/brilliant.png",
       alt: "Example 2: Brilliant's Feedback",
-      title: "Example 2: Brilliant's eedback",
+      title: "Example 2: Brilliant's Feedback",
       description:
         "The Confidence Nudge in Brilliant's interactive exercises supports users when they struggle. Instead of a discouraging error message, the system provides a prompt like “Try again. Think about shifting the ship's position right 5 units and up 3 units”, offering both encouragement and a specific hint. Users are given two options: “Try again” to reinforce persistence or “See answer” for additional help. This approach reduces self-doubt and increases the likelihood of task completion.",
     },
@@ -158,6 +158,28 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const selectedImages = images[nudge] || images.defaultOptions;
+
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const distance = touchStartX.current - touchEndX.current;
+    const threshold = 0;
+
+    if (distance > threshold) {
+      nextSlide();
+    } else if (distance < -threshold) {
+      prevSlide();
+    }
+  };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
@@ -172,43 +194,49 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   };
 
   return (
-    <div className="relative w-full max-w-3xl mx-auto overflow-hidden shadow-lg rounded-2xl">
+    <div className="relative w-full max-w-3xl mx-auto ">
+      <div className="overflow-hidden shadow-lg rounded-2xl">
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {selectedImages.map((image, index) => (
+            <div key={index} className="min-w-full bg-white flex flex-col">
+              <div className="flex border-b border-customLightGray">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={800}
+                  height={500}
+                  className="object-contain"
+                />
+              </div>
+              <div className="flex flex-col items-center justify-center text-center p-6 h-full">
+                <div>
+                  <h4 className="text-lg font-semibold mb-2">{image.title}</h4>
+                  <p className="text-base">{image.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-[46%] transform -translate-y-1/2 bg-white/25 md:bg-white/45 backdrop-blur-lg w-10 h-10 md:w-13 md:h-13 flex items-center justify-center rounded-full shadow-md transition z-10 cursor-pointer hover:bg-white/80 hover:scale-105"
+        className="absolute -left-2 md:left-4 top-[46%] transform -translate-y-1/2 bg-white/25 md:bg-white/45 backdrop-blur-lg w-10 h-10 md:w-13 md:h-13 flex items-center justify-center rounded-full shadow-md transition z-10 cursor-pointer hover:bg-white/80 hover:scale-105"
       >
         <FiChevronLeft className="w-6 h-6 md:w-8 md:h-8 mr-0.5 opacity-80" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-[46%] transform -translate-y-1/2 bg-white/25 md:bg-white/45 backdrop-blur-lg w-10 h-10 md:w-13 md:h-13 flex items-center justify-center rounded-full shadow-md transition z-10 cursor-pointer hover:bg-white/80 hover:scale-105"
+        className="absolute -right-2 md:right-4 top-[46%] transform -translate-y-1/2 bg-white/25 md:bg-white/45 backdrop-blur-lg w-10 h-10 md:w-13 md:h-13 flex items-center justify-center rounded-full shadow-md transition z-10 cursor-pointer hover:bg-white/80 hover:scale-105"
       >
         <FiChevronRight className="w-6 h-6 md:w-8 md:h-8 ml-0.5 opacity-80" />
       </button>
-      <div
-        className="flex transition-transform duration-500 ease-in-out"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-      >
-        {selectedImages.map((image, index) => (
-          <div key={index} className="min-w-full bg-white flex flex-col">
-            <div className="flex border-b border-customLightGray">
-              <Image
-                src={image.src}
-                alt={image.alt}
-                width={800}
-                height={500}
-                className="object-contain"
-              />
-            </div>
-            <div className="flex flex-col items-center justify-center text-center p-6 h-full">
-              <div>
-                <h4 className="text-lg font-semibold mb-2">{image.title}</h4>
-                <p className="text-base">{image.description}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };

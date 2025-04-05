@@ -38,7 +38,6 @@ export default function FloatingMenu({ menuItems }: FloatingMenuProps) {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    // Initialize active section on mount
     setActiveSection(menuItems[0]?.id || "");
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll, menuItems]);
@@ -64,8 +63,6 @@ export default function FloatingMenu({ menuItems }: FloatingMenuProps) {
   const isItemActive = (item: MenuItem): boolean => {
     return item.id === activeSection;
   };
-
-  // Removed hasActiveChild since it wasn't used
 
   const renderMenuItems = (items: MenuItem[], depth: number = 0) => {
     return (

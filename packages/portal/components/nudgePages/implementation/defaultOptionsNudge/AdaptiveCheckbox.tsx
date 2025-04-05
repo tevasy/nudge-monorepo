@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Checkbox } from "nudge-library";
 
-export default function DarkModeCheckbox() {
+export default function AdaptiveCheckbox() {
   const hour = new Date().getHours();
   const [isDarkMode, setIsDarkMode] = useState(hour >= 18);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       <Checkbox
         checkboxLabel="Adaptive Dark Mode"
         id="dark-mode-checkbox"

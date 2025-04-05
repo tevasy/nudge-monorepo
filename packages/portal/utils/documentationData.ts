@@ -1,6 +1,6 @@
 import { PropsTableRow } from "../components/nudgePages/PropsTables/PropsTable";
 
-// Functional props for Checkbox
+// Functional props
 export const checkboxProps: PropsTableRow[] = [
   {
     propName: "label",
@@ -1242,8 +1242,7 @@ export const dialogProps: PropsTableRow[] = [
   },
 ];
 
-// Theme attributes for Checkbox
-// Extended Theme attributes for Checkbox
+// Theme attributes
 export const checkboxThemeProps = [
   {
     propName: "wrapper",

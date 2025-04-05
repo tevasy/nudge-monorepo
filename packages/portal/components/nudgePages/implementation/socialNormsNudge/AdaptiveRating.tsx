@@ -47,7 +47,7 @@ function AdaptiveRating() {
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: "1.5rem",
+        gap: "2rem",
       }}
     >
       <DropdownMenu
@@ -67,7 +67,7 @@ function AdaptiveRating() {
         nudgeText={adaptiveNudgeText}
         nudgePosition="bottom"
         renderNudge={(rating) => (
-          <div style={{ fontSize: "0.9rem", marginTop: "4px" }}>
+          <div>
             {adaptiveNudgeText} {rating > 0 && <span>(Rating: {rating})</span>}
           </div>
         )}

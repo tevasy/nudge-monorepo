@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Popup } from "../../../../../library/src/components/reminder/Popup";
+import { Popup } from "nudge-library";
 
 export default function AdaptivePopup() {
   const [showPopup, setShowPopup] = useState(false);
@@ -9,7 +9,6 @@ export default function AdaptivePopup() {
   const [hasRespondedThisSession, setHasRespondedThisSession] = useState(false);
   const [hasEverInteracted, setHasEverInteracted] = useState(false);
 
-  // Load from localStorage on first mount
   useEffect(() => {
     const stored = localStorage.getItem("hydration-last-response");
     if (stored === "acknowledged" || stored === "dismissed") {
@@ -18,7 +17,6 @@ export default function AdaptivePopup() {
     }
   }, []);
 
-  // Store to localStorage when lastResponse changes
   useEffect(() => {
     if (lastResponse) {
       localStorage.setItem("hydration-last-response", lastResponse);
@@ -65,20 +63,7 @@ export default function AdaptivePopup() {
       }}
     >
       <p style={{ fontWeight: "500" }}>Adaptive Hydration Reminder</p>
-      <button
-        onClick={handleShowReminder}
-        style={{
-          padding: "0.6rem 1.2rem",
-          fontSize: "0.875rem",
-          fontWeight: 500,
-          border: "2px solid #85c2ff",
-          boxShadow: "#03a9f438 0px 2px 8px 0px",
-          borderRadius: "10px",
-          backgroundColor: "white",
-          cursor: "pointer",
-          transition: "background-color 0.2s ease, border-color 0.2s ease",
-        }}
-      >
+      <button onClick={handleShowReminder} className="button-popup">
         Check Hydration
       </button>
 

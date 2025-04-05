@@ -36,7 +36,6 @@ export function Badge({
 }: BadgeProps) {
   const theme = useContext(ThemeContext);
 
-  // Badge display element (icon, label inside, and count)
   const badgeContent = (
     <div className={styles.badgeContent} style={theme.badge?.container}>
       {icon && (
@@ -53,8 +52,6 @@ export function Badge({
     </div>
   );
 
-  // Determine the nudge element.
-  // Priority: renderNudge > nudgeText
   const nudgeId = id ? `${id}-nudge` : undefined;
   const nudgeElement = nudgeVisible ? (
     renderNudge ? (

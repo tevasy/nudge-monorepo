@@ -46,77 +46,53 @@ export default function AdaptiveDialog() {
     setVisible(false);
   };
 
+  const getButtonStyle = (type: DeviceType) => {
+    const isActive = deviceType === type;
+    const isFirst = type === "trusted";
+
+    return {
+      flex: 1,
+      fontSize: "0.875rem",
+      padding: "8px 12px",
+      backgroundColor: isActive ? "#e7f2ff" : "white",
+      color: isActive ? "#1b8dff" : "#002952",
+      fontWeight: isActive ? "500" : "normal",
+      borderTop: `2px solid ${isActive ? "#1b8dff" : "#dfe2e4"}`,
+      borderBottom: `2px solid ${isActive ? "#1b8dff" : "#dfe2e4"}`,
+      borderLeft: isFirst
+        ? `2px solid ${isActive ? "#1b8dff" : "#dfe2e4"}`
+        : "none",
+      borderRight: isFirst
+        ? "none"
+        : `2px solid ${isActive ? "#1b8dff" : "#dfe2e4"}`,
+      borderRadius: isFirst ? "5px 0 0 5px" : "0 5px 5px 0",
+      outline: "none",
+      cursor: "pointer",
+      transition: "all 0.2s ease",
+    };
+  };
+
+  const dividerColor = "#1b8dff";
+
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "2rem",
-      }}
-    >
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       <p style={{ fontWeight: "500" }}>
         Choose Device Type before deleting an account:
       </p>
 
-      <div
-        style={{
-          display: "flex",
-          overflow: "hidden",
-        }}
-      >
+      <div style={{ display: "flex", alignItems: "stretch" }}>
         <button
           onClick={() => setDeviceType("trusted")}
-          style={{
-            flex: 1,
-            fontSize: "0.875rem",
-            padding: "8px 12px",
-            background: deviceType === "trusted" ? "#e7f2ff" : "white",
-            color: deviceType === "trusted" ? "#1b8dff" : "#444",
-            borderTop: `1px solid ${
-              deviceType === "trusted" ? "#1b8dff" : "#dfe2e4"
-            }`,
-            borderLeft: `1px solid ${
-              deviceType === "trusted" ? "#1b8dff" : "#dfe2e4"
-            }`,
-            borderBottom: `1px solid ${
-              deviceType === "trusted" ? "#1b8dff" : "#dfe2e4"
-            }`,
-            borderRight: `1px solid ${
-              deviceType === "trusted" ? "#1b8dff" : "#dfe2e4"
-            }`,
-            borderRadius: "5px 0 0 5px",
-            fontWeight: deviceType === "trusted" ? "500" : "normal",
-            outline: "none",
-            cursor: "pointer",
-          }}
+          style={getButtonStyle("trusted")}
         >
           Trusted
         </button>
+
+        <div style={{ width: "2px", backgroundColor: dividerColor }} />
+
         <button
           onClick={() => setDeviceType("unrecognized")}
-          style={{
-            flex: 1,
-            fontSize: "0.875rem",
-            padding: "8px 12px",
-            background: deviceType === "unrecognized" ? "#e7f2ff" : "white",
-            color: deviceType === "unrecognized" ? "#1b8dff" : "#444",
-            borderTop: `1px solid ${
-              deviceType === "unrecognized" ? "#1b8dff" : "#dfe2e4"
-            }`,
-            borderRight: `1px solid ${
-              deviceType === "unrecognized" ? "#1b8dff" : "#dfe2e4"
-            }`,
-            borderBottom: `1px solid ${
-              deviceType === "unrecognized" ? "#1b8dff" : "#dfe2e4"
-            }`,
-            borderLeft: `1px solid ${
-              deviceType === "unrecognized" ? "#1b8dff" : "#dfe2e4"
-            }`,
-            borderRadius: "0 5px 5px 0",
-            fontWeight: deviceType === "unrecognized" ? "500" : "normal",
-            outline: "none",
-            cursor: "pointer",
-          }}
+          style={getButtonStyle("unrecognized")}
         >
           Unrecognized
         </button>
@@ -155,6 +131,7 @@ export default function AdaptiveDialog() {
         confirmButtonText="Delete Account"
         cancelButtonText="Cancel"
       />
+
       <p style={{ fontSize: "0.875rem" }}>
         The example allows switching between trusted and unrecognized device
         contexts. When the unrecognized device type is selected, an additional

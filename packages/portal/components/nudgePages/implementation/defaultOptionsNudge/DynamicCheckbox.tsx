@@ -18,7 +18,7 @@ export default function DynamicCheckbox() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       <div>
         <ThemeProvider theme={customTheme}>
           <Checkbox

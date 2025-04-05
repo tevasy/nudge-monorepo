@@ -65,7 +65,6 @@ export function DropdownMenu({
     }
   };
 
-  // Handle clicks outside for mouse events.
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -74,7 +73,6 @@ export function DropdownMenu({
       ) {
         setIsOpen(false);
         if (onBlur) {
-          // Create a dummy focus event to trigger onBlur.
           const dummyEvent = {
             target: dropdownRef.current,
           } as unknown as React.FocusEvent<HTMLButtonElement>;
@@ -87,7 +85,6 @@ export function DropdownMenu({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [dropdownRef, onBlur, onCommit, selectedValue]);
 
-  // Handle touches outside for mobile devices.
   useEffect(() => {
     const handleTouchOutside = (event: TouchEvent) => {
       if (
@@ -108,7 +105,6 @@ export function DropdownMenu({
     return () => document.removeEventListener("touchstart", handleTouchOutside);
   }, [dropdownRef, onBlur, onCommit, selectedValue]);
 
-  // Only trigger focus on touch start.
   const handleTouchStart = (e: React.TouchEvent<HTMLButtonElement>) => {
     if (onFocus) {
       onFocus(e as unknown as React.FocusEvent<HTMLButtonElement>);

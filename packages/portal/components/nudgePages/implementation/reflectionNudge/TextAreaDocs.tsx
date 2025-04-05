@@ -37,7 +37,7 @@ export default function TextAreaDocs() {
             label: "Static nudge",
             content: (
               <div>
-                <div className="flex flex-col gap-4 bg-white py-10 px-8 md:px-24 lg:px-28 rounded-b-2xl">
+                <div className="flex flex-col gap-8 bg-white py-10 px-8 md:px-24 lg:px-28 rounded-b-2xl">
                   <TextArea
                     defaultValue=""
                     placeholder="Enter daily habits here"

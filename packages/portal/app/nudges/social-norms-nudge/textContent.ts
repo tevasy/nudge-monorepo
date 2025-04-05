@@ -7,7 +7,7 @@ export const textContent = {
   overview: {
     title: "Overview",
     content:
-      "The Social Norms Nudge is designed to encourage user behavior by leveraging the peoples' tendency to follow the actions of others, which makes certain choices feel more desirable or widely accepted. It reinforces social validation by showing what others are doing, which makes users more likely to adopt similar behaviors while still having the freedom to choose.",
+      "The Social Norms Nudge is designed to encourage user behavior by leveraging people's tendency to follow the actions of others, which makes certain choices feel more desirable or widely accepted. It reinforces social validation by showing what others are doing, which makes users more likely to adopt similar behaviors while still having the freedom to choose.",
     exampleText:
       "Screenshot of Coursera's “Google Prompting Essentials” course page, illustrating the Social Norms Nudges.",
     image: {
@@ -59,7 +59,7 @@ export const textContent = {
   adaptabilityConsiderations: {
     title: "Adaptability Considerations",
     content:
-      "Systems incorporating this nudge should go beyond static indicators, and include personalization and context sensitivity. The nudge can be **tailored based on user preferences, location, or past behaviors**. For instance, a learning platform might showcase resources frequently accessed by users at a similar skill level. At the same time, **context-aware nudges can highlight peer activity most relevant to the individual**, such as reviews from users with similar interests or trends within a specific community. Additionally, **dynamic social norms can display real-time updates on user activity**, such as trending topics or popular choices, helping users feel connected to an active community. For example, GitHub showcases trending repositories and Stack Overflow features the most active programming questions. However, it's essential to keep this information fresh without overwhelming the user.",
+      "Systems incorporating this nudge should go beyond static indicators, and include personalization and context sensitivity. The nudge can be **tailored based on user preferences, location, or past behaviors**. For instance, a learning platform might showcase resources frequently accessed by users at a similar skill level. At the same time, **context-aware nudges can highlight peer activity most relevant to the individual**, such as reviews from users with similar interests or trends within a specific community. Additionally, **dynamic social norms can display real-time updates on user activity**, such as trending topics or popular choices, helping users feel connected to an active community. For example, GitHub showcases trending repositories and Stack Overflow features the most active programming questions. However, it's essential to keep this information up to date.",
   },
   implementationResources: {
     title: "Implementation Resources",

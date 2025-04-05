@@ -41,7 +41,7 @@ export default function DynamicDropdownMenu() {
   };
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       <ThemeProvider theme={customTheme}>
         <DropdownMenu
           dropdownLabel="Select preferred learning method:"
@@ -58,7 +58,7 @@ export default function DynamicDropdownMenu() {
           onBlur={() => setIsFocused(false)}
         />
       </ThemeProvider>
-      <p style={{ fontSize: "0.875rem", marginTop: "1rem" }}>
+      <p style={{ fontSize: "0.875rem" }}>
         Nudge text via <code style={{ fontSize: "0.813rem" }}>renderNudge</code>{" "}
         guides decisions for unselected options. When the dropdown is focused,
         the label inside dropdown changes its color with{" "}

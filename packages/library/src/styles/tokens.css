@@ -1,4 +1,4 @@
-/* 🎨 Color Variables */
+/* Color Variables */
 :root {
   --color-orange: #fb8500;
   --color-lightOrange: #ffe5cf;
@@ -14,7 +14,7 @@
   --color-black: #002952;
 }
 
-/* 🛠️ Spacing */
+/* Spacing */
 :root {
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
@@ -24,7 +24,7 @@
   --spacing-2xl: 3rem;
 }
 
-/* 🔠 Typography */
+/* Typography */
 :root {
   --font-body: "Inter", sans-serif;
   --font-size-xs: 0.75rem; /*12px*/

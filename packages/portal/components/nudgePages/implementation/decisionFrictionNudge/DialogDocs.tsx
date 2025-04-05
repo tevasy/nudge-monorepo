@@ -65,69 +65,42 @@ export default function DialogDocs() {
             label: "Static nudge",
             content: (
               <div>
-                <div className="flex flex-col gap-6 bg-white py-10 px-8 sm:px-24 md:px-40 lg:px-56 rounded-b-2xl">
-                  <p className="font-medium -mb-3">Default Version</p>
-                  <button
-                    className="button-popup"
-                    onClick={() => setDialogConfirmationVisible(true)}
-                  >
-                    Confirmation Dialog
-                  </button>
-                  <Dialog
-                    id="confirmation-dialog"
-                    ariaLabel="Confirmation Dialog"
-                    visible={dialogConfirmationVisible}
-                    title="Delete Confirmation"
-                    message="Confirm deletion of this item? This action is irreversible and will result in permanent loss of data."
-                    confirmButtonText="Delete"
-                    cancelButtonText="Cancel"
-                    onConfirm={handleConfirm}
-                    onCancel={handleCancel}
-                    onClose={() => setDialogConfirmationVisible(false)}
-                  />
-
-                  <button
-                    className="button-popup"
-                    onClick={() => setDialogInputVisible(true)}
-                  >
-                    Input Dialog
-                  </button>
-                  <Dialog
-                    id="input-dialog"
-                    ariaLabel="Input Dialog"
-                    visible={dialogInputVisible}
-                    title="Delete Confirmation"
-                    message="Confirm deletion of this item? This action is irreversible and will result in permanent loss of data."
-                    animationType="slide"
-                    requiresInput={true}
-                    confirmationPrompt="Please type in DELETE to continue."
-                    inputPlaceholder="Type DELETE"
-                    expectedInput="DELETE"
-                    confirmationValue={confirmationInput}
-                    onInputChange={setConfirmationInput}
-                    confirmButtonText="Delete"
-                    cancelButtonText="Cancel"
-                    onConfirm={handleConfirm}
-                    onCancel={handleCancel}
-                    onClose={() => setDialogInputVisible(false)}
-                  />
-
-                  <p className="font-medium -mb-3">Custom Version</p>
-                  <button
-                    className="button-popup"
-                    onClick={() => setDialogThemedVisible(true)}
-                  >
-                    Themed Dialog
-                  </button>
-                  <ThemeProvider theme={customTheme}>
+                <div className="flex flex-col gap-8 bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-44 rounded-b-2xl">
+                  <div>
+                    <p className="font-medium mb-4">Default Version</p>
+                    <button
+                      className="button-popup mb-4"
+                      onClick={() => setDialogConfirmationVisible(true)}
+                    >
+                      Confirmation Dialog
+                    </button>
                     <Dialog
-                      id="themed-dialog"
-                      ariaLabel="Themed Dialog"
-                      visible={dialogThemedVisible}
+                      id="confirmation-dialog"
+                      ariaLabel="Confirmation Dialog"
+                      visible={dialogConfirmationVisible}
                       title="Delete Confirmation"
                       message="Confirm deletion of this item? This action is irreversible and will result in permanent loss of data."
+                      confirmButtonText="Delete"
+                      cancelButtonText="Cancel"
+                      onConfirm={handleConfirm}
+                      onCancel={handleCancel}
+                      onClose={() => setDialogConfirmationVisible(false)}
+                    />
+
+                    <button
+                      className="button-popup"
+                      onClick={() => setDialogInputVisible(true)}
+                    >
+                      Input Dialog
+                    </button>
+                    <Dialog
+                      id="input-dialog"
+                      ariaLabel="Input Dialog"
+                      visible={dialogInputVisible}
+                      title="Delete Confirmation"
+                      message="Confirm deletion of this item? This action is irreversible and will result in permanent loss of data."
+                      animationType="slide"
                       requiresInput={true}
-                      closeOutside={true}
                       confirmationPrompt="Please type in DELETE to continue."
                       inputPlaceholder="Type DELETE"
                       expectedInput="DELETE"
@@ -137,9 +110,39 @@ export default function DialogDocs() {
                       cancelButtonText="Cancel"
                       onConfirm={handleConfirm}
                       onCancel={handleCancel}
-                      onClose={() => setDialogThemedVisible(false)}
+                      onClose={() => setDialogInputVisible(false)}
                     />
-                  </ThemeProvider>
+                  </div>
+                  <div>
+                    <p className="font-medium mb-4">Custom Version</p>
+                    <button
+                      className="button-popup"
+                      onClick={() => setDialogThemedVisible(true)}
+                    >
+                      Themed Dialog
+                    </button>
+                    <ThemeProvider theme={customTheme}>
+                      <Dialog
+                        id="themed-dialog"
+                        ariaLabel="Themed Dialog"
+                        visible={dialogThemedVisible}
+                        title="Delete Confirmation"
+                        message="Confirm deletion of this item? This action is irreversible and will result in permanent loss of data."
+                        requiresInput={true}
+                        closeOutside={true}
+                        confirmationPrompt="Please type in DELETE to continue."
+                        inputPlaceholder="Type DELETE"
+                        expectedInput="DELETE"
+                        confirmationValue={confirmationInput}
+                        onInputChange={setConfirmationInput}
+                        confirmButtonText="Delete"
+                        cancelButtonText="Cancel"
+                        onConfirm={handleConfirm}
+                        onCancel={handleCancel}
+                        onClose={() => setDialogThemedVisible(false)}
+                      />
+                    </ThemeProvider>
+                  </div>
                 </div>
                 <div className="border-t border-customLightBlue">
                   <CodeContainer codeSnippet={dialogSnippet} />
@@ -151,7 +154,7 @@ export default function DialogDocs() {
             label: "Dynamic nudge",
             content: (
               <div>
-                <div className="bg-white py-10 px-8 sm:px-24 md:px-40 lg:px-48 rounded-b-2xl">
+                <div className="bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-44 rounded-b-2xl">
                   <DynamicDialog />
                 </div>
                 <div className="border-t border-customLightBlue">
@@ -164,7 +167,7 @@ export default function DialogDocs() {
             label: "Adaptive nudge",
             content: (
               <div>
-                <div className="bg-white py-10 px-8 sm:px-24 md:px-40 lg:px-48 rounded-b-2xl">
+                <div className="bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-44 rounded-b-2xl">
                   <AdaptiveDialog />
                 </div>
                 <div className="border-t border-customLightBlue">

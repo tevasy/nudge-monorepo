@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { TextBox } from "nudge-library";
 
 export default function AdaptiveTextBox() {
-  // Determine default duration based on the current time of day.
   const currentHour = new Date().getHours();
   let defaultDuration: string;
   let initialNudgeText: string;
@@ -21,13 +20,10 @@ export default function AdaptiveTextBox() {
       "Good evening! Consider a 90-minute study session to dive deeper into your material.";
   }
 
-  // Local state to track the current duration input and adaptive nudge text.
   const [duration, setDuration] = useState(defaultDuration);
   const [adaptiveNudgeText, setAdaptiveNudgeText] = useState(initialNudgeText);
 
-  // Update the duration as the user types, only allowing numeric input.
   const handleChange = (value: string): void => {
-    // Allow empty value or value containing only digits.
     if (value === "" || /^\d*$/.test(value)) {
       setDuration(value);
       const numericValue = Number(value);
@@ -49,7 +45,6 @@ export default function AdaptiveTextBox() {
     }
   };
 
-  // When the user commits the change (on blur), only commit if the value is a valid number.
   const handleCommit = (value: string): void => {
     const numericValue = Number(value);
     if (value.trim() === "" || isNaN(numericValue)) return;
@@ -59,7 +54,7 @@ export default function AdaptiveTextBox() {
   };
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       <TextBox
         textBoxLabel="Study Duration (minutes)"
         value={duration}
@@ -67,7 +62,7 @@ export default function AdaptiveTextBox() {
         onCommit={handleCommit}
         renderNudge={() => <span>{adaptiveNudgeText}</span>}
       />
-      <p style={{ marginTop: "1rem", fontSize: "0.875rem" }}>
+      <p style={{ fontSize: "0.875rem" }}>
         This adaptive text box sets its default study duration based on the time
         of day, such as morning, afternoon, or evening. The nudge message is
         adjusted based on provided input. The value is confirmed when the text

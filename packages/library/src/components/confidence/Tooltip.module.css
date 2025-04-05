@@ -3,6 +3,12 @@
   z-index: 1000;
 }
 
+.tooltipDisplayContainer {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
 .tooltipTop {
   bottom: 100%;
   left: 50%;

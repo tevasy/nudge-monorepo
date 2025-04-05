@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { DropdownMenu } from "nudge-library";
 
-export default function LanguageSelector() {
+export default function AdaptiveDrowpdownMenu() {
   const ALL_LANGUAGES = [
     { label: "English", value: "en" },
     { label: "Spanish", value: "es" },
@@ -13,35 +13,27 @@ export default function LanguageSelector() {
     { label: "Japanese", value: "ja" },
   ];
 
-  // Local state for the currently selected language and dropdown options
   const [selectedLang, setSelectedLang] = useState("");
   const [dropdownOptions, setDropdownOptions] = useState<
     { label: string; value: string; nudgeText?: string }[]
   >([]);
 
   useEffect(() => {
-    // Get the user's preferred languages from the browser
     const userLanguages = navigator.languages.map(
       (lang) => lang.toLowerCase().split("-")[0]
     );
 
-    // Filter available languages to find recommended ones
     const recommendedOptions = ALL_LANGUAGES.filter((lang) =>
       userLanguages.includes(lang.value.toLowerCase())
     ).map((lang) => ({ ...lang, nudgeText: "Recommended" }));
 
-    // Get the rest of the languages
     const otherOptions = ALL_LANGUAGES.filter(
       (lang) => !userLanguages.includes(lang.value.toLowerCase())
     );
 
-    // Combine the recommended options first, then the others
     const combinedOptions = [...recommendedOptions, ...otherOptions];
     setDropdownOptions(combinedOptions);
 
-    // Set the initial selected language:
-    // If any recommended language is found, pick the first one;
-    // otherwise, default to English ("en")
     if (recommendedOptions.length > 0) {
       setSelectedLang(recommendedOptions[0].value);
     } else {
@@ -50,7 +42,7 @@ export default function LanguageSelector() {
   }, []);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       <DropdownMenu
         dropdownLabel="Select preferred language:"
         id="languageSelectorDropdown"

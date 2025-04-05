@@ -17,16 +17,13 @@ export default function RootLayout({
   const [showSpinner, setShowSpinner] = useState(true);
   const [startFade, setStartFade] = useState(false);
 
-  // Adjust these durations as needed.
-  const spinnerVisibleDuration = 1500; // 5 seconds visible before fade starts
-  const fadeOutDuration = 2000; // Duration of fade-out animation in milliseconds
+  const spinnerVisibleDuration = 1500;
+  const fadeOutDuration = 2000;
 
   useEffect(() => {
     const handleLoad = () => {
-      // Wait for spinnerVisibleDuration (5 seconds) before starting fade out
       setTimeout(() => {
         setStartFade(true);
-        // After fadeOutDuration, remove the spinner completely
         setTimeout(() => {
           setShowSpinner(false);
         }, fadeOutDuration);
@@ -39,7 +36,7 @@ export default function RootLayout({
       window.addEventListener("load", handleLoad);
       return () => window.removeEventListener("load", handleLoad);
     }
-  }, []); // Using an empty dependency array to run once
+  }, []);
 
   let menuItems: MenuItem[] = [];
 

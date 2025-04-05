@@ -7,7 +7,7 @@ export const textContent = {
   overview: {
     title: "Overview",
     content:
-      "The Decision Friction Nudge is designed to introduce a small but deliberate pause before an impactful action, which makes users to reconsider their decision. By creating a brief moment for reflection, this nudge helps prevent rash choices while still allowing users to proceed if they confirm their intent.",
+      "The Decision Friction Nudge is designed to introduce a small but deliberate pause before an impactful action, which makes users reconsider their decision. By creating a brief moment for reflection, this nudge helps prevent rash choices while still allowing users to proceed if they confirm their intent.",
     exampleText:
       "Screenshot of Khan Academy's program deletion confirmation modal, illustrating the Decision Friction Nudge.",
     image: {
@@ -18,7 +18,7 @@ export const textContent = {
   problem: {
     title: "Problem",
     content:
-      "Users may **act on impulse, overlook potential consequences, or make irreversible choices without sufficient deliberation**. Without a pause, individuals might perform actions they later regret, such as deleting important information or making financial transactions without fully considering the risks. The Decision Friction Nudge helps mitigate these risks by introducing a slight delay, which would make users rethink their choices and avoid unintended mistakes.",
+      "Users may **act on impulse, overlook potential consequences, or make irreversible choices without sufficient deliberation**. Without a pause, individuals might perform actions they later regret, such as deleting important information or making financial transactions without fully considering the risks. The Decision Friction Nudge helps mitigate these risks by introducing a slight delay, which makes users rethink their choices and avoid unintended mistakes.",
   },
   context: {
     title: "Context",
@@ -45,7 +45,7 @@ export const textContent = {
   rationale: {
     title: "Rationale",
     content:
-      "This nudge is based on **regret aversion**. The small friction point before proceeding with an action, makes users to pause and consider the potential consequences of their choice. This helps prevent impulsive or emotionally driven decisions that could lead to regret. Additionally, requiring explicit confirmation increases users' confidence in their decision, as they actively affirm their intent rather than acting automatically.",
+      "This nudge is based on **regret aversion**. The small friction point before proceeding with an action, makes users pause and consider the potential consequences of their choice. This helps prevent impulsive or emotionally driven decisions that could lead to regret. Additionally, requiring explicit confirmation increases users' confidence in their decision, as they actively affirm their intent rather than acting automatically.",
   },
   realWorldExamples: {
     title: "Real-world Examples",

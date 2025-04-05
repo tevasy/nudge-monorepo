@@ -76,7 +76,6 @@ export function Slider({
     }
   }, [currentValue, min, max, theme.slider.thumb.width]);
 
-  // Update sliderValue if controlled value prop changes.
   React.useEffect(() => {
     if (value !== undefined) {
       setSliderValue(value);

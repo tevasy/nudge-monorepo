@@ -32,7 +32,7 @@ export default function TitleSection({
             className="md:flex md:flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4"
           >
             <button
-              className={`flex items-center px-3 py-2 rounded-lg transition cursor-pointer ${
+              className={`flex items-center px-3 py-2 rounded-lg transition cursor-pointer text-left ${
                 index === 0
                   ? "bg-customLightBlue text-customDarkerBlue"
                   : "bg-customLightOrange text-customOrange"

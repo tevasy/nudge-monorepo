@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Popup } from "../../../../../library/src/components/reminder/Popup";
+import React, { useState, useEffect, useRef } from "react";
+import { Popup } from "nudge-library";
 
 export default function DynamicReminder() {
   const [popupState, setPopupState] = useState<{
@@ -10,6 +10,8 @@ export default function DynamicReminder() {
   const [countdown, setCountdown] = useState(5);
   const [notificationMessage, setNotificationMessage] = useState("");
   const [hasBeenOpened, setHasBeenOpened] = useState(false);
+
+  const currentMessageRef = useRef<string | null>(null);
 
   const animationDuration = 300;
   const autoCloseDelay = 5000;
@@ -29,21 +31,29 @@ export default function DynamicReminder() {
 
   const handlePopupOpen = () => {
     setHasBeenOpened(true);
-    setNotificationMessage(
-      "A reminder is open for the selected appointment type. It will close automatically after a short countdown or when clicking outside."
-    );
+    const message =
+      "A reminder is open for the selected appointment type. It will close automatically after a short countdown or when clicking outside.";
+
+    if (currentMessageRef.current !== message) {
+      currentMessageRef.current = message;
+      setNotificationMessage(message);
+    }
   };
 
   const handlePopupClose = () => {
     setPopupState((prev) => ({ ...prev, visible: false }));
+
     if (hasBeenOpened) {
-      setNotificationMessage(
-        "The reminder has closed. Select an appointment type again to view the message."
-      );
+      const message =
+        "The reminder has closed. Select an appointment type again to view the message.";
+
+      if (currentMessageRef.current !== message) {
+        currentMessageRef.current = message;
+        setNotificationMessage(message);
+      }
     }
   };
 
-  // Countdown logic
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
     if (popupState.visible) {
@@ -60,55 +70,71 @@ export default function DynamicReminder() {
     return () => clearInterval(intervalId);
   }, [popupState.visible]);
 
+  const getButtonStyle = (type: "doctor" | "dentist") => {
+    const isActive = popupState.type === type;
+    const isDoctor = type === "doctor";
+
+    return {
+      flex: 1,
+      fontSize: "0.875rem",
+      padding: "8px 12px",
+      backgroundColor: isActive ? "#e7f2ff" : "white",
+      color: isActive ? "#1b8dff" : "#002952",
+      fontWeight: isActive ? "500" : "normal",
+      cursor: "pointer",
+      borderTop: `2px solid ${isActive ? "#1b8dff" : "#dfe2e4"}`,
+      borderBottom: `2px solid ${isActive ? "#1b8dff" : "#dfe2e4"}`,
+      borderLeft: isDoctor
+        ? `2px solid ${isActive ? "#1b8dff" : "#dfe2e4"}`
+        : "none",
+      borderRight: !isDoctor
+        ? `2px solid ${isActive ? "#1b8dff" : "#dfe2e4"}`
+        : "none",
+      borderRadius: isDoctor ? "5px 0 0 5px" : "0 5px 5px 0",
+      outline: "none",
+    };
+  };
+
+  const dividerColor = popupState.type ? "#1b8dff" : "#dfe2e4";
+
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "2rem",
-      }}
-    >
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       <p style={{ fontWeight: "500" }}>
-        Select the appointment type to receive a reminder:
+        Select the Appointment Type to receive a reminder:
       </p>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "1rem",
-        }}
-      >
+
+      <div style={{ display: "flex", alignItems: "stretch" }}>
         <button
           onClick={() => handleShowReminder("doctor")}
+          disabled={popupState.visible && popupState.type === "dentist"}
           style={{
-            padding: "0.6rem 1.2rem",
-            fontSize: "0.875rem",
-            fontWeight: 500,
-            border: "2px solid #85c2ff",
-            boxShadow: "#03a9f438 0px 2px 8px 0px",
-            borderRadius: "10px",
-            backgroundColor: "white",
-            cursor: "pointer",
-            transition: "background-color 0.2s ease, border-color 0.2s ease",
+            ...getButtonStyle("doctor"),
+            ...(popupState.visible && popupState.type === "dentist"
+              ? { cursor: "not-allowed", opacity: 0.5 }
+              : {}),
           }}
         >
-          Doctor Appointment
+          Doctor
         </button>
+
+        <div
+          style={{
+            width: "2px",
+            backgroundColor: dividerColor,
+          }}
+        />
+
         <button
           onClick={() => handleShowReminder("dentist")}
+          disabled={popupState.visible && popupState.type === "doctor"}
           style={{
-            padding: "0.6rem 1.2rem",
-            fontSize: "0.875rem",
-            fontWeight: 500,
-            border: "2px solid #1b8dff",
-            boxShadow: "#1b8dff45 0px 2px 8px 0px",
-            borderRadius: "10px",
-            backgroundColor: "white",
-            cursor: "pointer",
-            transition: "background-color 0.2s ease, border-color 0.2s ease",
+            ...getButtonStyle("dentist"),
+            ...(popupState.visible && popupState.type === "doctor"
+              ? { cursor: "not-allowed", opacity: 0.5 }
+              : {}),
           }}
         >
-          Dentist Appointment
+          Dentist
         </button>
       </div>
 
@@ -133,11 +159,11 @@ export default function DynamicReminder() {
           } Appointment Reminder`}
           renderContent={() => (
             <div>
-              {popupState.type === "doctor" ? (
-                <p>Please remember to bring the medical records.</p>
-              ) : (
-                <p>Please remember to bring any previous dental records.</p>
-              )}
+              <p>
+                {popupState.type === "doctor"
+                  ? "Please remember to bring the medical records."
+                  : "Please remember to bring any previous dental records."}
+              </p>
               <p style={{ marginTop: "0.875rem" }}>
                 The reminder will close in <strong>{countdown}</strong> second
                 {countdown !== 1 && "s"}.

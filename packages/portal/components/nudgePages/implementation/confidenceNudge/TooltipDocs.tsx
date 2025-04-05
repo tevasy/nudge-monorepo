@@ -38,61 +38,40 @@ export default function TooltipDocs() {
             label: "Static nudge",
             content: (
               <div>
-                <div className="flex flex-col gap-6 bg-white py-10 px-8 sm:px-24 md:px-40 lg:px-56 rounded-b-2xl">
-                  <p className="font-medium -mb-3">Default Version</p>
-                  <Tooltip
-                    id="default-tooltip"
-                    text="Great effort, keep going!"
-                    position="dynamic"
-                    dismissible={false}
-                    ariaLabel="Default tooltip"
-                  >
-                    <button
-                      style={{
-                        background: "linear-gradient(135deg, #2492ff, #1675d5)",
-                        color: "white",
-                        width: "100%",
-                        padding: "10px 20px",
-                        fontSize: "0.875rem",
-                        fontWeight: "500",
-                        borderRadius: "8px",
-                        cursor: "pointer",
-                      }}
-                      role="button"
-                    >
-                      Hover or Press Button
-                    </button>
-                  </Tooltip>
-                  <p className="font-medium -mb-3">Custom Version</p>
-                  <ThemeProvider theme={customTheme}>
+                <div className="flex flex-col gap-8 bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-44 rounded-b-2xl">
+                  <div>
+                    <p className="font-medium mb-4">Default Version</p>
                     <Tooltip
-                      id="custom-tooltip"
+                      id="default-tooltip"
                       text="Great effort, keep going!"
-                      position="bottom"
+                      position="dynamic"
                       dismissible={false}
-                      ariaLabel="Custom tooltip"
-                      animationType="slide"
-                      animationDuration={400}
-                      icon={<FaBolt />}
+                      ariaLabel="Default tooltip"
                     >
-                      <button
-                        style={{
-                          background:
-                            "linear-gradient(135deg, #2492ff, #1675d5)",
-                          color: "white",
-                          width: "100%",
-                          padding: "10px 20px",
-                          fontSize: "0.875rem",
-                          fontWeight: "500",
-                          borderRadius: "8px",
-                          cursor: "pointer",
-                        }}
-                        role="button"
-                      >
+                      <button className="button-popup">
                         Hover or Press Button
                       </button>
                     </Tooltip>
-                  </ThemeProvider>
+                  </div>
+                  <div>
+                    <p className="font-medium mb-4">Custom Version</p>
+                    <ThemeProvider theme={customTheme}>
+                      <Tooltip
+                        id="custom-tooltip"
+                        text="Great effort, keep going!"
+                        position="bottom"
+                        dismissible={false}
+                        ariaLabel="Custom tooltip"
+                        animationType="slide"
+                        animationDuration={400}
+                        icon={<FaBolt />}
+                      >
+                        <button className="button-popup">
+                          Hover or Press Button
+                        </button>
+                      </Tooltip>
+                    </ThemeProvider>
+                  </div>
                 </div>
                 <div className="border-t border-customLightBlue">
                   <CodeContainer codeSnippet={tooltipSnippet} />
@@ -104,7 +83,7 @@ export default function TooltipDocs() {
             label: "Dynamic nudge",
             content: (
               <div>
-                <div className="bg-white py-10 px-8 sm:px-24 md:px-40 lg:px-56 rounded-b-2xl">
+                <div className="bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-44 rounded-b-2xl">
                   <DynamicTooltip />
                 </div>
                 <div className="border-t border-customLightBlue">
@@ -117,7 +96,7 @@ export default function TooltipDocs() {
             label: "Adaptive nudge",
             content: (
               <div>
-                <div className="bg-white py-10 px-8 sm:px-24 md:px-40 lg:px-48 rounded-b-2xl">
+                <div className="bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-44 rounded-b-2xl">
                   <AdaptiveTooltip />
                 </div>
                 <div className="border-t border-customLightBlue">

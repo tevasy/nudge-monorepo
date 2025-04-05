@@ -38,7 +38,7 @@ export const textContent = {
     items: [
       "Detecting moments of self-doubt, such as when users struggle with a difficult task or face multiple unsuccessful attempts.",
       "Ensuring nudge appears at the right time, such as after an incorrect response or when progress slows.",
-      "Using positive, specific, and tailored to the user's experience language of the nudge. For example, instead of a generic “Good job!”, a more effective nudge highlights improvement: “You're improving with each step! Keep going!”.",
+      "Using language that is positive, specific, and tailored to the user's experience. For example, instead of a generic “Good job!”, a more effective nudge highlights improvement: “You're improving with each step! Keep going!”.",
       "Allowing users to have control over the nudge, with options to dismiss it, ensuring that encouragement remains helpful rather than intrusive.",
     ],
     contentImplementation:
@@ -47,7 +47,7 @@ export const textContent = {
   rationale: {
     title: "Rationale",
     content:
-      "This nudge is based on **positive reinforcement**, which encourages the repetition of desired behaviors by providing a motivating stimulus after they occur. Feedback serves as this reinforcing stimulus, acknowledging individuals' efforts and encouraging future progress. As a result, they are more likely to persist through challenges. This reinforcement helps shift the focus from immediate success or failure to long-term improvement.",
+      "This nudge is based on **positive reinforcement**, which encourages the repetition of desired behaviors by providing a motivating stimulus after they occur. Feedback plays this role by acknowledging effort and supporting continued progress. As a result, individuals are more likely to persist through challenges. This reinforcement helps shift their focus from immediate success or failure to long-term improvement.",
   },
   realWorldExamples: {
     title: "Real-world Examples",

@@ -56,7 +56,7 @@ export default function MoodSliderDocs() {
             label: "Static nudge",
             content: (
               <div>
-                <div className="flex flex-col gap-8 bg-white py-10 px-8 md:px-24 lg:px-28 rounded-b-2xl">
+                <div className="flex flex-col gap-8 bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-40 rounded-b-2xl">
                   <MoodSlider
                     id="defaultMoodSlider"
                     ariaLabel="default Mood Slider"
@@ -101,7 +101,7 @@ export default function MoodSliderDocs() {
             label: "Dynamic nudge",
             content: (
               <div>
-                <div className="bg-white py-10 px-8 md:px-24 lg:px-28 rounded-b-2xl">
+                <div className="bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-40 rounded-b-2xl">
                   <DynamicMoodSlider />
                 </div>
                 <div className="border-t border-customLightBlue">
@@ -114,7 +114,7 @@ export default function MoodSliderDocs() {
             label: "Adaptive nudge",
             content: (
               <div>
-                <div className="bg-white py-10 px-8 md:px-24 lg:px-28 rounded-b-2xl">
+                <div className="bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-40 rounded-b-2xl">
                   <AdaptiveMoodSlider />
                 </div>
                 <div className="border-t border-customLightBlue">

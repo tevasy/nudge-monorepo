@@ -49,7 +49,7 @@ export default function CheckboxExample() {
 export const checkboxAdaptivitySnippet = `import React, { useState } from "react";
 import { Checkbox } from "nudge-library";
 
-export default function DarkModeCheckbox() {
+export default function AdaptiveCheckbox() {
   const hour = new Date().getHours();
   const [isDarkMode, setIsDarkMode] = useState(hour >= 18);
 
@@ -198,7 +198,7 @@ export default function DynamicRadioGroup() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <p style={{ fontWeight: "500" }}>Select preferred quality:</p>
+      <p>Select preferred quality:</p>
       {radioOptions.map((option) => {
         const customTheme = {
           ...defaultTheme,
@@ -229,7 +229,7 @@ export default function DynamicRadioGroup() {
               renderNudge={(checked) =>
                 checked ? (
                   <>
-                    <FiCheck style={{ marginRight: "0.125rem", strokeWidth: "2.5" }} />
+                    <FiCheck style={{ marginRight: "0.125rem" }} />
                     The {option.label.toLowerCase()} is selected.
                   </>
                 ) : (
@@ -254,10 +254,8 @@ export const radioGroupAdaptiveSnippet = `import React, { useEffect, useState } 
 import { RadioGroup } from "nudge-library";
 
 export default function AdaptiveRadioGroup() {
-  // Manage which format is currently selected
   const [selectedFormat, setSelectedFormat] = useState<string>("pdf");
 
-  // On mount, load the user's preferred export format from localStorage (if it exists)
   useEffect(() => {
     const storedFormat = localStorage.getItem("preferredExportFormat");
     if (storedFormat) {
@@ -265,7 +263,6 @@ export default function AdaptiveRadioGroup() {
     }
   }, []);
 
-  // When the user changes format, update local state and store it
   const handleFormatChange = (newFormat: string) => {
     setSelectedFormat(newFormat);
     localStorage.setItem("preferredExportFormat", newFormat);
@@ -279,7 +276,7 @@ export default function AdaptiveRadioGroup() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <p style={{ fontWeight: "500" }}>
+      <p>
         Select preferred export format for reports:
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
@@ -457,7 +454,7 @@ export default function DynamicDropdownMenu() {
 export const dropdownMenuAdaptiveSnippet = `import React, { useState, useEffect } from "react";
 import { DropdownMenu } from "nudge-library";
 
-export default function LanguageSelector() {
+export default function AdaptiveDropdownMenu() {
   const ALL_LANGUAGES = [
     { label: "English", value: "en" },
     { label: "Spanish", value: "es" },
@@ -469,24 +466,20 @@ export default function LanguageSelector() {
     { label: "Japanese", value: "ja" }
   ];
 
-  // Local state for the currently selected language and dropdown options
   const [selectedLang, setSelectedLang] = useState("");
   const [dropdownOptions, setDropdownOptions] = useState<
     { label: string; value: string; nudgeText?: string }[]
   >([]);
 
   useEffect(() => {
-    // Get the user's preferred languages from the browser
     const userLanguages = navigator.languages.map(
       (lang) => lang.toLowerCase().split("-")[0]
     );
 
-    // Filter available languages to find recommended ones
     const recommendedOptions = ALL_LANGUAGES.filter((lang) =>
       userLanguages.includes(lang.value.toLowerCase())
     ).map((lang) => ({ ...lang, nudgeText: "Recommended" }));
 
-    // Get the rest of the languages
     const otherOptions = ALL_LANGUAGES.filter(
       (lang) => !userLanguages.includes(lang.value.toLowerCase())
     );
@@ -494,9 +487,6 @@ export default function LanguageSelector() {
     const combinedOptions = [...recommendedOptions, ...otherOptions];
     setDropdownOptions(combinedOptions);
 
-    // Set the initial selected language:
-    // If any recommended language is found, pick the first one
-    // otherwise, default to English
     if (recommendedOptions.length > 0) {
       setSelectedLang(recommendedOptions[0].value);
     } else {
@@ -591,17 +581,14 @@ export default function DynamicSlider() {
   const [savingsPercent, setSavingsPercent] = useState(10);
   const [showNudge, setShowNudge] = useState(false);
 
-  // When the user focuses on the slider, show the nudge
   const handleFocus = () => {
     setShowNudge(true);
   };
 
-  // When the slider loses focus, hide the nudge
   const handleBlur = () => {
     setShowNudge(false);
   };
 
-  // When the user finishes adjusting the slider, update the savings percentage
   const handleCommit = (value: number) => {
     setSavingsPercent(value);
   };
@@ -640,29 +627,22 @@ export const sliderAdaptiveSnippet = `import React, { useState } from "react";
 import { Slider } from "nudge-library";
 
 export default function AdaptiveSlider() {
-  // Retrieve the previous volume from localStorage.
-  // If no previous value exists, default to 10.
   const storedVolumeStr = localStorage.getItem("preferredVolume");
   const initialVolume = storedVolumeStr === null ? 10 : Number(storedVolumeStr);
 
-  // Local state to track the current volume selection.
   const [volume, setVolume] = useState<number>(initialVolume);
-  // Keep track of the previous volume to compare changes.
   const [previousVolume, setPreviousVolume] = useState<number>(initialVolume);
 
-  // When the slider value changes, update the state and local storage.
   const handleVolumeChange = (value: number): void => {
     setVolume(value);
     localStorage.setItem("preferredVolume", value.toString());
   };
 
-  // When the slider loses focus, update the previousVolume to the current value.
   const handleBlur = (event: React.FocusEvent<HTMLInputElement>): void => {
     const newValue = Number(event.target.value);
     setPreviousVolume(newValue);
   };
 
-  // Compute the adaptive nudge text based on the current and previous volume.
   const adaptiveNudgeText: string =
     volume < previousVolume
       ? \`The volume tends to be higher with value \${previousVolume}%. Current setting: \${volume}%.\`
@@ -738,32 +718,26 @@ export default function TextBoxExample() {
 export const textBoxDynamicSnippet = `import React, { useState } from "react";
 import { TextBox } from "nudge-library";
 
-export default function DonationSettings() {
-  // Predefined suggested donation amount.
+export default function DynamicTextBox() {
   const [suggestedDonation, setSuggestedDonation] = useState("25");
   const [showPreview, setShowPreview] = useState(false);
   const [finalMessage, setFinalMessage] = useState("");
 
-  // Show the preview when the textbox gains focus.
   const handleFocus = () => {
     setShowPreview(true);
     setFinalMessage("");
   };
 
-  // Hide the preview when the textbox loses focus.
   const handleBlur = () => {
     setShowPreview(false);
   };
 
-  // Update state as the user types, only allow numeric input.
   const handleChange = (newValue: string) => {
     if (newValue === "" || /^\\d*\\.?\\d*$/.test(newValue)) {
       setSuggestedDonation(newValue);
     }
   };
 
-  // Capture and display the final donation amount upon commit.
-  // Prevent committing an empty or invalid numeric value.
   const handleCommit = (newValue: string) => {
     const numericValue = parseFloat(newValue);
     if (newValue.trim() === "" || isNaN(numericValue)) return;
@@ -772,7 +746,6 @@ export default function DonationSettings() {
     );
   };
 
-  // Render a dynamic preview based on the entered donation amount.
   const renderDonationPreview = (value: string) => {
     const numericValue = parseFloat(value);
     if (isNaN(numericValue) || numericValue <= 0) {
@@ -814,7 +787,7 @@ export default function DonationSettings() {
         renderNudge={renderDonationPreview}
       />
       {finalMessage && (
-        <div style={{ marginTop: "10px", fontSize: "1rem" }}>
+        <div style={{ marginTop: "10px" }}>
           {finalMessage}
         </div>
       )}
@@ -826,7 +799,6 @@ export const textBoxAdaptiveSnippet = `import React, { useState } from "react";
 import { TextBox } from "nudge-library";
 
 export default function AdaptiveTextBox() {
-  // Determine default duration based on the current time of day.
   const currentHour = new Date().getHours();
   let defaultDuration: string;
   let initialNudgeText: string;
@@ -845,13 +817,10 @@ export default function AdaptiveTextBox() {
       "Good evening! Consider a 90-minute study session to dive deeper into your material.";
   }
 
-  // Local state to track the current duration input and adaptive nudge text.
   const [duration, setDuration] = useState(defaultDuration);
   const [adaptiveNudgeText, setAdaptiveNudgeText] = useState(initialNudgeText);
 
-  // Update the duration as the user types, only allowing numeric input.
   const handleChange = (value: string): void => {
-    // Allow empty value or value containing only digits.
     if (value === "" || /^\\d*$/.test(value)) {
       setDuration(value);
       const numericValue = Number(value);
@@ -873,7 +842,6 @@ export default function AdaptiveTextBox() {
     }
   };
 
-  // When the user commits the change (on blur), only commit if the value is a number.
   const handleCommit = (value: string): void => {
     const numericValue = Number(value);
     if (value.trim() === "" || isNaN(numericValue)) return;
@@ -898,7 +866,7 @@ export default function AdaptiveTextBox() {
 export const popupSnippet = `import React, { useState } from "react";
 import { Popup, ThemeProvider, defaultTheme } from "nudge-library";
 
-export default function StaticPopupExample() {
+export default function PopupExample() {
   const [showPopupDefault, setShowPopupDefault] = useState(false);
   const [showPopupCustom, setShowPopupCustom] = useState(false);
 
@@ -958,16 +926,56 @@ export default function StaticPopupExample() {
   );
 }`;
 
-export const popupDynamicSnippet =
-  `import { useState, useEffect } from "react";
+export const popupDynamicSnippet = `import React, { useState, useEffect, useRef } from "react";
 import { Popup } from "nudge-library";
 
 export default function DynamicPopup() {
-  const [popupState, setPopupState] = useState({ type: null, visible: false });
+  const [popupState, setPopupState] = useState({
+    type: null,
+    visible: false,
+  });
   const [countdown, setCountdown] = useState(5);
   const [notificationMessage, setNotificationMessage] = useState("");
+  const [hasBeenOpened, setHasBeenOpened] = useState(false);
+  const currentMessageRef = useRef(null);
+
   const animationDuration = 300;
   const autoCloseDelay = 5000;
+
+  const handleShowReminder = (type) => {
+    if (popupState.visible && popupState.type !== type) {
+      setPopupState((prev) => ({ ...prev, visible: false }));
+      setTimeout(() => {
+        setCountdown(5);
+        setPopupState({ type, visible: true });
+      }, animationDuration);
+    } else if (!popupState.visible) {
+      setCountdown(5);
+      setPopupState({ type, visible: true });
+    }
+  };
+
+  const handlePopupOpen = () => {
+    setHasBeenOpened(true);
+    const message =
+      "A reminder is open for the selected appointment type. It will close automatically after a short countdown or when clicking outside.";
+    if (currentMessageRef.current !== message) {
+      currentMessageRef.current = message;
+      setNotificationMessage(message);
+    }
+  };
+
+  const handlePopupClose = () => {
+    setPopupState((prev) => ({ ...prev, visible: false }));
+    if (hasBeenOpened) {
+      const message =
+        "The reminder has closed. Select an appointment type again to view the message.";
+      if (currentMessageRef.current !== message) {
+        currentMessageRef.current = message;
+        setNotificationMessage(message);
+      }
+    }
+  };
 
   useEffect(() => {
     let intervalId;
@@ -985,50 +993,64 @@ export default function DynamicPopup() {
     return () => clearInterval(intervalId);
   }, [popupState.visible]);
 
-  const handleShowReminder = (type) => {
-    if (popupState.visible && popupState.type !== type) {
-      setPopupState((prev) => ({ ...prev, visible: false }));
-      setTimeout(() => {
-        setCountdown(5);
-        setPopupState({ type, visible: true });
-      }, animationDuration);
-    } else if (!popupState.visible) {
-      setCountdown(5);
-      setPopupState({ type, visible: true });
-    }
-  };
-
   return (
-    <div>
-      <button onClick={() => handleShowReminder("doctor")}>Doctor Appointment</button>
-      <button onClick={() => handleShowReminder("dentist")}>Dentist Appointment</button>
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <p>Select the appointment type:</p>
+
+      <div style={{ display: "flex" }}>
+        <button
+          onClick={() => handleShowReminder("doctor")}
+          disabled={popupState.visible && popupState.type === "dentist"}
+        >
+          Doctor
+        </button>
+        <button
+          onClick={() => handleShowReminder("dentist")}
+          disabled={popupState.visible && popupState.type === "doctor"}
+        >
+          Dentist
+        </button>
+      </div>
+
+      {notificationMessage && (
+        <p>{notificationMessage}</p>
+      )}
+
       {popupState.type && (
         <Popup
           key={popupState.type}
           visible={popupState.visible}
-          onOpen={() => setNotificationMessage("Reminder open for selected appointment.")}
-          onClose={() => setPopupState((prev) => ({ ...prev, visible: false }))}
-          autoClose={true}
+          onOpen={handlePopupOpen}
+          onClose={handlePopupClose}
+          autoClose
           autoCloseDelay={autoCloseDelay}
           animationType="slide"
           animationDuration={animationDuration}
-          closeOutside={true}
-          title={` +
-  "`" +
-  "${popupState.type === 'doctor' ? 'Doctor' : 'Dentist'} Appointment Reminder" +
-  "`" +
-  `}
+          dismissible
+          closeOutside
+          title={
+            popupState.type === "doctor"
+              ? "Doctor Appointment Reminder"
+              : "Dentist Appointment Reminder"
+          }
           renderContent={() => (
             <div>
-              <p>{popupState.type === "doctor" ? "Please bring your medical records." : "Please bring your dental records."}</p>
-              <p>The reminder will close in <strong>{countdown}</strong> seconds.</p>
+              <p>
+                {popupState.type === "doctor"
+                  ? "Please remember to bring the medical records."
+                  : "Please remember to bring any previous dental records."}
+              </p>
+              <p style={{ marginTop: "0.75rem" }}>
+                The reminder will close in <strong>{countdown}</strong> second
+                {countdown !== 1 && "s"}.
+              </p>
             </div>
           )}
         />
       )}
     </div>
   );
-}`;
+};`;
 
 export const popupAdaptiveSnippet = `import { useState, useEffect } from "react";
 import { Popup } from "nudge-library";
@@ -1172,12 +1194,9 @@ export default function DynamicRating() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <p style={{ fontWeight: "500", marginBottom: "1.5rem" }}>
-        Select a rating for a dynamic feedback:
-      </p>
-
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       <Rating
+        ratingLabel="Select a rating for a dynamic feedback:"
         rating={courseRating}
         max={5}
         id="courseRating"
@@ -1190,16 +1209,7 @@ export default function DynamicRating() {
         onBlur={() => setShowAfterRatingHint(true)}
       />
 
-      <div
-        style={{
-          color: "#555",
-          opacity: showAfterRatingHint ? 1 : 0,
-          maxHeight: showAfterRatingHint ? "50px" : "0px",
-          overflow: "hidden",
-          transition: "opacity 0.5s ease-in-out, max-height 0.5s ease-in-out",
-          marginTop: "0.9rem",
-        }}
-      >
+      <div>
         The rating can be updated anytime.
       </div>
     </div>
@@ -1242,7 +1252,7 @@ export default function AdaptiveRating() {
   }, [userExperience]);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       <DropdownMenu
         dropdownLabel="Select the experience level:"
         id="experienceDropdown"
@@ -1261,7 +1271,7 @@ export default function AdaptiveRating() {
         nudgeText={adaptiveNudgeText}
         nudgePosition="bottom"
         renderNudge={(rating) => (
-          <div style={{ fontSize: "0.9rem", marginTop: "4px" }}>
+          <div>
             {adaptiveNudgeText} {rating > 0 && <span>(Rating: {rating})</span>}
           </div>
         )}
@@ -1299,7 +1309,7 @@ const customTheme = {
 
 export default function BadgeExample() {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       <Badge
         id="default-badge"
         badgeLabel="Default Version"
@@ -1370,21 +1380,12 @@ export default function DynamicBadge() {
   const renderCustomNudge = ({ count }: { count?: number }) => {
     if (!count) return null;
 
-    const fadeStyle: React.CSSProperties = {
-      fontSize: "0.875rem",
-      opacity: hasEndorsed && !showEndorsedNudge ? 0 : 1,
-      maxHeight: hasEndorsed && !showEndorsedNudge ? 0 : "auto",
-      padding: hasEndorsed && !showEndorsedNudge ? 0 : "8px 12px",
-      overflow: "hidden",
-      transition: "opacity 0.5s ease, max-height 0.5s ease, padding 0.5s ease",
-    };
-
     if (hasEndorsed) {
-      return <div style={fadeStyle}>You endorsed this document.</div>;
+      return <div>You endorsed this document.</div>;
     }
 
     return (
-      <div style={fadeStyle}>
+      <div>
         {count > 50
           ? "Widely endorsed! A favorite among collaborators."
           : count > 10
@@ -1395,11 +1396,11 @@ export default function DynamicBadge() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-      <p style={{ fontWeight: "500" }}>Endorse a shared document:</p>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       <ThemeProvider theme={customTheme}>
         <Badge
           id="strategy-doc-badge"
+          badgeLabel="Endorse a shared document:"
           label="Endorsed"
           count={endorsements}
           icon={<Icon />}
@@ -1412,15 +1413,6 @@ export default function DynamicBadge() {
       <button
         onClick={handleEndorse}
         disabled={hasEndorsed}
-        style={{
-          padding: "0.5rem 1rem",
-          fontSize: "0.875rem",
-          backgroundColor: hasEndorsed ? "#ccc" : "#0070f3",
-          color: "#fff",
-          border: "none",
-          borderRadius: "6px",
-          cursor: hasEndorsed ? "not-allowed" : "pointer",
-        }}
       >
         {hasEndorsed ? "Endorsed" : "Endorse this Document"}
       </button>
@@ -1431,7 +1423,7 @@ export default function DynamicBadge() {
 export const badgeAdaptiveSnippet = `import React, { useState } from "react";
 import { Badge } from "nudge-library";
 
-export default function AdaptiveBadgeExample() {
+export default function AdaptiveBadge() {
   const [userProfile, setUserProfile] = useState({
     skillLevel: "Intermediate",
     favoriteTopic: "React",
@@ -1468,29 +1460,15 @@ export default function AdaptiveBadgeExample() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <div style={{ fontWeight: "500", marginBottom: "1.5rem" }}>
-        Click to complete a course:
-      </div>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       <Badge
+        badgeLabel="Click to complete a course:"
         label="Courses Completed"
         count={userProfile.coursesCompleted}
         renderNudge={() => <p>{dynamicNudgeMessage()}</p>}
         nudgePosition="bottom"
       />
-      <button
-        onClick={completeCourse}
-        style={{
-          padding: "0.5rem 1rem",
-          fontSize: "0.875rem",
-          backgroundColor: "#0070f3",
-          color: "#fff",
-          border: "none",
-          borderRadius: "6px",
-          cursor: "pointer",
-          marginTop: "1rem",
-        }}
-      >
+      <button onClick={completeCourse}>
         Complete Course
       </button>
     </div>
@@ -1517,8 +1495,8 @@ const customTheme = {
 
 export default function TooltipExample() {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-      <p className="font-medium -mb-3">Default Version</p>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <p>Default Version</p>
       <Tooltip
         id="default-tooltip"
         text="Great effort, keep going!"
@@ -1526,24 +1504,12 @@ export default function TooltipExample() {
         dismissible={false}
         ariaLabel="Default tooltip"
       >
-        <button
-          style={{
-            background: "linear-gradient(135deg, #2492ff, #1675d5)",
-            color: "white",
-            width: "100%",
-            padding: "10px 20px",
-            fontSize: "0.875rem",
-            fontWeight: "500",
-            borderRadius: "8px",
-            cursor: "pointer",
-          }}
-          role="button"
-        >
+        <button>
           Hover or Press Button
         </button>
       </Tooltip>
 
-      <p className="font-medium -mb-3">Custom Version</p>
+      <p>Custom Version</p>
       <ThemeProvider theme={customTheme}>
         <Tooltip
           id="custom-tooltip"
@@ -1555,19 +1521,7 @@ export default function TooltipExample() {
           animationDuration={400}
           icon={<FaBolt />}
         >
-          <button
-            style={{
-              background: "linear-gradient(135deg, #2492ff, #1675d5)",
-              color: "white",
-              width: "100%",
-              padding: "10px 20px",
-              fontSize: "0.875rem",
-              fontWeight: "500",
-              borderRadius: "8px",
-              cursor: "pointer",
-            }}
-            role="button"
-          >
+          <button>
             Hover or Press Button
           </button>
         </Tooltip>
@@ -1610,21 +1564,9 @@ export default function DynamicTooltip() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-      <p style={{ fontWeight: "500" }}>Select the answer:</p>
+      <p>Select the answer:</p>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        <button
-          onClick={handleCorrectAnswer}
-          style={{
-            padding: "0.6rem 1.2rem",
-            fontSize: "0.875rem",
-            border: "2px solid #1b8dff",
-            boxShadow: "#1b8dff45 0px 2px 8px 0px",
-            borderRadius: "10px",
-            backgroundColor: "white",
-            cursor: "pointer",
-            width: "100%",
-          }}
-        >
+        <button onClick={handleCorrectAnswer}>
           {correctClicked ? "Well done!" : "Correct Answer"}
         </button>
 
@@ -1640,18 +1582,7 @@ export default function DynamicTooltip() {
           ariaLabel="Wrong answer tooltip"
           buttonText="Retry"
         >
-          <button
-            onClick={handleWrongAnswer}
-            style={{
-              padding: "0.6rem 1.2rem",
-              fontSize: "0.875rem",
-              border: "2px solid #fb8500",
-              boxShadow: "#fb850045 0px 2px 8px 0px",
-              borderRadius: "10px",
-              cursor: "pointer",
-              width: "100%",
-            }}
-          >
+          <button onClick={handleWrongAnswer}>
             Wrong Answer
           </button>
         </Tooltip>
@@ -1728,20 +1659,8 @@ export default function AdaptiveTooltip() {
         animationType="slide"
         animationDuration={300}
       >
-        <button
-          style={{
-            display: "block",
-            padding: "0.6rem 1.2rem",
-            fontSize: "0.875rem",
-            fontWeight: "500",
-            color: "white",
-            background: "#007fff",
-            borderRadius: "10px",
-            cursor: "pointer",
-            width: "100%",
-          }}
-        >
-          Hover here
+        <button>
+          Hover or Press Button
         </button>
       </Tooltip>
     </div>
@@ -1866,7 +1785,7 @@ export default function DynamicMoodSlider() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+    <div>
       <MoodSlider
         sliderLabel="Post-workout mood"
         moodDefinitions={workoutMoodDefinitions}
@@ -1928,7 +1847,7 @@ export default function AdaptiveMoodSlider() {
       : \`Self-assessment increased from \${previousMoodLabel} to \${currentMoodLabel}. Great progress!\`;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+    <div>
       <MoodSlider
         sliderLabel="Reflect on the lesson:"
         moodDefinitions={moodDefinitions}
@@ -2029,7 +1948,7 @@ export default function DynamicTextArea() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+    <div>
       <TextArea
         textAreaLabel="Daily Reflection"
         placeholder="Share the thoughts on today's progress and any target adjustments"
@@ -2153,7 +2072,6 @@ export default function DialogExample() {
   const [confirmationInput, setConfirmationInput] = useState("");
 
   const handleConfirm = () => {
-    console.log("Confirmed:", confirmationInput);
     setConfirmationInput("");
     setDialogConfirmationVisible(false);
     setDialogInputVisible(false);
@@ -2169,8 +2087,8 @@ export default function DialogExample() {
 
   return (
     <div>
-      <p className="font-medium -mb-3">Default Version</p>
-      <button className="button-popup" onClick={() => setDialogConfirmationVisible(true)}>
+      <p>Default Version</p>
+      <button onClick={() => setDialogConfirmationVisible(true)}>
         Confirmation Dialog
       </button>
       <Dialog
@@ -2186,7 +2104,7 @@ export default function DialogExample() {
         onClose={() => setDialogConfirmationVisible(false)}
       />
 
-      <button className="button-popup" onClick={() => setDialogInputVisible(true)}>
+      <button onClick={() => setDialogInputVisible(true)}>
         Input Dialog
       </button>
       <Dialog
@@ -2209,8 +2127,8 @@ export default function DialogExample() {
         onClose={() => setDialogInputVisible(false)}
       />
 
-      <p className="font-medium -mb-3">Custom Version</p>
-      <button className="button-popup" onClick={() => setDialogThemedVisible(true)}>
+      <p>Custom Version</p>
+      <button onClick={() => setDialogThemedVisible(true)}>
         Themed Dialog
       </button>
       <ThemeProvider theme={customTheme}>
@@ -2275,17 +2193,14 @@ export default function DynamicDialog() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-      <p style={{ fontWeight: "500" }}>
+      <p>
         Managing Two-Factor Authentication (2FA) in Account Settings
       </p>
-      <button
-        className="button-popup"
-        onClick={is2FADisabled ? openEnableDialog : openDisableDialog}
-      >
+      <button onClick={is2FADisabled ? openEnableDialog : openDisableDialog}>
         {is2FADisabled ? "Enable 2FA" : "Disable 2FA"}
       </button>
 
-      <p style={{ marginTop: "-10px" }}>
+      <p>
         {is2FADisabled
           ? "2FA is currently disabled. Press the button to enable it again."
           : "2FA is currently enabled. Press the button to disable it."}
@@ -2297,7 +2212,6 @@ export default function DynamicDialog() {
           title="Disable Two-Factor Authentication?"
           message="Disabling 2FA removes an important layer of account protection. This action is not recommended unless necessary."
           visible={visibleDisable}
-          onOpen={() => console.log("Disable 2FA dialog opened")}
           onClose={closeDisableDialog}
           onConfirm={confirmDisable}
           onCancel={closeDisableDialog}
@@ -2323,10 +2237,10 @@ export default function DynamicDialog() {
             nudgeVisible: true,
             renderNudge: (val) => {
               if (!val) {
-                return <span style={{ color: "gray" }}>No input entered.</span>;
+                return <span>No input entered.</span>;
               }
               if (val === expectedInput) {
-                return <span style={{ color: "green" }}>Confirmation phrase accepted.</span>;
+                return <span>Confirmation phrase accepted.</span>;
               }
               return <span>Input must match "{expectedInput}" exactly.</span>;
             },
@@ -2403,48 +2317,20 @@ export default function AdaptiveDialog() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-      <p style={{ fontWeight: "500" }}>
+      <p>
         Choose Device Type before deleting an account:
       </p>
 
-      <div style={{ display: "flex", overflow: "hidden" }}>
-        <button
-          onClick={() => setDeviceType("trusted")}
-          style={{
-            flex: 1,
-            fontSize: "0.875rem",
-            padding: "8px 12px",
-            background: deviceType === "trusted" ? "#e7f2ff" : "white",
-            color: deviceType === "trusted" ? "#1b8dff" : "#444",
-            border: "1px solid #dfe2e4",
-            borderRight: "none",
-            borderRadius: "5px 0 0 5px",
-            fontWeight: deviceType === "trusted" ? "500" : "normal",
-            cursor: "pointer",
-          }}
-        >
+      <div style={{ display: "flex" }}>
+        <button onClick={() => setDeviceType("trusted")}>
           Trusted
         </button>
-        <button
-          onClick={() => setDeviceType("unrecognized")}
-          style={{
-            flex: 1,
-            fontSize: "0.875rem",
-            padding: "8px 12px",
-            background: deviceType === "unrecognized" ? "#e7f2ff" : "white",
-            color: deviceType === "unrecognized" ? "#1b8dff" : "#444",
-            border: "1px solid #dfe2e4",
-            borderLeft: "none",
-            borderRadius: "0 5px 5px 0",
-            fontWeight: deviceType === "unrecognized" ? "500" : "normal",
-            cursor: "pointer",
-          }}
-        >
+        <button onClick={() => setDeviceType("unrecognized")}>
           Unrecognized
         </button>
       </div>
 
-      <button onClick={() => setVisible(true)} className="button-popup">
+      <button onClick={() => setVisible(true)}>
         Delete Account
       </button>
 
@@ -2458,7 +2344,7 @@ export default function AdaptiveDialog() {
             Proceeding will <strong>permanently delete the account</strong>.
             This action is irreversible.
             {requiresInput && (
-              <div style={{ marginTop: 10, color: "#a94442" }}>
+              <div style={{ marginTop: 10 }}>
                 <strong>Additional verification required:</strong>
                 <br />
                 {frictionReason}
@@ -2477,16 +2363,6 @@ export default function AdaptiveDialog() {
         confirmButtonText="Delete Account"
         cancelButtonText="Cancel"
       />
-
-      <p style={{ fontSize: "0.875rem" }}>
-        The example allows switching between trusted and unrecognized device
-        contexts. When the unrecognized device type is selected, an additional
-        verification step is introduced: the user must type a confirmation
-        phrase before the action can proceed. In contrast, the trusted device
-        context allows immediate confirmation with minimal friction. After the
-        deletion attempt, a success or cancellation message is displayed to
-        provide feedback.
-      </p>
     </div>
   );
 }`;

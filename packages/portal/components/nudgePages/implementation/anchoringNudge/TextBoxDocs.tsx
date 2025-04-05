@@ -33,7 +33,7 @@ export default function TextBoxDocs() {
             label: "Static nudge",
             content: (
               <div>
-                <div className="flex flex-col gap-4 bg-white py-10 px-8 md:px-24 lg:px-28 rounded-b-2xl">
+                <div className="flex flex-col gap-8 bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-40 rounded-b-2xl">
                   <TextBox
                     textBoxLabel="Default version"
                     defaultValue={"30"}
@@ -72,7 +72,7 @@ export default function TextBoxDocs() {
             label: "Dynamic nudge",
             content: (
               <div>
-                <div className="bg-white py-10 px-8 md:px-24 lg:px-28 rounded-b-2xl">
+                <div className="bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-40 rounded-b-2xl">
                   <DynamicTextBox />
                 </div>
                 <div className="border-t border-customLightBlue">
@@ -85,7 +85,7 @@ export default function TextBoxDocs() {
             label: "Adaptive nudge",
             content: (
               <div>
-                <div className="bg-white py-10 px-8 md:px-24 lg:px-28 rounded-b-2xl">
+                <div className="bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-40 rounded-b-2xl">
                   <AdaptiveTextBox />
                 </div>
                 <div className="border-t border-customLightBlue">

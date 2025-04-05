@@ -7,7 +7,7 @@ export const textContent = {
   overview: {
     title: "Overview",
     content:
-      "The Default Options Nudge guides decision-making by preselecting optimal, beneficial or least harmful option as the default while still allowing users to opt out if they prefer an alternative. It simplifies decision-making by reducing cognitive effort, which makes users more likely to choose a suggested option.",
+      "The Default Options Nudge guides decision-making by preselecting the most optimal, beneficial, or least harmful option as the default while still allowing users to opt out if they prefer an alternative. It simplifies decision-making by reducing cognitive effort, which makes users more likely to choose a suggested option.",
     exampleText:
       "Screenshot of Google's “Display language” modal with default option, illustrating Default Options Nudge.",
     image: {

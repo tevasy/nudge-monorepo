@@ -1,4 +1,3 @@
-// PropsTable.tsx
 import React from "react";
 
 export interface PropsTableRow {

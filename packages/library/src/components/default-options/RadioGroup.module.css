@@ -28,7 +28,6 @@
   transition: all 0.2s ease-in-out;
 }
 
-/* Selected radio */
 .radioCircle.checked {
   background-color: var(--color-darkerBlue);
   border: 2px solid var(--color-darkerBlue);

@@ -64,7 +64,7 @@ export default function DynamicRadioGroup() {
           </ThemeProvider>
         );
       })}
-      <p style={{ fontSize: "0.875rem" }}>
+      <p style={{ fontSize: "0.875rem", marginTop: "1rem" }}>
         Selecting an option triggers{" "}
         <code style={{ fontSize: "0.813rem" }}>renderNudge</code> with nudge
         text confirming the choice. If not selected, the nudge text highlights

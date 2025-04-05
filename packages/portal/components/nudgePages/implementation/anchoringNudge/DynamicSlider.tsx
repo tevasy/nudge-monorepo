@@ -5,23 +5,20 @@ export default function DynamicSlider() {
   const [savingsPercent, setSavingsPercent] = useState(10);
   const [showNudge, setShowNudge] = useState(false);
 
-  // When the user focuses on the slider, show the nudge
   const handleFocus = () => {
     setShowNudge(true);
   };
 
-  // When the slider loses focus, hide the nudge
   const handleBlur = () => {
     setShowNudge(false);
   };
 
-  // When the user finishes adjusting the slider, update the savings percentage
   const handleCommit = (value: number) => {
     setSavingsPercent(value);
   };
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       <Slider
         id="savings-slider"
         ariaLabel="Savings Percentage slider"
@@ -46,7 +43,7 @@ export default function DynamicSlider() {
           </div>
         )}
       />
-      <p style={{ marginTop: "1rem", fontSize: "0.875rem" }}>
+      <p style={{ fontSize: "0.875rem" }}>
         When the slider is focused, a nudge message appears below it, changing
         dynamically as the slider is adjusted. Once the slider loses focus, the
         new value is committed and stored.

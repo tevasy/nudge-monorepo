@@ -97,9 +97,9 @@ export default function InstallSection() {
           {textContent.implementationResources.title}
         </h2>
         <p className="mb-4">
-          Default option nudges can be implemented through <b>Checkboxes</b>
+          Default option nudges can be implemented through <b>Checkbox</b>
           ,&nbsp;
-          <b>Radio Groups</b>, and <b>Dropdown Menus</b>, all of which are
+          <b>Radio Group</b>, and <b>Dropdown Menu</b> components, which are
           available via &nbsp;
           <span className="font-mono text-[15px] bg-customLightLightBlue rounded-md py-1 px-1.5">
             npm install nudge-library

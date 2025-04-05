@@ -7,12 +7,12 @@ export const textContent = {
   overview: {
     title: "Overview",
     content:
-      "The Reminder Nudge is designed to help individuals overcome barriers such as inattention, procrastination, inertia, or competing obligations by delivering timely prompts that encourage action. By prompting engagement at the right moment, this nudge increases the likelihood that users will follow through on intended actions, while still allowing them to dismiss or postpone the reminder if needed.",
+      "The Reminder Nudge is designed to help individuals overcome barriers such as inattention, procrastination, inertia, or competing obligations by delivering timely prompts that encourage action. By prompting engagement at the right moment, this nudge helps users complete important tasks without delay, while still allowing them to dismiss or postpone the reminder if needed.",
     exampleText:
-      "Screenshot of popup from Apple Reminders, illustrating the Reminder Nudge.",
+      "Screenshot of pop-up from Apple Reminders, illustrating the Reminder Nudge.",
     image: {
       src: "/reminder/apple_reminder.png",
-      alt: "Screenshot of popup from Apple Reminders, illustrating the Reminder Nudge.",
+      alt: "Screenshot of pop-up from Apple Reminders, illustrating the Reminder Nudge.",
     },
   },
   problem: {
@@ -30,7 +30,7 @@ export const textContent = {
       "Health tracking, where they encourage posture correction when working at a computer.",
     ],
     devices:
-      "The nudge can be implemented across various digital platforms and interfaces, including mobile notifications, desktop alerts, and web-based popups.",
+      "The nudge can be implemented across various digital platforms and interfaces, including mobile notifications, desktop alerts, and web-based pop-ups.",
   },
   solution: {
     title: "Solution",
@@ -68,7 +68,7 @@ export const textContent = {
   popup: {
     title: "Popup",
     content:
-      "The **Static nudge** displays default and themed popups for study reminders. The **Dynamic nudge** highlights how the component responds to user interaction by updating its content based on the selected appointment type, including a countdown before auto-closing and contextual feedback when switching between reminders. The **Adaptive nudge** presents a hydration reminder that adjusts its tone based on previous user responses, demonstrating how reminder's content can evolve using saved user engagement data.",
+      "The **Static nudge** displays default and themed Popups for study reminders. The **Dynamic nudge** highlights how the component responds to user interaction by updating its content based on the selected appointment type, including a countdown before auto-closing and contextual feedback when switching between reminders. The **Adaptive nudge** presents a hydration reminder that adjusts its tone based on previous user responses, demonstrating how the Popup's content can evolve using saved user engagement data.",
   },
   apiReference: {
     title: "API Reference",

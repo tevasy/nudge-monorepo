@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Badge } from "nudge-library";
 
-const AdaptiveBadgeExample = () => {
+const AdaptiveBadge = () => {
   const [userProfile, setUserProfile] = useState({
     skillLevel: "Intermediate",
     favoriteTopic: "React",
@@ -9,7 +9,6 @@ const AdaptiveBadgeExample = () => {
     recentActivity: "",
   });
 
-  // Function to determine the nudge message based on user progress.
   const dynamicNudgeMessage = (): string => {
     if (userProfile.recentActivity) {
       return userProfile.recentActivity;
@@ -23,7 +22,6 @@ const AdaptiveBadgeExample = () => {
     return "Outstanding performance! Join the community challenges to put new skills to the test.";
   };
 
-  // Function to simulate course completion.
   const completeCourse = () => {
     setUserProfile((prevProfile) => ({
       ...prevProfile,
@@ -44,33 +42,20 @@ const AdaptiveBadgeExample = () => {
       style={{
         display: "flex",
         flexDirection: "column",
+        gap: "2rem",
       }}
     >
-      <div style={{ fontWeight: "500", marginBottom: "1.5rem" }}>
-        Click to complete a course:
-      </div>
       <Badge
+        badgeLabel="Click to complete a course:"
         label="Courses Completed"
         count={userProfile.coursesCompleted}
         renderNudge={() => <p>{dynamicNudgeMessage()}</p>}
         nudgePosition="bottom"
       />
-      <button
-        onClick={completeCourse}
-        style={{
-          padding: "0.5rem 1rem",
-          fontSize: "0.875rem",
-          backgroundColor: "#0070f3",
-          color: "#fff",
-          border: "none",
-          borderRadius: "6px",
-          cursor: "pointer",
-          marginTop: "1rem",
-        }}
-      >
+      <button onClick={completeCourse} className="button-popup">
         Complete Course
       </button>
-      <p style={{ fontSize: "0.875rem", marginTop: "1.5rem" }}>
+      <p style={{ fontSize: "0.875rem" }}>
         This adaptive badge updates its nudge text based on the user&apos;s
         profile data, such as skill level, favorite topics, and learning
         progress. In real-world scenarios, this information would be derived
@@ -82,4 +67,4 @@ const AdaptiveBadgeExample = () => {
   );
 };
 
-export default AdaptiveBadgeExample;
+export default AdaptiveBadge;

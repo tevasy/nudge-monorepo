@@ -72,21 +72,7 @@ const AdaptiveTooltip = () => {
         animationType="slide"
         animationDuration={300}
       >
-        <button
-          style={{
-            display: "block",
-            padding: "0.6rem 1.2rem",
-            fontSize: "0.875rem",
-            fontWeight: "500",
-            color: "white",
-            background: "#007fff",
-            borderRadius: "10px",
-            cursor: "pointer",
-            width: "100%",
-          }}
-        >
-          Hover here
-        </button>
+        <button className="button-popup">Hover or Press Button</button>
       </Tooltip>
 
       <p style={{ fontSize: "0.875rem" }}>

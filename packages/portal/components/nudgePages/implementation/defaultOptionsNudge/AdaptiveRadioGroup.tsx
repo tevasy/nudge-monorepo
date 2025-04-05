@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import { RadioGroup } from "nudge-library";
 
 export default function AdaptiveRadioGroup() {
-  // Manage which format is currently selected
   const [selectedFormat, setSelectedFormat] = useState<string>("pdf");
 
-  // On mount, load the user's preferred export format from localStorage (if it exists)
   useEffect(() => {
     const storedFormat = localStorage.getItem("preferredExportFormat");
     if (storedFormat) {
@@ -13,7 +11,6 @@ export default function AdaptiveRadioGroup() {
     }
   }, []);
 
-  // When the user changes format, update local state & store it
   const handleFormatChange = (newFormat: string) => {
     setSelectedFormat(newFormat);
     localStorage.setItem("preferredExportFormat", newFormat);
@@ -46,7 +43,7 @@ export default function AdaptiveRadioGroup() {
           />
         ))}
       </div>
-      <p style={{ fontSize: "0.875rem" }}>
+      <p style={{ fontSize: "0.875rem", marginTop: "1rem" }}>
         This selection will be saved and applied automatically for future
         report. The nudge text appears when an option is selected, controlled by
         the <code style={{ fontSize: "0.813rem" }}>nudgeVisible</code> property.

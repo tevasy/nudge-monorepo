@@ -49,14 +49,16 @@ export default function DynamicTooltip() {
         <button
           onClick={handleCorrectAnswer}
           style={{
-            padding: "0.6rem 1.2rem",
+            width: "100%",
+            padding: "10px 20px",
             fontSize: "0.875rem",
+            fontWeight: 500,
             border: "2px solid #1b8dff",
             boxShadow: "#1b8dff45 0px 2px 8px 0px",
-            borderRadius: "10px",
+            borderRadius: "5px",
             backgroundColor: "white",
             cursor: "pointer",
-            width: "100%",
+            transition: "background-color 0.2s ease, border-color 0.2s ease",
           }}
         >
           {correctClicked ? "Well done!" : "Correct Answer"}
@@ -74,18 +76,7 @@ export default function DynamicTooltip() {
           ariaLabel="Wrong answer tooltip"
           buttonText="Retry"
         >
-          <button
-            onClick={handleWrongAnswer}
-            style={{
-              padding: "0.6rem 1.2rem",
-              fontSize: "0.875rem",
-              border: "2px solid #fb8500",
-              boxShadow: "#fb850045 0px 2px 8px 0px",
-              borderRadius: "10px",
-              cursor: "pointer",
-              width: "100%",
-            }}
-          >
+          <button onClick={handleWrongAnswer} className="button-popup">
             Wrong Answer
           </button>
         </Tooltip>

@@ -1,9 +1,5 @@
-import {
-  ThemeProvider,
-  defaultTheme,
-} from "../../../../../library/src/theme/ThemeContext";
 import CodeContainer from "../CodeContainer";
-import { Badge } from "../../../../../library/src/components/social-norms/Badge";
+import { Badge, ThemeProvider, defaultTheme } from "nudge-library";
 import {
   badgeSnippet,
   badgeDynamicSnippet,
@@ -47,7 +43,7 @@ export default function BadgeDocs() {
             label: "Static nudge",
             content: (
               <div>
-                <div className="flex flex-col gap-6 bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-44 rounded-b-2xl">
+                <div className="flex flex-col gap-8 bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-40 rounded-b-2xl">
                   <Badge
                     id="default-badge"
                     badgeLabel="Default Version"
@@ -89,7 +85,7 @@ export default function BadgeDocs() {
             label: "Dynamic nudge",
             content: (
               <div>
-                <div className="bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-44 rounded-b-2xl">
+                <div className="bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-40 rounded-b-2xl">
                   <DynamicBadge />
                 </div>
                 <div className="border-t border-customLightBlue">
@@ -102,7 +98,7 @@ export default function BadgeDocs() {
             label: "Adaptive nudge",
             content: (
               <div>
-                <div className="bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-44 rounded-b-2xl">
+                <div className="bg-white py-10 px-8 sm:px-24 md:px-36 lg:px-40 rounded-b-2xl">
                   <AdaptiveBadge />
                 </div>
                 <div className="border-t border-customLightBlue">

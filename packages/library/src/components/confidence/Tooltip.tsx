@@ -68,7 +68,6 @@ export function Tooltip({
   const containerRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
 
-  // Controlled mode: animate tooltip entrance/exit.
   useEffect(() => {
     if (visible !== undefined) {
       if (visible) {
@@ -88,7 +87,7 @@ export function Tooltip({
     }
   }, [visible, animationDuration, onOpen, onClose]);
 
-  // Auto-close logic.
+  // Auto-close logic
   useEffect(() => {
     if (autoClose && isVisible) {
       timerRef.current = setTimeout(() => {
@@ -118,7 +117,7 @@ export function Tooltip({
     }
   }, [closeOutside, isVisible]);
 
-  // Hover/focus handlers (uncontrolled mode).
+  // Hover/focus handlers
   const handleOpen = (event: React.MouseEvent | React.FocusEvent) => {
     if (visible === undefined) {
       setShouldRender(true);
@@ -187,16 +186,11 @@ export function Tooltip({
     }
   })();
 
-  // Choose the animation classes.
   const animationClass = animationType === "fade" ? styles.fade : styles.slide;
   const visibilityClass = isVisible ? styles.visible : styles.hidden;
 
   return (
-    <div
-      ref={containerRef}
-      style={{ position: "relative", display: "inline-block" }}
-      id={id}
-    >
+    <div ref={containerRef} className={styles.tooltipDisplayContainer} id={id}>
       <div
         onMouseEnter={openOnHover ? handleOpen : undefined}
         onFocus={openOnHover ? handleOpen : undefined}

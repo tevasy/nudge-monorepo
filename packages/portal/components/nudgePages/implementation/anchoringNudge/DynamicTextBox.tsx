@@ -1,32 +1,26 @@
 import React, { useState } from "react";
 import { TextBox } from "nudge-library";
 
-export default function DonationSettings() {
-  // Predefined suggested donation amount.
+export default function DynamicTextBox() {
   const [suggestedDonation, setSuggestedDonation] = useState("25");
   const [showPreview, setShowPreview] = useState(false);
   const [finalMessage, setFinalMessage] = useState("");
 
-  // Show the preview when the textbox gains focus.
   const handleFocus = () => {
     setShowPreview(true);
     setFinalMessage("");
   };
 
-  // Hide the preview when the textbox loses focus.
   const handleBlur = () => {
     setShowPreview(false);
   };
 
-  // Update state as the user types, only allow numeric input (including decimals)
   const handleChange = (newValue: string) => {
     if (newValue === "" || /^\d*\.?\d*$/.test(newValue)) {
       setSuggestedDonation(newValue);
     }
   };
 
-  // Capture and display the final donation amount upon commit.
-  // Prevent committing an empty or invalid numeric value.
   const handleCommit = (newValue: string) => {
     const numericValue = parseFloat(newValue);
     if (newValue.trim() === "" || isNaN(numericValue)) return;
@@ -35,7 +29,6 @@ export default function DonationSettings() {
     );
   };
 
-  // Render a dynamic preview based on the entered donation amount.
   const renderDonationPreview = (value: string) => {
     const numericValue = parseFloat(value);
     if (isNaN(numericValue) || numericValue <= 0) {
@@ -64,7 +57,7 @@ export default function DonationSettings() {
   };
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       <TextBox
         id="donationAmount"
         ariaLabel="Donation Amount"
@@ -82,7 +75,7 @@ export default function DonationSettings() {
           {finalMessage}
         </div>
       )}
-      <p style={{ marginTop: "1rem", fontSize: "0.875rem" }}>
+      <p style={{ fontSize: "0.875rem" }}>
         When the text box is focused, a nudge text appears that updates based on
         the entered amount. Once focus is lost, the nudge message disappears
         via&nbsp;<code style={{ fontSize: "0.813rem" }}>nudgeVisible</code> and

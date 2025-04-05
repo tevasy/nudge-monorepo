@@ -7,7 +7,7 @@ export const textContent = {
   overview: {
     title: "Overview",
     content:
-      "The Reflection Nudge is designed to encourage individuals to pause and consider their emotional state, intentions, or the potential outcomes of their actions before or after engaging in a task. This nudge improves self-awareness and promotes more thoughtful decision-making by prompting users to reflect on their choices, experiences, or progress, while still allowing them to proceed without unnecessary friction.",
+      "The Reflection Nudge encourages individuals to pause and consider their emotional state, intentions, or the outcomes of their actions before or after a task. It supports self-awareness and more thoughtful decision-making, while still allowing users to proceed without unnecessary friction.",
     exampleText:
       "Screenshot of Insight Timer that prompts the user to reflect on their feelings at the end of a meditation session, illustrating a Reflection Nudge.",
     image: {
@@ -40,7 +40,7 @@ export const textContent = {
       "Ensuring that prompts are timely, contextually relevant, and minimally disruptive.",
     ],
     contentImplementation:
-      "The nudge can be integrated using **Modal Dialogs**, **Mood Sliders**, or short **Feedback Forms**. Modal dialogs encourage deeper reflection by briefly focusing the user's attention on a thought-provoking question before they proceed. Mood sliders provide a quick way to assess emotional states, making reflection easy and engaging. Short Feedback Forms allow users to record their thoughts for self-reflection, reinforcing learning and self-awareness.",
+      "This nudge can be implemented using **Mood Sliders** and **Text Areas**. The Mood Slider offers a quick, intuitive way to assess emotional state, while the Text Area invites users to reflect more deeply by journaling their thoughts. Together, they support self-awareness and reinforce learning without adding friction.",
   },
   rationale: {
     title: "Rationale",

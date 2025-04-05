@@ -5,7 +5,7 @@ import "../../styles/tokens.css";
 import "../../styles/globals.css";
 
 export type RadioGroupProps = {
-  radioLabel?: string; // Label for individual radio options
+  radioLabel?: string;
   label: string;
   value: string;
   checked?: boolean;
@@ -69,17 +69,14 @@ export function RadioGroup({
       </div>
     ) : null;
 
-  // Define touch handler to simulate focus on mobile.
   const handleTouchStart = (e: React.TouchEvent<HTMLInputElement>) => {
     if (onFocus) {
       onFocus(e as unknown as React.FocusEvent<HTMLInputElement>);
     }
   };
 
-  // Create a ref for the container to detect touches outside.
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Document-level touch listener to simulate blur when touching outside.
   useEffect(() => {
     const handleTouchOutside = (event: TouchEvent) => {
       if (
