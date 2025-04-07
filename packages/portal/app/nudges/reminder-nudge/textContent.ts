@@ -18,7 +18,7 @@ export const textContent = {
   problem: {
     title: "Problem",
     content:
-      "Users often **delay decisions**, **lose track of tasks**, or **continuously postpone them, even when they have the intention to complete them**. Without external prompts, important actions may be unintentionally overlooked due to distractions, competing priorities, or cognitive overload. The Reminder Nudge ensures that critical tasks are brought back into focus at the right moment, increasing follow-through and reducing unintended forgetfulness.",
+      "Users often **delay decisions**, **lose track of tasks**, or **continue to postpone actions, even when they intend to complete them**. Without external prompts, important tasks may be unintentionally overlooked due to distractions, competing priorities, or cognitive overload. The Reminder Nudge ensures that critical actions are brought back into focus at the right moment, increasing follow-through and reducing unintended forgetfulness.",
   },
   context: {
     title: "Context",
@@ -42,7 +42,7 @@ export const textContent = {
       "Providing clear, actionable prompts.",
     ],
     contentImplementation:
-      "Reminder Nudges can be implemented using **Popups** to gently prompt users without being overly intrusive. These Popups can be adjusted to let users act immediately or postpone as needed.",
+      "The Reminder Nudge can be implemented using **pop-ups** to gently prompt users without being overly intrusive. These components can be adjusted to let users act immediately or postpone as needed.",
   },
   rationale: {
     title: "Rationale",

@@ -42,12 +42,12 @@ export const textContent = {
       "Adding an explanation for the suggested value, where necessary.",
     ],
     contentImplementation:
-      "Anchoring Nudges can be implemented using **Sliders with specific endpoints**, **Sliders with default positions**, and **Text Boxes with predefined values**. Sliders with specific endpoints help users frame their decision within a defined range, while Sliders with default positions suggest an optimal starting point. Text Boxes with predefined values offer a quick reference for users who may not have a clear idea of what to input, helping them to make a choice.",
+      "The Anchoring Nudge can be implemented using **sliders with specific endpoints**, **sliders with default positions**, and **text boxes with predefined values**. Sliders with specific endpoints help users frame their decision within a defined range, while sliders with default positions suggest an optimal starting point. Text boxes with predefined values offer a quick reference for users who may not have a clear idea of what to input, helping them to make a choice.",
   },
   rationale: {
     title: "Rationale",
     content:
-      "This nudge is based on **anchoring and adjustment bias**, a cognitive effect where people rely heavily on the first piece of information they encounter when making a decision. Once an initial value is provided, users tend to adjust from that point rather than considering all options from scratch. This effect simplifies decision-making by narrowing the range of possibilities and reducing the mental effort required to evaluate choices.",
+      "This nudge is based on **anchoring and adjustment bias**, a cognitive effect where people rely heavily on the first piece of information they encounter when making a decision. Once an initial value is provided, users tend to adjust from that point rather than considering all options from scratch. As a result, the decision-making process becomes simpler and demands less mental effort.",
   },
   realWorldExamples: {
     title: "Real-world Examples",

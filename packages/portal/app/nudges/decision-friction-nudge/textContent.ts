@@ -40,7 +40,7 @@ export const textContent = {
       "Ensuring introduced friction is minimal but effective, so users pause without feeling unnecessarily obstructed.",
     ],
     contentImplementation:
-      "The nudge can be implemented using **Dialogs** with confirmation or additional input prompts. Confirmation Dialogs introduce a required step before proceeding, prompting users to acknowledge their decision. Dialogs with additional input prompts ask users to provide an extra detail, such as re-entering their password or selecting a reason for their action, encouraging reflection before continuing. To maintain a user-friendly experience, these prompts should be clear, minimally disruptive, and easy to bypass if the user is already certain of their decision.",
+      "The nudge can be implemented using **dialogs** with confirmation or additional input. Confirmation dialogs introduce a required step before proceeding, prompting users to acknowledge their decision. Dialogs with additional input prompts ask users to provide an extra detail, such as re-entering their password or selecting a reason for their action, encouraging reflection before continuing. To maintain a user-friendly experience, these prompts should be clear, minimally disruptive, and easy to bypass if the user is already certain of their decision.",
   },
   rationale: {
     title: "Rationale",

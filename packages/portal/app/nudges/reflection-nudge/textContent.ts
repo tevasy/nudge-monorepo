@@ -40,7 +40,7 @@ export const textContent = {
       "Ensuring that prompts are timely, contextually relevant, and minimally disruptive.",
     ],
     contentImplementation:
-      "This nudge can be implemented using **Mood Sliders** and **Text Areas**. The Mood Slider offers a quick, intuitive way to assess emotional state, while the Text Area invites users to reflect more deeply by journaling their thoughts. Together, they support self-awareness and reinforce learning without adding friction.",
+      "This nudge can be implemented using **mood sliders** and **text areas**. The mood slider offers a quick, intuitive way to assess emotional state, while the text area invites users to reflect more deeply by journaling their thoughts. Together, they support self-awareness and reinforce learning without adding friction.",
   },
   rationale: {
     title: "Rationale",
@@ -58,7 +58,7 @@ export const textContent = {
   adaptabilityConsiderations: {
     title: "Adaptability Considerations",
     content:
-      "Reflection Nudges should be **tailored to user's behavior, past responses, and key moments where self-reflection is most beneficial**. For example, after completing a complex task, users could be prompted to evaluate what they found challenging. These nudges can also **adapt to situational factors like recent interactions, emotional tone, or progress toward a goal**. If a user has been struggling with a task and making repeated failed attempts, a reflection prompt could gently encourage them to consider what adjustments they might make instead of simply repeating the same approach. Alternatively, if a user has shown significant progress, a prompt might encourage them to reflect on what has worked well and reinforce positive habits. Additionally, **systems can adjust the frequency of prompts over time**, keeping them relevant and helpful rather than repetitive.",
+      "The Reflection Nudge should be **tailored to user's behavior, past responses, and key moments where self-reflection is most beneficial**. For example, after completing a complex task, users could be prompted to evaluate what they found challenging. These nudges can also **adapt to situational factors like recent interactions, emotional tone, or progress toward a goal**. If a user has been struggling with a task and making repeated failed attempts, a reflection prompt could gently encourage them to consider what adjustments they might make instead of simply repeating the same approach. Alternatively, if a user has shown significant progress, a prompt might encourage them to reflect on what has worked well and reinforce positive habits. Additionally, **systems can adjust the frequency of prompts over time**, keeping them relevant and helpful rather than repetitive.",
   },
   implementationResources: {
     title: "Implementation Resources",

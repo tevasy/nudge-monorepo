@@ -42,7 +42,7 @@ export const textContent = {
       "Making opting out easy by offering a simple way to change the default.",
     ],
     contentImplementation:
-      "Default options can be implemented in various interface elements. **Radio Groups** and **Checkboxes** with a pre-selected choice simplify selection by setting the recommended option as the default while still allowing users to choose another option. **Dropdown Menus** with the most recommended option listed first can steer users toward an optimal choice without restricting their autonomy. These components can be customized and styled to fit specific application needs.",
+      "Default options can be implemented in various interface elements. **Radio groups** and **checkboxes** with a pre-selected choice simplify selection by setting the recommended option as the default while still allowing users to choose another option. **Dropdown menus** with the most recommended option listed first can steer users toward an optimal choice without restricting their autonomy. These components can be customized and styled to fit specific application needs.",
   },
   rationale: {
     title: "Rationale",

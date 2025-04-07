@@ -45,7 +45,7 @@ export default function TextBoxDocs() {
                   <ThemeProvider theme={customTheme}>
                     <TextBox
                       textBoxLabel="Custom version"
-                      defaultValue={"30"}
+                      defaultValue="30"
                       nudgeText="Enter a value here, the default value is 30."
                       id="customTextBox"
                       ariaLabel="Custom Text Box"

@@ -86,7 +86,7 @@ const images: Record<
       alt: "Example 1: Coursera's Course Page",
       title: "Example 1: Coursera's Course Page",
       description:
-        "Coursera's use of social norm on the 'Google Prompting Essentials' course page helps users make more confident and informed decisions. The message “46,404 already enrolled” signals to potential learners that many others have found the course worthwhile. It reduces uncertainty and helps them feel part of a broader learning community. Similarly, the statement “97% – Most learners liked this course” reassures users of the course's quality based on peer feedback.",
+        "Coursera's use of social norms on the 'Google Prompting Essentials' course page helps users make more confident and informed decisions. The message “46,404 already enrolled” signals to potential learners that many others have found the course worthwhile. It reduces uncertainty and helps them feel part of a broader learning community. Similarly, the statement “97% – Most learners liked this course” reassures users of the course's quality based on peer feedback.",
     },
     {
       src: "/socialNorms/kaggle.png",
@@ -106,10 +106,10 @@ const images: Record<
     },
     {
       src: "/reflection/langotalk.png",
-      alt: "Example 2: Langotalk's Reflection Prompts",
-      title: "Example 2: Langotalk's Reflection Prompts",
+      alt: "Example 2: Langotalk's Mood Reflection Prompts",
+      title: "Example 2: Langotalk's Mood Reflection Prompts",
       description:
-        "Langotalk shows mood reflection prompts after completing a learning session, illustrating Reflection Nudge. When users finish a lesson, they are encouraged to rate their experience using mood-based emojis and select a reason that best describes their feelings about the session. This reflection helps users become more aware of their emotions, which promotes a deeper connection to the learning process. Additionally, it allows the system to personalize future lessons based on user feedback, improving overall learning outcomes.",
+        "Langotalk's mood reflection prompts serve as the Reflection Nudge. When users finish a lesson, they are encouraged to rate their experience using mood-based emojis and select a reason that best describes their feelings about the session. This reflection helps users become more aware of their emotions, which promotes a deeper connection to the learning process. Additionally, it allows the system to personalize future lessons based on user feedback, improving overall learning outcomes.",
     },
   ],
   decisionFriction: [

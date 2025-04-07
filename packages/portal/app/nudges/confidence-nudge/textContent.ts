@@ -30,7 +30,7 @@ export const textContent = {
       "Skill-building exercises, such as language learning apps, where individuals learning a new language require motivation to stay engaged.",
     ],
     devices:
-      "The Decision Friction Nudge is applicable across mobile, desktop, and web interfaces.",
+      "The Confidence Nudge is applicable across mobile, desktop, and web interfaces.",
   },
   solution: {
     title: "Solution",
@@ -42,7 +42,7 @@ export const textContent = {
       "Allowing users to have control over the nudge, with options to dismiss it, ensuring that encouragement remains helpful rather than intrusive.",
     ],
     contentImplementation:
-      "Confidence Nudges can be integrated through supportive **Tooltips** that provide reassuring messages or hints, such as 'You're on the right track!' or 'Almost there! Keep going!' to encourage persistence. These elements should guide users without becoming intrusive.",
+      "The Confidence Nudge can be integrated through **tooltips** that provide reassuring messages or hints, such as 'You're on the right track!' or 'Almost there! Keep going!' to encourage persistence. These elements should guide users without becoming intrusive.",
   },
   rationale: {
     title: "Rationale",
@@ -60,7 +60,7 @@ export const textContent = {
   adaptabilityConsiderations: {
     title: "Adaptability Considerations",
     content:
-      "Confidence Nudges should dynamically **adjust based on user behavior, past performance, or task difficulty to provide relevant encouragement**. For example, beginners might receive more frequent support, while advanced users get occasional reinforcement to maintain motivation without unnecessary interruptions. Additionally, the nudges can **incorporate context-aware feedback, which can adjust its tone based on the user's progress**. If a user struggles with a task, nudges can acknowledge their effort and provide supportive messages. If they are excelling, feedback can reinforce their confidence and encourage continued success. **Adaptive encouragement** can further enhance effectiveness by evolving dynamically based on user persistence. If a user consistently engages despite challenges, the system may gradually reduce the frequency of nudges. Conversely, if a user frequently hesitates or abandons tasks, the system can provide increased encouragement to sustain motivation.",
+      "The Confidence Nudge should dynamically **adjust based on user behavior, past performance, or task difficulty to provide relevant encouragement**. For example, beginners might receive more frequent support, while advanced users get occasional reinforcement to maintain motivation without unnecessary interruptions. Additionally, the nudges can **incorporate context-aware feedback, which can adjust its tone based on the user's progress**. If a user struggles with a task, nudges can acknowledge their effort and provide supportive messages. If they are excelling, feedback can reinforce their confidence and encourage continued success. **Adaptive encouragement** can further enhance effectiveness by evolving dynamically based on user persistence. If a user consistently engages despite challenges, the system may gradually reduce the frequency of nudges. Conversely, if a user frequently hesitates or abandons tasks, the system can provide increased encouragement to sustain motivation.",
   },
   implementationResources: {
     title: "Implementation Resources",

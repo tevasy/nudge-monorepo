@@ -63,7 +63,6 @@ export default function DynamicDialog() {
           title="Disable Two-Factor Authentication?"
           message="Disabling 2FA removes an important layer of account protection. This action is not recommended unless necessary."
           visible={visibleDisable}
-          onOpen={() => console.log("Disable 2FA dialog opened")}
           onClose={closeDisableDialog}
           onConfirm={confirmDisable}
           onCancel={closeDisableDialog}
