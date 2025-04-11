@@ -1,9 +1,5 @@
-import {
-  ThemeProvider,
-  defaultTheme,
-} from "../../../../../library/src/theme/ThemeContext";
 import CodeContainer from "../CodeContainer";
-import { Tooltip } from "nudge-components-library";
+import { Tooltip, ThemeProvider, defaultTheme } from "nudge-components-library";
 import {
   tooltipSnippet,
   tooltipDynamicSnippet,
