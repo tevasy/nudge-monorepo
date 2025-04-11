@@ -1,9 +1,9 @@
 {
-  "name": "nudge-library",
+  "name": "nudge-components-library",
   "private": true,
   "workspaces": [
-    "packages/library",
-    "packages/portal"
+    "packages/components-library",
+    "packages/patterns-library"
   ],
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.9",
@@ -15,7 +15,6 @@
     "tailwindcss": "^4.0.9"
   },
   "dependencies": {
-    "nudge-library": "^1.0.3",
     "react-icons": "^5.5.0",
     "react-markdown": "^10.0.1",
     "react-syntax-highlighter": "^15.6.1"
