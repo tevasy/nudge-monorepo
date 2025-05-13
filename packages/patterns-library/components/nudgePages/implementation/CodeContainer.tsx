@@ -18,7 +18,7 @@ export default function CodeContainer({ codeSnippet }: CodeContainerProps) {
   };
 
   return (
-    <div className="bg-customLightLightLightBlue rounded-b-2xl relative">
+    <div className="bg-customLightLightLightBlue rounded-2xl relative">
       <div className="absolute top-4 right-6 z-8">
         <button
           onClick={copyToClipboard}

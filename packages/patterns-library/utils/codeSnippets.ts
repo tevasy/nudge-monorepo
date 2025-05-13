@@ -2366,3 +2366,45 @@ export default function AdaptiveDialog() {
     </div>
   );
 }`;
+
+export const step1Snippet = `npm install nudge-components-library`;
+
+export const step2Snippet = `import { Checkbox } from "nudge-components-library";`;
+
+export const step3Snippet = `import { Slider, TextBox } from "nudge-components-library/anchoring";`;
+
+export const step4Snippet = `<Checkbox label="Enable bedtime reminder" defaultChecked />
+<Slider sliderLabel="Set volume" min={0} max={100} />
+<TextBox textBoxLabel="Enter the value" />`;
+
+export const themingSnippet = `import React from "react";
+import { ThemeProvider, defaultTheme, TextBox } from "nudge-components-library";
+
+const customTheme = {
+  ...defaultTheme,
+  textBox: {
+    ...defaultTheme.textBox,
+    nudgeText: {
+      ...defaultTheme.textBox.nudgeText,
+      backgroundColor: "#ffe5cf",
+    },
+    hover: {
+      hoverBorder: "2px solid #fb8500",
+    },
+  },
+};
+
+export default function CustomTextBox() {
+  return (
+    <ThemeProvider theme={customTheme}>
+      <TextBox
+        id="default-text-box"
+        ariaLabel="Default Text Box"
+        textBoxLabel="Default version"
+        defaultValue="30"
+        nudgeText="Enter a value here, the default value is 30."
+      />
+    </ThemeProvider>
+  );
+}
+`;

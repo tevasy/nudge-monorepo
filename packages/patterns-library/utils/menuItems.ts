@@ -16,8 +16,24 @@ export const nudgesMenu: MenuItem[] = [
   { id: "implementation-resources", label: "Implementation Resources" },
 ];
 
+export const overviewMenu: MenuItem[] = [
+  { id: "overview", label: "Overview" },
+  { id: "challenges", label: "Addressed Challenges" },
+  { id: "audience", label: "Intended Audience" },
+  { id: "contents", label: "Contents" },
+];
+
+export const installationMenu: MenuItem[] = [
+  { id: "overview", label: "Overview" },
+  { id: "step1", label: "Step 1" },
+  { id: "step2", label: "Step 2" },
+  { id: "step3", label: "Step 3" },
+  { id: "scenarios", label: "Usage Scenarios" },
+  { id: "theming", label: "Theming" },
+];
+
 export const menuItemsMap: Record<string, MenuItem[]> = {
-  "/about": [
+  "/overview": [
     { id: "team", label: "Team" },
     { id: "mission", label: "Mission" },
   ],

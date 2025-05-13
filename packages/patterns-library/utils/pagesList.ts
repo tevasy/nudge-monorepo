@@ -1,4 +1,6 @@
 export const pagesList = [
+  { path: "/overview", name: "Overview" },
+  { path: "/installation", name: "Installation" },
   { path: "/nudges/default-options-nudge", name: "Default Options Nudge" },
   { path: "/nudges/anchoring-nudge", name: "Anchoring Nudge" },
   { path: "/nudges/reminder-nudge", name: "Reminder Nudge" },

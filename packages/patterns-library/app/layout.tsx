@@ -6,7 +6,12 @@ import SideBar from "../components/navigation/SideBar";
 import FloatingMenu, { MenuItem } from "../components/navigation/FloatingMenu";
 import BottomNavigation from "../components/navigation/BottomNavigation";
 import { usePathname } from "next/navigation";
-import { menuItemsMap, nudgesMenu } from "../utils/menuItems";
+import {
+  menuItemsMap,
+  nudgesMenu,
+  overviewMenu,
+  installationMenu,
+} from "../utils/menuItems";
 
 export default function RootLayout({
   children,
@@ -54,6 +59,10 @@ export default function RootLayout({
         };
       }
     }
+  } else if (pathname.startsWith("/overview")) {
+    menuItems = overviewMenu.map((item) => ({ ...item }));
+  } else if (pathname.startsWith("/installation")) {
+    menuItems = installationMenu.map((item) => ({ ...item }));
   } else {
     menuItems = menuItemsMap[pathname] || [];
   }

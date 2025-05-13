@@ -25,7 +25,7 @@ export default function ListItem({ type, index, children }: ListItemProps) {
           ) : null}
         </div>
       </div>
-      <span>{children}</span>
+      <span className="mt-0.5">{children}</span>
     </li>
   );
 }
