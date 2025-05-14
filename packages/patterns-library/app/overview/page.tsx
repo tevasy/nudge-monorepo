@@ -39,7 +39,7 @@ export default function InstallSection() {
           activation, and context-awareness.
         </p>
       </section>
-      <div className="bg-gradient-to-r from-customLightLightOrange via-customLightLightOrange to-transparent px-6 md:px-11 py-12 md:mb-10 lg:mb-20">
+      <div className="bg-gradient-to-r from-customLightLightOrange via-customLightLightOrange to-transparent px-6 md:px-11 py-12 mb-6 md:mb-10 lg:mb-20">
         <section id="challenges" className="scroll-mt-64 mb-12">
           <h2 className="text-xl md:text-2xl font-bold mb-4">
             {textContent.challenges.title}

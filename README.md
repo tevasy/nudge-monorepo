@@ -28,7 +28,7 @@ npm run dev
 
 Then visit http://localhost:3000 to explore the documentation.
 
-The nudge UI components from the Nudge Components Library will install automatically.
+**The nudge UI components from the Nudge Components Library will install automatically and will be visible in the Nudge Patterns Library straight away.**
 
 ---
 

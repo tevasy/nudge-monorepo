@@ -5,7 +5,7 @@ export const textContent = {
     content:
       "**Nudging** refers to practice of subtly guiding individuals toward desired actions without restricting their freedom of choice. In digital contexts, it relies on user interface (UI) elements to influence behavior. Despite increasing interest, **the practical adoption of digital nudging remains limited due to**:",
     extra:
-      "The Nudge Patterns Library and the Nudge Components Library aim to address these limitations by providing structured documentation and reusable technical components for ethically sound and adaptable nudging.",
+      "The Nudge Patterns Library and the Nudge Components Library address these challenges by providing structured documentation and reusable technical components for ethically sound and adaptable nudging.",
   },
   audience: {
     title: "Intended Audience",

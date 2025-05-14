@@ -34,7 +34,7 @@ export default function CodeContainer({ codeSnippet }: CodeContainerProps) {
 
       <div
         ref={codeContainerRef}
-        className="max-h-80 overflow-auto px-4 relative rounded-lg"
+        className="max-h-80 overflow-auto pl-4 pr-16 relative rounded-lg"
       >
         <SyntaxHighlighter
           language="jsx"

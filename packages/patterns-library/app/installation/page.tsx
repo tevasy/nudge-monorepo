@@ -36,7 +36,7 @@ export default function InstallSection() {
           process.
         </p>
       </section>
-      <div className="px-6 md:px-11 py-12 md:mb-10 lg:mb-12">
+      <div className="px-6 md:px-11 py-12 mb-6 md:mb-10 lg:mb-12">
         <section id="step1" className="scroll-mt-64 mb-12">
           <h2 className="text-xl md:text-2xl font-bold mb-4">
             {textContent.step1.title}
