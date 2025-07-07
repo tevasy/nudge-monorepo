@@ -15,7 +15,7 @@ export default function BottomNavigation() {
     currentIndex < pagesList.length - 1 ? pagesList[currentIndex + 1] : null;
 
   return (
-    <div className="flex flex-col md:flex-row px-6 md:px-11 mb-24 md:mb-28 lg:mb-30 mx-auto max-w-4xl gap-3.5 md:gap-5">
+    <div className="flex flex-col md:flex-row px-6 md:px-11 mb-22 md:mb-24 lg:mb-26 mx-auto max-w-4xl gap-3.5 md:gap-5">
       {previousPage && (
         <button
           onClick={() => router.push(previousPage.path)}

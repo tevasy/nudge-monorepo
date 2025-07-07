@@ -91,7 +91,7 @@ export default function InstallSection() {
       </div>
       <section
         id="implementation-resources"
-        className="scroll-mt-64 mb-6 md:mb-10 lg:mb-12 px-6 md:px-11 py-12"
+        className="scroll-mt-64 px-6 md:px-11 py-12"
       >
         <h2 className="text-xl md:text-2xl font-bold mb-4">
           {textContent.implementationResources.title}

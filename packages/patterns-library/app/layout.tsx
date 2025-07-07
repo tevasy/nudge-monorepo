@@ -2,6 +2,7 @@
 import "../styles/globals.css";
 import { useEffect, useState } from "react";
 import NavBar from "../components/navigation/NavBar";
+import Footer from "../components/navigation/Footer";
 import SideBar from "../components/navigation/SideBar";
 import FloatingMenu, { MenuItem } from "../components/navigation/FloatingMenu";
 import BottomNavigation from "../components/navigation/BottomNavigation";
@@ -87,6 +88,7 @@ export default function RootLayout({
             <div className="max-w-6xl mx-auto spinner-fade-in">
               {children}
               <BottomNavigation />
+              <Footer />
             </div>
           </main>
           <aside className="hidden xl:block xl:w-[21%]">
