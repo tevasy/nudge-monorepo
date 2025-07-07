@@ -104,3 +104,10 @@ See [Nudge Patterns Library](https://nudgepatternslibrary.netlify.app) for:
 - Nudge Pattern descriptions.
 - Interactive demos of the corresponding nudge UI components.
 - API reference for each nudge UI component.
+
+## About
+
+Created by [Tatiana Vasylieva](https://tatianavasylieva.com)  
+View on [GitHub](https://github.com/tevasy) · [Dribbble](https://dribbble.com/tatianavasye)
+
+© 2025 Tatiana Vasylieva. All rights reserved.
